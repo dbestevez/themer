@@ -47,5 +47,6 @@ let s:p.tabline.right   = [ [ s:color15, s:color8 ] ]
 let g:lightline#colorscheme#nightfall#palette = lightline#colorscheme#flatten(s:p)
 
 let g:lightline.active.left = [ [ 'mode', 'paste' ], [ 'fugitive', 'ctrlp' ], [ 'filename', 'ctrlpitem' ] ]
+let g:lightline.active.right = [ [ 'lineinfo' ], [ 'percent' ], [ 'debug', 'warnings', 'errors' ] ]
 
 let g:lightline.colorscheme = 'nightfall'
