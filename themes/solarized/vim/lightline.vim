@@ -36,6 +36,11 @@ let s:p.tabline.tabsel  = [ [ s:color0,  s:color12 ] ]
 let s:p.tabline.middle  = [ [ s:color0,  s:color0  ] ]
 let s:p.tabline.right   = copy(s:p.tabline.tabsel)
 
+let s:p.normal.info     = [ [ s:color0,  s:color4 ] ]
+let s:p.insert.info     = [ [ s:color2,  s:color0 ] ]
+let s:p.replace.info    = [ [ s:color9,  s:color0 ] ]
+let s:p.visual.info     = [ [ s:color3,  s:color0 ] ]
+
 let s:p.normal.error    = [ [ s:color0,  s:color1 ] ]
 let s:p.insert.error    = [ [ s:color2,  s:color0 ] ]
 let s:p.replace.error   = [ [ s:color9,  s:color0 ] ]
@@ -49,7 +54,7 @@ let s:p.visual.warning  = [ [ s:color3,  s:color0 ] ]
 let g:lightline#colorscheme#solarized#palette = lightline#colorscheme#flatten(s:p)
 
 let g:lightline.active.left  = [ [ 'fugitive', 'ctrlpitem' ], [ 'ctrlp', 'filename' ] ]
-let g:lightline.active.right = [ [ 'lineinfo' ], [ 'paste', 'percent', 'debug', 'neomake' ] ]
+let g:lightline.active.right = [ [ 'lineinfo' ], [ 'paste', 'percent' ], [ 'debug', 'warnings', 'errors' ] ]
 let g:lightline.separator = { 'left': '', 'right': '' }
 let g:lightline.subseparator = { 'left': '', 'right': '' }
 let g:lightline.tabline_separator = { 'left': '', 'right': '' }
