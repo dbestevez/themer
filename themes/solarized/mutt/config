@@ -1,5 +1,5 @@
 # Status format
-set status_format = " %f  %m    %?p?%p  ? %?n?%n ﯬ ? %?d?%d  ? %?t?%t  ?"
+set status_format = " %f  %m  %?p? %p  ?%?n? %n ﯬ ?%?d? %d  ? %?t?%t  ?"
 set pager_format  = " %C/%m  %f  %s %* %?X? %X  ? %P "
 
 # Colors
