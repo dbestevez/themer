@@ -1,6 +1,6 @@
 # Status format
-set status_format = " %f  %m  %?p? %p  ?%?n? %n ﯬ ?%?d? %d  ? %?t?%t  ?"
-set pager_format  = " %C/%m  %f  %s %* %?X? %X  ? %P "
+set status_format = " %f   %m %?p?  %p ?%?n? ﯬ %n ?%?d?  %d ?%?t?  %t ?"
+set pager_format  = " %C/%m  %f  %s %* %?X?  %X ? %P "
 
 # Colors
 color normal            color12 color8
