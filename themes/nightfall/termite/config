@@ -4,7 +4,7 @@ allow_bold          = true
 audible_bell        = false
 clickable_url       = true
 dynamic_title       = true
-font                = MesloLGSDZ Nerd Font 12
+font                = FuraMono Nerd Font 12
 icon_name           = terminal
 mouse_autohide      = true
 scroll_on_keystroke = true
@@ -26,15 +26,15 @@ size_hints = true
 filter_unmatched_urls = true
 
 [hints]
-font = Meslo LG S DZ for Powerline 10
-foreground = #21232a
-background = #c7c952
+font              = FuraMono Nerd Font 10
+foreground        = #21232a
+background        = #c7c952
 active_foreground = #e68080
 active_background = #3f3f3f
-padding = 2
-border = #81a1c1
-border_width = 2
-roundness = 2.0
+padding           = 2
+border            = #81a1c1
+border_width      = 2
+roundness         = 2.0
 
 [colors]
 foreground      = #d4d7d6
