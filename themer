@@ -295,10 +295,18 @@ function updateWallpaper() {
     echo -en "  Changing wallpaper..."
 
     WALLPAPER=`ls $DIR/themes/$1/wallpaper | grep ".*\.\(png\|jpg\)"`
-    ARGS='';
+    ARGS=''
+    i=0
 
     for w in $WALLPAPER; do
         ARGS="$ARGS--bg-scale $DIR/themes/$1/wallpaper/$w "
+
+        if [ $i -eq 0 ]; then
+            betterlockscreen -u $DIR/themes/$1/wallpaper/$w -b 3 \
+                -r 1920x1080 > /dev/null 2>&1
+        fi
+
+        i=$(($i+1))
     done
 
     feh $ARGS
