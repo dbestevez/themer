@@ -119,7 +119,7 @@ function updateBspwm() {
         return
     fi
 
-    echo -en "  Changing bspwm theme..."
+    echo -en "  Changing bspwm theme........................"
     cp $DIR/themes/$1/bspwm/config $HOME/.config/bspwm/theme
     source $HOME/.config/bspwm/theme
     echo -e "\E[37;32mDONE\033[0m"
@@ -135,7 +135,7 @@ function updateMutt() {
         return
     fi
 
-    echo -en "  Changing mutt theme..."
+    echo -en "  Changing mutt theme........................."
 
     cp $DIR/themes/$1/mutt/config $HOME/.config/mutt/theme
 
@@ -155,7 +155,7 @@ function updatePolybar() {
         return
     fi
 
-    echo -en "  Changing polybar theme..."
+    echo -en "  Changing polybar theme......................"
 
     cp $DIR/themes/$1/polybar/config $HOME/.config/polybar/config
 
@@ -200,7 +200,7 @@ function updateRofi() {
         return
     fi
 
-    echo -en "  Changing rofi theme..."
+    echo -en "  Changing rofi theme........................."
     cp $DIR/themes/$1/rofi/config $HOME/.config/rofi/config
     echo -e "\E[37;32mDONE\033[0m"
 }
@@ -215,7 +215,7 @@ function updateTermite() {
         return
     fi
 
-    echo -en "  Changing termite theme..."
+    echo -en "  Changing termite theme......................"
     cp $DIR/themes/$1/termite/config $HOME/.config/termite/config
     xdotool key 'ctrl+shift+r'
     echo -e "\E[37;32mDONE\033[0m"
@@ -231,7 +231,7 @@ function updateTmux() {
         return
     fi
 
-    echo -en "  Changing tmux theme..."
+    echo -en "  Changing tmux theme........................."
     cp $DIR/themes/$THEME/tmux/theme.conf $HOME/.config/tmux/theme.conf
 
     if [[ `ps aux | grep tmux | tail -n +2` ]]; then
@@ -252,7 +252,7 @@ function updateVim() {
     fi
 
     if [[ -f $DIR/themes/$1/vim/colorscheme.vim ]]; then
-        echo -en "  Changing vim theme..."
+        echo -en "  Changing vim theme.........................."
 
         if [[ ! -d $HOME/.config/nvim/colors ]]; then
             mkdir -p $HOME/.config/nvim/colors
@@ -266,7 +266,7 @@ function updateVim() {
     fi
 
     if [[ -f $DIR/themes/$1/vim/lightline.vim ]]; then
-        echo -en "  Changing vim lightline theme..."
+        echo -en "  Changing vim lightline theme................"
 
         if [[ ! -d $HOME/.config/nvim/autoload/lightline/colorscheme ]]; then
             mkdir -p $HOME/.config/nvim/autoload/lightline/colorscheme
@@ -292,24 +292,25 @@ function updateWallpaper() {
         return
     fi
 
-    echo -en "  Changing wallpaper..."
+    echo -en "  Changing wallpaper.........................."
 
     WALLPAPER=`ls $DIR/themes/$1/wallpaper | grep ".*\.\(png\|jpg\)"`
     ARGS=''
+    LOCK=''
     i=0
 
     for w in $WALLPAPER; do
         ARGS="$ARGS--bg-scale $DIR/themes/$1/wallpaper/$w "
 
         if [ $i -eq 0 ]; then
-            betterlockscreen -u $DIR/themes/$1/wallpaper/$w -b 3 \
-                -r 1920x1080 > /dev/null 2>&1
+            LOCK="$DIR/themes/$1/wallpaper/$w"
         fi
 
         i=$(($i+1))
     done
 
     feh $ARGS
+    betterlockscreen -u $LOCK -b 3 -r 1920x1080 > /dev/null 2>&1
 
     echo -e "\E[37;32mDONE\033[0m"
 }
