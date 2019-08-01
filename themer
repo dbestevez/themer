@@ -309,7 +309,7 @@ function updateWallpaper() {
         i=$(($i+1))
     done
 
-    feh $ARGS
+    feh $ARGS > /dev/null 2>&1
     betterlockscreen -u $LOCK -b 3 -r 1920x1080 > /dev/null 2>&1
 
     echo -e "\E[37;32mDONE\033[0m"
