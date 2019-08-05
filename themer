@@ -79,6 +79,7 @@ function main() {
 
     echo "Applying $THEME theme..."
 
+    updateCompton   $THEME
     updateMutt      $THEME
     updatePolybar   $THEME
     updateRofi      $THEME
@@ -86,7 +87,6 @@ function main() {
     updateTmux      $THEME
     updateVim       $THEME
     updateWallpaper $THEME
-
     updateBspwm     $THEME
 }
 
@@ -122,6 +122,25 @@ function updateBspwm() {
     echo -en "  Changing bspwm theme........................"
     cp $DIR/themes/$1/bspwm/config $HOME/.config/bspwm/theme
     source $HOME/.config/bspwm/theme
+    echo -e "\E[37;32mDONE\033[0m"
+}
+
+# ---
+# Updates the compton configuration.
+#
+# @param $1 The theme name.
+# ---
+function updateCompton() {
+    if [[ ! -x `command -v compton` ]] || [[ ! -f $DIR/themes/$1/compton/compton.conf ]]; then
+        return
+    fi
+
+    echo -en "  Changing compton config....................."
+    cp $DIR/themes/$1/compton/compton.conf $HOME/.compton.conf
+
+    killall compton > /dev/null 2>&1
+    compton --respect-prop-shadow &
+
     echo -e "\E[37;32mDONE\033[0m"
 }
 
