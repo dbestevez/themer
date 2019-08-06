@@ -139,7 +139,7 @@ function updateCompton() {
     cp $DIR/themes/$1/compton/compton.conf $HOME/.compton.conf
 
     killall compton > /dev/null 2>&1
-    compton --respect-prop-shadow &
+    compton --respect-prop-shadow > /dev/null 2>&1 &
 
     echo -e "\E[37;32mDONE\033[0m"
 }
