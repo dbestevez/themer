@@ -150,7 +150,7 @@ function updateCompton() {
 # @param $1 The theme name.
 # ---
 function updateMutt() {
-    if [[ ! -x `command -v mutt` ]] || [[ ! -f $DIR/themes/$1/mutt/config ]]; then
+    if [[ `command -v mutt > /dev/null 2>&1` -ne 0 ]] || [[ ! -f $DIR/themes/$1/mutt/config ]]; then
         return
     fi
 
