@@ -19,7 +19,7 @@ color header            color2  color8 'Date: .*'
 color header            color6  color8 'Subject: .*'
 color header            color5  color8 'To: .*'
 color message           color12 color8
-color body              color6  color8 '.*'
+color body              color12 color8 '.*'
 color bold              color15 color8
 color signature         color5  color8
 color attachment        color7  color8
