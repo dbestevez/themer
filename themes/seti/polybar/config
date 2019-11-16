@@ -246,7 +246,7 @@ label-close-foreground     = ${colors.color0}
 ; Lock
 menu-0-0            = 
 menu-0-0-background = ${colors.color1}
-menu-0-0-exec       = slimlock
+menu-0-0-exec       = betterlockscreen -l blur
 menu-0-0-foreground = ${colors.color0}
 menu-0-0-padding    = 1
 

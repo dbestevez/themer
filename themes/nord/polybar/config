@@ -182,7 +182,7 @@ label-close-underline  = ${colors.color1}
 ; Lock
 menu-0-0            = 
 menu-0-0-background = ${colors.color0}
-menu-0-0-exec       = slimlock
+menu-0-0-exec       = betterlockscreen -l blur
 menu-0-0-foreground = ${colors.color1}
 menu-0-0-padding    = 1
 menu-0-0-underline  = ${colors.color1}
