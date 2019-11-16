@@ -451,7 +451,7 @@ label-separator-foreground = ${colors.black}
 ; Lock
 menu-0-0 = 
 menu-0-0-background = ${colors.background}
-menu-0-0-exec = slimlock
+menu-0-0-exec       = betterlockscreen -l blur
 menu-0-0-foreground = ${colors.black}
 menu-0-0-padding = 2
 
