@@ -1,0 +1,439 @@
+; vim:ft=dosini
+[settings]
+screenchange-reload = true
+
+[colors]
+background = #232734
+foreground = #f8f8f2
+color0     = #20202a
+color1     = #c74950
+color2     = #43c46a
+color3     = #cdd778
+color4     = #a48bf7
+color5     = #d96aa9
+color6     = #6272a4
+color7     = #bfbfbf
+color8     = #44475a
+color9     = #ff5555
+color10    = #50fa7b
+color11    = #f1fa8c
+color12    = #bd93f9
+color13    = #ff79c6
+color14    = #8be9fd
+color15    = #f8f8f2
+
+[bar/bottom]
+bottom       = true
+fixed-center = true
+height       = 26
+monitor      = ${env:PRIMARY}
+scroll-down  = bspwm-deskprev
+scroll-up    = bspwm-desknext
+width        = 100%
+wm-restack   = bspwm
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+font-0 = IBM Plex Mono:pixelsize=10;3
+font-1 = FuraMono Nerd Font Mono:pixelsize=16;4
+
+modules-left   = mpd-controls mpd-time mpd-song
+modules-center = bspwm
+modules-right  = xwindow powermenu
+
+[bar/top]
+fixed-center = true
+height       = 26
+monitor      = ${env:PRIMARY}
+scroll-down  = bspwm-deskprev
+scroll-up    = bspwm-desknext
+width        = 100%
+wm-restack   = bspwm
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+font-0 = IBM Plex Mono:pixelsize=10;2
+font-1 = BlexMono Nerd Font Mono:pixelsize=16;4
+
+modules-left   = wlan wlan-d wlan-u lan-d lan-u
+modules-center =
+modules-right  = time date volume memory cpu temperature battery
+
+tray-position    = center
+tray-padding     = 5
+tray-transparent = true
+
+[module/battery]
+type = internal/battery
+
+battery = BAT0
+adapter = ${env:POWER}
+full-at = 98
+
+format-charging                  = "<animation-charging><label-charging>"
+format-charging-background       = ${colors.color6}
+format-charging-foreground       = ${colors.color11}
+label-charging                   = %percentage:3%%
+label-charging-background        = ${colors.color6}
+label-charging-foreground        = ${colors.color11}
+label-charging-padding-right     = 1
+animation-charging-padding-right = 1
+
+format-discharging               = "<ramp-capacity><label-discharging>"
+format-discharging-background    = ${colors.color6}
+format-discharging-foreground    = ${colors.color9}
+label-discharging                = %percentage:3%%
+label-discharging-background     = ${colors.color6}
+label-discharging-foreground     = ${colors.color9}
+label-discharging-padding-right  = 1
+
+format-full                      = "<ramp-capacity><label-full>"
+format-full-background           = ${colors.color6}
+format-full-foreground           = ${colors.color2}
+label-full-background            = ${colors.color6}
+label-full-foreground            = ${colors.color2}
+label-full-padding-right         = 1
+
+ramp-capacity-padding = 1
+ramp-capacity-0       = 
+ramp-capacity-1       = 
+ramp-capacity-2       = 
+ramp-capacity-3       = 
+ramp-capacity-4       = 
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-framerate = 500
+
+[module/bspwm]
+type           = internal/bspwm
+pin-workspaces = false
+
+label-focused             = •
+label-focused-foreground  = ${colors.color13}
+label-focused-padding     = 1
+
+label-occupied            = •
+label-occupied-foreground = ${colors.color6}
+label-occupied-padding    = 1
+
+label-urgent              = •
+label-urgent-foreground   = ${colors.color1}
+label-urgent-padding      = 1
+
+label-empty               = •
+label-empty-foreground    = ${colors.color0}
+label-empty-padding       = 1
+
+[module/cpu]
+type     = internal/cpu
+interval = 2
+
+format-background = ${colors.color6}
+format-foreground = ${colors.color3}
+label             =  %percentage:2%%
+label-padding     = 1
+
+[module/lan-d]
+type = internal/network
+interface = ${env:ETH}
+
+format-connected-prefix            = 
+format-connected-prefix-padding    = 1
+format-connected-foreground        = ${colors.color6}
+format-connected-background        = ${colors.color2}
+format-connected-suffix            = 
+format-connected-suffix-background = ${colors.color5}
+format-connected-suffix-foreground = ${colors.color2}
+label-connected                    = %downspeed:8%
+label-connected-background         = ${colors.color2}
+label-connected-padding-right      = 1
+
+
+[module/lan-u]
+type = internal/network
+interface = ${env:ETH}
+
+format-connected-prefix            = 
+format-connected-prefix-padding    = 1
+format-connected-foreground        = ${colors.color6}
+format-connected-background        = ${colors.color5}
+format-connected-suffix            = 
+format-connected-suffix-background = ${colors.background}
+format-connected-suffix-foreground = ${colors.color5}
+label-connected                    = %upspeed:8%
+label-connected-background         = ${colors.color5}
+label-connected-padding-right      = 1
+
+[module/memory]
+type     = internal/memory
+interval = 2
+
+format-background        = ${colors.color6}
+format-foreground        = ${colors.color2}
+format-prefix            = 
+format-prefix-foreground = ${colors.color6}
+format-prefix-background = ${colors.color5}
+
+label         = " %percentage_used:2%%"
+label-padding = 1
+
+[module/date]
+type = internal/date
+interval = 1
+
+date = "%y/%m/%d"
+
+format-background        = ${colors.color12}
+format-prefix            = 
+format-prefix-foreground = ${colors.color12}
+format-prefix-background = ${colors.color3}
+
+label              = " %date% "
+label-foreground   = ${colors.color6}
+label-padding-left = 1
+
+[module/mpd-controls]
+type = internal/mpd
+
+format-offline                   = ﱙ offline
+format-offline-background        = ${colors.color6}
+format-offline-foreground        = ${colors.color4}
+format-offline-padding           = 1
+format-offline-suffix            = 
+format-offline-suffix-background = ${colors.background}
+format-offline-suffix-foreground = ${colors.color6}
+format-online                    = "<icon-prev> <icon-seekb> <icon-stop> <toggle> <icon-seekf> <icon-next>"
+format-online-background         = ${colors.color6}
+format-online-spacing            = 1
+format-paused-suffix             = 
+format-paused-suffix-background  = ${colors.color3}
+format-paused-suffix-foreground  = ${colors.color6}
+format-playing-suffix            = 
+format-playing-suffix-background = ${colors.color3}
+format-playing-suffix-foreground = ${colors.color6}
+format-stopped-suffix            = 
+format-stopped-suffix-background = ${colors.background}
+format-stopped-suffix-foreground = ${colors.color6}
+
+icon-prev              = 
+icon-prev-margin-left  = 1
+icon-prev-foreground   = ${colors.color5}
+icon-stop              = 
+icon-stop-foreground   = ${colors.color1}
+icon-play              = 
+icon-play-foreground   = ${colors.color2}
+icon-pause             = 
+icon-pause-foreground  = ${colors.color3}
+icon-next              = 
+icon-next-foreground   = ${colors.color5}
+icon-next-margin-right = 1
+icon-seekb             = 
+icon-seekb-foreground  = ${colors.color14}
+icon-seekf             = 
+icon-seekf-foreground  = ${colors.color14}
+icon-random            = 
+icon-repeat            = 凌
+icon-repeatone         = 綾
+icon-single            = 綾
+icon-consume           = 
+
+[module/mpd-song]
+type = internal/mpd
+
+format-offline =
+
+format-online            = "<label-song>"
+format-online-foreground = ${colors.foreground}
+
+label-song              = " %artist% - %title%"
+label-song-ellipsis     = true
+label-song-maxlen       = 30
+label-song-padding-left = 2
+
+[module/mpd-time]
+type = internal/mpd
+
+format-online                     = "<label-time>"
+format-online-background          = ${colors.color3}
+format-online-foreground          = ${colors.color6}
+format-online-suffix              = 
+format-online-suffix-background   = ${colors.background}
+format-online-suffix-foreground   = ${colors.color3}
+
+label-time-padding = 1
+
+[module/powermenu]
+type         = custom/menu
+expand-right = false
+
+format-background        = ${colors.color6}
+format-prefix            = 
+format-prefix-foreground = ${colors.color6}
+format-prefix-background = ${colors.background}
+
+label-open               = 
+label-open-foreground    = ${colors.foreground}
+label-open-padding       = 1
+
+label-close              = 
+label-close-foreground   = ${colors.foreground}
+label-close-padding      = 1
+
+; Lock
+menu-0-0                 = 
+menu-0-0-exec            = betterlockscreen -l blur
+menu-0-0-foreground      = ${colors.color2}
+menu-0-0-padding         = 1
+
+; Reboot
+menu-0-1                 = 
+menu-0-1-exec            = reboot
+menu-0-1-foreground      = ${colors.color3}
+menu-0-1-padding         = 1
+
+; Poweroff
+menu-0-2                 = 
+menu-0-2-exec            = shutdown -P now
+menu-0-2-foreground      = ${colors.color5}
+menu-0-2-padding         = 1
+
+[module/separator]
+type = custom/text
+
+content            = " • "
+content-foreground = ${colors.color8}
+
+[module/temperature]
+type = internal/temperature
+
+hwmon-path       = ${env:TEMPERATURE}
+thermal-zone     = 0
+warn-temperature = 60
+
+format            = <ramp><label>
+format-background = ${colors.color6}
+format-foreground = ${colors.color13}
+format-padding    = 1
+label             = %temperature%
+label-foreground  = ${colors.color13}
+
+format-warn            = <ramp><label-warn>
+format-warn-background = ${colors.color6}
+format-warn-foreground = ${colors.color9}
+format-warn-padding    = 1
+label-warn             = %temperature%
+label-warn-foreground  = ${colors.color9}
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-3 = 
+ramp-4 = 
+ramp-5 = 
+ramp-padding-right = 1
+
+[module/time]
+type = internal/date
+interval = 1
+
+time = %H:%M:%S
+
+format-background        = ${colors.color3}
+format-prefix            = 
+format-prefix-foreground = ${colors.color3}
+format-prefix-background = ${colors.background}
+
+label              = " %time% "
+label-foreground   = ${colors.color6}
+label-padding-left = 1
+
+[module/volume]
+type = internal/volume
+
+format-volume                   = <ramp-volume><label-volume>
+format-volume-background        = ${colors.color5}
+format-volume-foreground        = ${colors.color6}
+format-volume-prefix            = 
+format-volume-prefix-background = ${colors.color12}
+format-volume-prefix-foreground = ${colors.color5}
+label-volume                    = " %percentage:3%% "
+label-volume-foreground         = ${colors.color6}
+
+format-muted                    = <label-muted>
+format-muted-background         = ${colors.color5}
+format-muted-foreground         = ${colors.color6}
+format-muted-prefix             = 
+format-muted-prefix-background  = ${colors.color12}
+format-muted-prefix-foreground  = ${colors.color5}
+label-muted                     = "ﱝ %percentage:3%% "
+label-muted-padding-left       = 1
+
+ramp-volume-0 = ""
+ramp-volume-1 = ""
+ramp-volume-2 = ""
+ramp-volume-3 = ""
+ramp-volume-padding-left = 1
+
+[module/wlan]
+type = internal/network
+
+interface = ${env:WLAN}
+interval  = 3.0
+
+format-connected                   = <ramp-signal><label-connected>
+format-connected-background        = ${colors.color6}
+format-connected-foreground        = ${colors.color2}
+format-connected-suffix            = 
+format-connected-suffix-foreground = ${colors.color6}
+format-connected-suffix-background = ${colors.color2}
+label-connected                    = %essid%
+label-connected-background         = ${colors.color6}
+label-connected-padding-right      = 1
+
+format-disconnected =
+
+ramp-signal-0       = 
+ramp-signal-padding = 1
+
+[module/wlan-d]
+type = internal/network
+interface = ${env:WLAN}
+
+format-connected-prefix            = 
+format-connected-prefix-padding    = 1
+format-connected-foreground        = ${colors.color6}
+format-connected-background        = ${colors.color2}
+format-connected-suffix            = 
+format-connected-suffix-background = ${colors.color5}
+format-connected-suffix-foreground = ${colors.color2}
+label-connected                    = %downspeed:8%
+label-connected-background         = ${colors.color2}
+label-connected-padding-right      = 1
+
+[module/wlan-u]
+type = internal/network
+interface = ${env:WLAN}
+
+format-connected-prefix            = 
+format-connected-prefix-padding    = 1
+format-connected-foreground        = ${colors.color6}
+format-connected-background        = ${colors.color5}
+format-connected-suffix            = 
+format-connected-suffix-background = ${colors.background}
+format-connected-suffix-foreground = ${colors.color5}
+label-connected                    = %upspeed:8%
+label-connected-background         = ${colors.color5}
+label-connected-padding-right      = 1
+
+[module/xwindow]
+type = internal/xwindow
+
+format-foreground = ${colors.foreground}
+format-padding    = 1
+label             = %title:0:30:...%
