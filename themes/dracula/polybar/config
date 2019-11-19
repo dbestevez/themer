@@ -203,7 +203,7 @@ type = internal/mpd
 
 format-offline                   = ﱙ offline
 format-offline-background        = ${colors.color6}
-format-offline-foreground        = ${colors.color4}
+format-offline-foreground        = ${colors.color5}
 format-offline-padding           = 1
 format-offline-suffix            = 
 format-offline-suffix-background = ${colors.background}
