@@ -28,7 +28,7 @@ let s:p.insert.info     = [ [ s:color6,  s:color0  ] ]
 let s:p.replace.info    = [ [ s:color6,  s:color0  ] ]
 let s:p.visual.info     = [ [ s:color6,  s:color0  ] ]
 
-let s:p.normal.left     = [ [ s:color16, s:color5  ], [ s:color16, s:color13 ], [ s:color13,  s:color0 ] ]
+let s:p.normal.left     = [ [ s:color16, s:color4  ], [ s:color16, s:color12 ], [ s:color12,  s:color0 ] ]
 let s:p.insert.left     = [ [ s:color16, s:color2  ], [ s:color16, s:color10 ], [ s:color10, s:color0  ] ]
 let s:p.replace.left    = [ [ s:color16, s:color1  ], [ s:color16, s:color9  ], [ s:color9,  s:color0  ] ]
 let s:p.visual.left     = [ [ s:color16, s:color3  ], [ s:color16, s:color11 ], [ s:color3,  s:color0  ] ]
@@ -36,7 +36,7 @@ let s:p.inactive.left   = [ [ s:color7,  s:color0  ], [ s:color7,  s:color0  ], 
 
 let s:p.normal.middle   = [ [ s:color7,  s:color0  ] ]
 
-let s:p.normal.right    = [ [ s:color16, s:color5  ], [ s:color5 , s:color0  ] ]
+let s:p.normal.right    = [ [ s:color16, s:color4  ], [ s:color4 , s:color0  ] ]
 let s:p.insert.right    = [ [ s:color16, s:color10 ], [ s:color10, s:color0  ] ]
 let s:p.replace.right   = [ [ s:color16, s:color9  ], [ s:color9,  s:color0  ] ]
 let s:p.visual.right    = [ [ s:color16, s:color11 ], [ s:color3,  s:color0  ] ]
@@ -48,7 +48,7 @@ let s:p.replace.warning = [ [ s:color11, s:color0  ] ]
 let s:p.visual.warning  = [ [ s:color11, s:color0  ] ]
 
 let s:p.tabline.left    = [ [ s:color7,  s:color0  ] ]
-let s:p.tabline.tabsel  = [ [ s:color0,  s:color5  ] ]
+let s:p.tabline.tabsel  = [ [ s:color0,  s:color4  ] ]
 let s:p.tabline.middle  = [ [ s:color7,  s:color0  ] ]
 let s:p.tabline.right   = copy(s:p.tabline.tabsel)
 
