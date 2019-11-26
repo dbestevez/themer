@@ -79,7 +79,7 @@ label-charging                   = %percentage:3%%
 label-charging-background        = ${colors.color6}
 label-charging-foreground        = ${colors.color11}
 label-charging-padding-right     = 1
-animation-charging-padding-right = 1
+animation-charging-padding       = 1
 
 format-discharging               = "<ramp-capacity><label-discharging>"
 format-discharging-background    = ${colors.color6}
