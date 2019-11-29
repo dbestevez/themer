@@ -38,7 +38,7 @@ foreground = ${colors.foreground}
 font-0 = IBM Plex Mono:pixelsize=10;3
 font-1 = FuraMono Nerd Font Mono:pixelsize=16;4
 
-modules-left   = mpd-controls mpd-time mpd-song
+modules-left   = mpd
 modules-center = bspwm
 modules-right  = xwindow powermenu
 
@@ -198,28 +198,17 @@ label              = " %date% "
 label-foreground   = ${colors.color8}
 label-padding-left = 1
 
-[module/mpd-controls]
+[module/mpd]
 type = internal/mpd
 
-format-offline                   = ﱙ offline
+format-offline                   = "ﱙ offline%{B#232734}%{F#6272a4}"
 format-offline-background        = ${colors.color6}
 format-offline-foreground        = ${colors.color5}
 format-offline-padding           = 1
-format-offline-suffix            = 
-format-offline-suffix-background = ${colors.background}
-format-offline-suffix-foreground = ${colors.color6}
-format-online                    = "<icon-prev> <icon-seekb> <icon-stop> <toggle> <icon-seekf> <icon-next>"
+format-online                    = "<icon-prev> <icon-seekb> <icon-stop> <toggle> <icon-seekf> <icon-next>%{B#cdd778}%{F#6272a4}%{B#cdd778}%{F#44475a}<label-time> %{B#232734}%{F#cdd778}%{F#f8f8f2}<label-song>"
 format-online-background         = ${colors.color6}
 format-online-spacing            = 1
-format-paused-suffix             = 
-format-paused-suffix-background  = ${colors.color3}
-format-paused-suffix-foreground  = ${colors.color6}
-format-playing-suffix            = 
-format-playing-suffix-background = ${colors.color3}
-format-playing-suffix-foreground = ${colors.color6}
-format-stopped-suffix            = 
-format-stopped-suffix-background = ${colors.background}
-format-stopped-suffix-foreground = ${colors.color6}
+format-stopped                   = "<icon-prev> <icon-seekb> <icon-stop> <toggle> <icon-seekf> <icon-next>%{B#232734}%{F#6272a4}"
 
 icon-prev              = 
 icon-prev-margin-left  = 1
@@ -243,30 +232,9 @@ icon-repeatone         = 綾
 icon-single            = 綾
 icon-consume           = 
 
-[module/mpd-song]
-type = internal/mpd
-
-format-offline =
-
-format-online            = "<label-song>"
-format-online-foreground = ${colors.foreground}
-
 label-song              = " %artist% - %title%"
 label-song-ellipsis     = true
 label-song-maxlen       = 30
-label-song-padding-left = 2
-
-[module/mpd-time]
-type = internal/mpd
-
-format-online                     = "<label-time>"
-format-online-background          = ${colors.color3}
-format-online-foreground          = ${colors.color8}
-format-online-suffix              = 
-format-online-suffix-background   = ${colors.background}
-format-online-suffix-foreground   = ${colors.color3}
-
-label-time-padding = 1
 
 [module/powermenu]
 type         = custom/menu
