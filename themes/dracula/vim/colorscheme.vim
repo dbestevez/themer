@@ -109,7 +109,7 @@ call <SID>set_hi("Character",                    s:color3,     s:none,       "NO
 call <SID>set_hi("Constant",                     s:color4,     s:none,       "italic")
 call <SID>set_hi("Float",                        s:color4,     s:none,       "NONE")
 call <SID>set_hi("Function",                     s:color10,    s:none,       "NONE")
-call <SID>set_hi("Identifier",                   s:color15,    s:none,       "NONE")
+call <SID>set_hi("Identifier",                   s:color14,    s:none,       "NONE")
 call <SID>set_hi("Number",                       s:color5,     s:none,       "NONE")
 call <SID>set_hi("String",                       s:color3,     s:none,       "NONE")
 
@@ -142,7 +142,7 @@ call <SID>set_hi("Macro",                        s:color13,    s:none,       "NO
 call <SID>set_hi("PreCondit",                    s:color13,    s:none,       "NONE")
 call <SID>set_hi("PreProc",                      s:color13,    s:none,       "NONE")
 call <SID>set_hi("StorageClass",                 s:color14,    s:none,       "NONE")
-call <SID>set_hi("Type",                         s:color13,    s:none,       "NONE")
+call <SID>set_hi("Type",                         s:color14,    s:none,       "NONE")
 call <SID>set_hi("Typedef",                      s:color13,    s:none,       "NONE")
 
 " CSS
@@ -178,10 +178,10 @@ call <SID>set_hi("jsNull",                       s:color12,    s:none,       "NO
 " PHP
 call <SID>set_hi("phpClass",                     s:color7,     s:none,       "NONE")
 call <SID>set_hi("phpClasses",                   s:color5,     s:none,       "NONE")
-call <SID>set_hi("phpComment",                   s:color8,     s:none,       "NONE")
+call <SID>set_hi("phpComment",                   s:color6,     s:none,       "NONE")
 call <SID>set_hi("phpConstants",                 s:color9,     s:none,       "italic")
 call <SID>set_hi("phpControlStructure",          s:color10,    s:none,       "NONE")
-call <SID>set_hi("phpDocComment",                s:color8,     s:none,       "NONE")
+call <SID>set_hi("phpDocComment",                s:color6,     s:none,       "NONE")
 call <SID>set_hi("phpDocTags",                   s:color14,    s:none,       "NONE")
 call <SID>set_hi("phpFunction",                  s:color15,    s:none,       "NONE")
 call <SID>set_hi("phpFunctions",                 s:color6,     s:none,       "NONE")
@@ -196,8 +196,8 @@ call <SID>set_hi("phpTryCatch",                  s:color6,     s:none,       "NO
 call <SID>set_hi("phpTryCatchedException",       s:color9,     s:none,       "NONE")
 call <SID>set_hi("phpTryFinally",                s:color9,     s:none,       "NONE")
 call <SID>set_hi("phpTryStart",                  s:color9,     s:none,       "NONE")
-call <SID>set_hi("phpType",                      s:color4,     s:none,       "italic")
-call <SID>set_hi("phpVarSelector",               s:color4,     s:none,       "NONE")
+call <SID>set_hi("phpType",                      s:color14,    s:none,       "italic")
+call <SID>set_hi("phpVarSelector",               s:color13,    s:none,       "NONE")
 call <SID>set_hi("phpVariable",                  s:color4,     s:none,       "NONE")
 call <SID>set_hi("phpParent",                    s:color10,    s:none,       "NONE")
 
