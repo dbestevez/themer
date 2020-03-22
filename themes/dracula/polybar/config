@@ -23,9 +23,10 @@ color14    = #8be9fd
 color15    = #f8f8f2
 
 [bar/bottom]
+height       = 26
+border-size  = 0
 bottom       = true
 fixed-center = true
-height       = 26
 monitor      = ${env:PRIMARY}
 scroll-down  = bspwm-deskprev
 scroll-up    = bspwm-desknext
@@ -43,8 +44,9 @@ modules-center = bspwm
 modules-right  = xwindow powermenu
 
 [bar/top]
-fixed-center = true
 height       = 26
+border-size  = 0
+fixed-center = true
 monitor      = ${env:PRIMARY}
 scroll-down  = bspwm-deskprev
 scroll-up    = bspwm-desknext

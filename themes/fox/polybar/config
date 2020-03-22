@@ -18,6 +18,7 @@ menu-1-1 = sub-item 2.2;command
 
 [bar/bottom]
 height = 24
+border-size = 0
 background =
 bottom = true
 fixed-center = true
@@ -48,6 +49,7 @@ tray-transparent = false
 
 [bar/top]
 height = 24
+border-size = 0
 monitor = ${env:PRIMARY}
 width = 100%
 ;offset-x = 1%
