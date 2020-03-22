@@ -14,36 +14,21 @@ let s:background = [ 16, "#0d1011" ]
 let s:foreground = [ 17, "#f8fcf6" ]
 let s:none       = [ "NONE", "" ]
 
-" black
 let s:color0  = [ 0, "#0f1317" ]
-let s:color8  = [ 8, "#1d1d22" ]
-
-" red
-let s:color1  = [ 1, "#cc575b" ]
-let s:color9  = [ 9, "#cc3e43" ]
-
-" green
-let s:color2  = [ 2, "#62fca3" ]
-let s:color10 = [ 10, "#1bfc7a" ]
-
-" yellow
-let s:color3  = [ 3, "#fede6d" ]
-let s:color11 = [ 11, "#fed02e" ]
-
-" blue
-let s:color4  = [ 4, "#638ea1" ]
-let s:color12 = [ 12, "#5f99d3" ]
-
-" magenta
-let s:color5  = [ 5, "#8372c2" ]
-let s:color13 = [ 13, "#aa00aa" ]
-
-" cyan
-let s:color6  = [ 6, "#0396f7" ]
-let s:color14 = [ 14, "#89ddf9" ]
-
-" white
-let s:color7  = [ 7, "#405159" ]
+let s:color1  = [ 1, "#bc4e4e" ]
+let s:color2  = [ 2, "#9bba4c" ]
+let s:color3  = [ 3, "#cec54b" ]
+let s:color4  = [ 4, "#5a9ab8" ]
+let s:color5  = [ 5, "#967ec3" ]
+let s:color6  = [ 6, "#a2c4d5" ]
+let s:color7  = [ 7, "#3b536a" ]
+let s:color8  = [ 8, "#181f23" ]
+let s:color9  = [ 9, "#bc4e4e" ]
+let s:color10 = [ 10, "#9bba4c" ]
+let s:color11 = [ 11, "#cec54b" ]
+let s:color12 = [ 12, "#5a9ab8" ]
+let s:color13 = [ 13, "#967ec3" ]
+let s:color14 = [ 14, "#a2c4d5" ]
 let s:color15 = [ 15, "#f8fcf6" ]
 
 let s:color16 = [ 16, "#0d1011" ]
