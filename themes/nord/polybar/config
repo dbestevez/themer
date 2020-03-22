@@ -15,8 +15,9 @@ color6     = #88C0D0
 color7     = #E5E9F0
 
 [bar/top]
-fixed-center = true
 height       = 30
+border-size  = 0
+fixed-center = true
 monitor      = ${env:PRIMARY}
 scroll-down  = bspwm-deskprev
 scroll-up    = bspwm-desknext

@@ -11,8 +11,9 @@ success    = #24bae2
 warning    = #fed02e
 
 [bar/top]
-fixed-center     = true
 height           = 27
+border-size      = 0
+fixed-center     = true
 monitor          = ${env:PRIMARY}
 scroll-down      = bspwm-deskprev
 scroll-up        = bspwm-desknext

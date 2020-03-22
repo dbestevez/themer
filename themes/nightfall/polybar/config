@@ -11,9 +11,10 @@ info       = #356085
 warning    = #fed02e
 
 [bar/bottom]
+height       = 24
+border-size  = 0
 bottom       = true
 fixed-center = true
-height       = 24
 monitor      = ${env:PRIMARY}
 scroll-down  = bspwm-deskprev
 scroll-up    = bspwm-desknext
@@ -35,8 +36,9 @@ modules-center =
 modules-right  = xwindow powermenu
 
 [bar/top]
-fixed-center = true
 height       = 24
+border-size  = 0
+fixed-center = true
 monitor      = ${env:PRIMARY}
 width        = 100%
 wm-restack   = bspwm
