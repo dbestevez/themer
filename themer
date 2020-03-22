@@ -203,14 +203,20 @@ function updatePolybar() {
     if [ $(grep "bar/top" ~/.config/polybar/config) ]; then
         height=$(grep "bar/top" ~/.config/polybar/config -A 3 | \
             grep "height" | sed -e "s/height\s*=\s*//g")
-        bspc config -m $PRIMARY top_padding $height
+        border=$(grep "bar/top" ~/.config/polybar/config -A 3 | \
+            grep "border-size" | sed -e "s/border-size\s*=\s*//g")
+
+        bspc config -m $PRIMARY top_padding $(($height + $border * 2))
     fi
 
     # Fix bottom padding for primary monitor
     if [ $(grep "bar/bottom" ~/.config/polybar/config) ]; then
         height=$(grep "bar/bottom" ~/.config/polybar/config -A 3 | \
             grep "height" | sed -e "s/height\s*=\s*//g")
-        bspc config -m $PRIMARY bottom_padding $height
+        border=$(grep "bar/bottom" ~/.config/polybar/config -A 3 | \
+            grep "border-size" | sed -e "s/border-size\s*=\s*//g")
+
+        bspc config -m $PRIMARY bottom_padding $(($height + $border * 2))
     fi
 
     echo -e "\E[37;32mDONE\033[0m"
