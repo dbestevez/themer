@@ -39,9 +39,10 @@ foreground = ${colors.foreground}
 
 font-0 = FuraMono Nerd Font Mono:pixelsize=10;3
 
-modules-left   = mpd
-modules-center =
-modules-right  = lan-d lan-u memory cpu temperature
+module-margin-left = 1
+modules-left       = mpd
+modules-center     =
+modules-right      = wlan wlan-d wlan-u lan-d lan-u memory cpu temperature
 
 [bar/top]
 height       = 20
@@ -63,9 +64,10 @@ tray transparent = true
 
 font-0 = FuraMono Nerd Font Mono:pixelsize=10;3
 
-modules-left   = powermenu bspwm xwindow
-modules-center =
-modules-right  = wlan time date volume battery
+module-margin-left = 1
+modules-left       = powermenu bspwm xwindow
+modules-center     =
+modules-right      = time date volume battery
 
 [module/battery]
 type = internal/battery
@@ -75,27 +77,27 @@ adapter = ${env:POWER}
 full-at = 98
 
 format-charging               = "<animation-charging><label-charging>"
-format-charging-background    = ${colors.color11}
+format-charging-background    = ${colors.color3}
 format-charging-foreground    = ${colors.color0}
 label-charging                = %percentage:3%%
 label-charging-background     = ${colors.color0}
-label-charging-foreground     = ${colors.color11}
+label-charging-foreground     = ${colors.color3}
 label-charging-padding        = 1
 animation-charging-padding    = 1
 
 format-discharging            = "<ramp-capacity><label-discharging>"
-format-discharging-background = ${colors.color9}
+format-discharging-background = ${colors.color1}
 format-discharging-foreground = ${colors.color0}
 label-discharging             = %percentage:3%%
 label-discharging-background  = ${colors.color0}
-label-discharging-foreground  = ${colors.color9}
+label-discharging-foreground  = ${colors.color1}
 label-discharging-padding     = 1
 
 format-full                   = "<ramp-capacity><label-full>"
-format-full-background        = ${colors.color7}
+format-full-background        = ${colors.color2}
 format-full-foreground        = ${colors.color0}
 label-full-background         = ${colors.color0}
-label-full-foreground         = ${colors.color7}
+label-full-foreground         = ${colors.color2}
 label-full-padding            = 1
 
 ramp-capacity-padding = 1
@@ -142,7 +144,6 @@ interval = 2
 
 format-background        = ${colors.color8}
 format-foreground        = ${colors.color4}
-format-margin            = 1
 format-prefix            = 
 format-prefix-padding    = 1
 format-prefix-background = ${colors.color4}
@@ -170,7 +171,6 @@ interface = ${env:ETH}
 format-connected-prefix            = 
 format-connected-prefix-background = ${colors.color1}
 format-connected-prefix-foreground = ${colors.color0}
-format-connected-margin            = 1
 format-connected-prefix-padding    = 1
 label-connected                    = %upspeed:8%
 label-connected-padding            = 1
@@ -200,7 +200,6 @@ format-prefix            = 
 format-prefix-background = ${colors.color4}
 format-prefix-foreground = ${colors.color0}
 format-prefix-padding    = 1
-format-margin            = 1
 
 label            = %date%
 label-background = ${colors.color0}
@@ -267,7 +266,6 @@ label-open                 = 
 label-open-background      = ${colors.color5}
 label-open-foreground      = ${colors.color0}
 label-open-padding         = 1
-label-open-margin-right    = 1
 
 label-close                = 
 label-close-padding        = 1
@@ -294,7 +292,6 @@ menu-0-2-background   = ${colors.color0}
 menu-0-2-exec         = shutdown -P now
 menu-0-2-foreground   = ${colors.color1}
 menu-0-2-padding      = 1
-menu-0-2-margin-right = 1
 
 [module/temperature]
 type = internal/temperature
@@ -312,11 +309,11 @@ label-foreground       = ${colors.color5}
 label-padding          = 1
 
 format-warn            = <ramp><label-warn>
-format-warn-background = ${colors.color2}
+format-warn-background = ${colors.color1}
 format-warn-foreground = ${colors.color0}
 label-warn             = %temperature%
 label-warn-background  = ${colors.color8}
-label-warn-foreground  = ${colors.color2}
+label-warn-foreground  = ${colors.color1}
 label-warn-padding     = 1
 
 ramp-0 = 
@@ -389,11 +386,36 @@ format-disconnected-padding = 1
 ramp-signal-0       = 
 ramp-signal-padding = 1
 
+[module/wlan-d]
+type = internal/network
+interface = ${env:WLAN}
+
+format-connected-prefix            = 
+format-connected-prefix-background = ${colors.color2}
+format-connected-prefix-foreground = ${colors.color0}
+format-connected-prefix-padding    = 1
+label-connected                    = %downspeed:8%
+label-connected-padding            = 1
+label-connected-background         = ${colors.color0}
+label-connected-foreground         = ${colors.color2}
+
+[module/wlan-u]
+type = internal/network
+interface = ${env:WLAN}
+
+format-connected-prefix            = 
+format-connected-prefix-background = ${colors.color1}
+format-connected-prefix-foreground = ${colors.color0}
+format-connected-prefix-padding    = 1
+label-connected                    = %upspeed:8%
+label-connected-padding            = 1
+label-connected-background         = ${colors.color0}
+label-connected-foreground         = ${colors.color1}
+
 [module/xwindow]
 type = internal/xwindow
 
 format-foreground        = ${colors.color4}
-format-margin            = 1
 format-prefix            = 
 format-prefix-padding    = 1
 format-prefix-background = ${colors.color4}
