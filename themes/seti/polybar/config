@@ -24,7 +24,7 @@ color15    = #f8fcf6
 
 [bar/bottom]
 height       = 20
-border-size  = 5
+border-size  = 8
 border-color = ${colors.background}
 bottom       = true
 fixed-center = true
@@ -46,7 +46,7 @@ modules-right      = wlan wlan-d wlan-u lan-d lan-u memory cpu temperature
 
 [bar/top]
 height       = 20
-border-size  = 5
+border-size  = 8
 border-color = ${colors.background}
 fixed-center = true
 monitor      = ${env:PRIMARY}
