@@ -296,6 +296,7 @@ menu-0-2-padding      = 1
 [module/task]
 type       = custom/script
 interval   = 2
+exec-if    = type hamster > /dev/null 2>&1
 exec       = hamster current | cut -d ' ' -f 3
 click-left = hamster stop
 
