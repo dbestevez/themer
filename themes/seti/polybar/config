@@ -67,7 +67,7 @@ font-0 = FuraMono Nerd Font Mono:pixelsize=10;3
 module-margin-left = 1
 modules-left       = powermenu bspwm xwindow
 modules-center     =
-modules-right      = time date volume battery
+modules-right      = task time date volume battery
 
 [module/battery]
 type = internal/battery
@@ -292,6 +292,20 @@ menu-0-2-background   = ${colors.color0}
 menu-0-2-exec         = shutdown -P now
 menu-0-2-foreground   = ${colors.color1}
 menu-0-2-padding      = 1
+
+[module/task]
+type       = custom/script
+interval   = 2
+exec       = hamster current | cut -d ' ' -f 3
+click-left = hamster stop
+
+format-background        = ${colors.color0}
+format-foreground        = ${colors.color2}
+format-prefix            = ﱔ
+format-prefix-background = ${colors.color2}
+format-prefix-foreground = ${colors.color0}
+format-prefix-padding    = 1
+label-padding            = 1
 
 [module/temperature]
 type = internal/temperature
