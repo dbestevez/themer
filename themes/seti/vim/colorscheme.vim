@@ -67,7 +67,7 @@ call <SID>set_hi("SignColumn",                   s:color6,     s:color0,     "NO
 
 " Delimiter
 call <SID>set_hi("ColorColumn",                  s:none,       s:color0,     "NONE")
-call <SID>set_hi("VertSplit",                    s:background, s:none,       "NONE")
+call <SID>set_hi("VertSplit",                    s:color0,     s:color0,     "NONE")
 call <SID>set_hi("TabLine",                      s:none,       s:none,       "NONE")
 call <SID>set_hi("TabLineFill",                  s:none,       s:none,       "NONE")
 call <SID>set_hi("TabLineSel",                   s:none,       s:none,       "NONE")
