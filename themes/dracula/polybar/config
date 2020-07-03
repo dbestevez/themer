@@ -4,7 +4,7 @@ screenchange-reload = true
 
 [colors]
 background = #232734
-foreground = #f8f8f2
+foreground = #bfbfbf
 color0     = #20202a
 color1     = #c74950
 color2     = #43c46a
@@ -61,7 +61,7 @@ font-1 = BlexMono Nerd Font Mono:pixelsize=16;4
 
 modules-left   = wlan wlan-d wlan-u lan-d lan-u
 modules-center =
-modules-right  = time date volume memory cpu temperature battery
+modules-right  = task time date volume memory cpu temperature battery
 
 tray-position    = center
 tray-padding     = 5
@@ -207,7 +207,7 @@ format-offline                   = "ﱙ offline%{B#232734}%{F#6272a4}"
 format-offline-background        = ${colors.color6}
 format-offline-foreground        = ${colors.color5}
 format-offline-padding           = 1
-format-online                    = "<icon-prev> <icon-seekb> <icon-stop> <toggle> <icon-seekf> <icon-next>%{B#cdd778}%{F#6272a4}%{B#cdd778}%{F#44475a}<label-time> %{B#232734}%{F#cdd778}%{F#f8f8f2}<label-song>"
+format-online                    = "<icon-prev> <icon-seekb> <icon-stop> <toggle> <icon-seekf> <icon-next>%{B#cdd778}%{F#6272a4}%{B#cdd778}%{F#44475a}<label-time> %{B#232734}%{F#cdd778}%{F#bfbfbf}<label-song>"
 format-online-background         = ${colors.color6}
 format-online-spacing            = 1
 format-stopped                   = "<icon-prev> <icon-seekb> <icon-stop> <toggle> <icon-seekf> <icon-next>%{B#232734}%{F#6272a4}"
@@ -278,6 +278,17 @@ type = custom/text
 
 content            = " • "
 content-foreground = ${colors.color8}
+
+[module/task]
+type       = custom/script
+interval   = 2
+exec-if    = type hamster > /dev/null 2>&1
+exec       = [[ "$(hamster current)" == "No activity" ]] || echo -n "ﱔ "; hamster current | cut -d ' ' -f3
+click-left = hamster stop
+;ﱔ
+
+format-foreground = ${colors.foreground}
+label-padding     = 1
 
 [module/temperature]
 type = internal/temperature
@@ -404,6 +415,8 @@ label-connected-padding-right      = 1
 [module/xwindow]
 type = internal/xwindow
 
-format-foreground = ${colors.foreground}
-format-padding    = 1
-label             = %title:0:30:...%
+format-foreground     = ${colors.foreground}
+format-padding        = 1
+format-prefix         = 
+format-prefix-padding = 1
+label                 = %title:0:30:...%
