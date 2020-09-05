@@ -84,6 +84,7 @@ function main() {
     updatePolybar   $THEME
     updateRofi      $THEME
     updateTermite   $THEME
+    updateZsh       $THEME
     updateTmux      $THEME
     updateVim       $THEME
     updateWallpaper $THEME
@@ -343,6 +344,22 @@ function updateWallpaper() {
 
     feh $ARGS > /dev/null 2>&1
     betterlockscreen -u $LOCK -b 3 -r 1920x1080 > /dev/null 2>&1
+
+    echo -e "\E[37;32mDONE\033[0m"
+}
+
+# ---
+# Changes the zsh theme.
+#
+# @param $1 The theme name.
+# ---
+function updateZsh() {
+    if [[ ! -x `command -v zsh` ]] || [[ ! -f $DIR/themes/$1/zsh/theme.sh ]]; then
+        return
+    fi
+
+    echo -en "  Changing zsh theme.........................."
+    cp $DIR/themes/$1/zsh/theme.sh $HOME/.config/zsh/config/environments/theme.sh
 
     echo -e "\E[37;32mDONE\033[0m"
 }
