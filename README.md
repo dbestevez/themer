@@ -39,6 +39,7 @@ Options:
   -h, --help    Display this help and exit
   -l, --list    Display the list of available themes
 ```
+
 To get the list of available themes execute:
 
 ```
