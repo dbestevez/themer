@@ -43,8 +43,8 @@ let s:color6  = [ 6, "#5ee5fb" ]
 let s:color14 = [ 14, "#5ee5fb" ]
 
 " white
-let s:color7  = [ 7, "#ffffff" ]
-let s:color15 = [ 15, "#ffffff" ]
+let s:color7  = [ 7, "#D8DEE9" ]
+let s:color15 = [ 15, "#ECEFF4" ]
 
 let s:color16 = [ 16, "#1c1d22" ]
 let s:color17 = [ 17, "#dbdcdd" ]
