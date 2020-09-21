@@ -142,7 +142,11 @@ function updatePicom() {
     killall picom > /dev/null 2>&1
 
     if  [[ -f $DIR/themes/$1/picom/picom.conf ]]; then
-        cp $DIR/themes/$1/picom/picom.conf $HOME/.picom.conf
+        if [[ ! -d $HOME/.config/picom ]]; then
+            mkdir -p $HOME/.config/picom
+        fi
+
+        cp $DIR/themes/$1/picom/picom.conf $HOME/.config/picom/picom.conf
     fi
 
     picom > /dev/null 2>&1 &
