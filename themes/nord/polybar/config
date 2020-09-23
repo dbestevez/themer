@@ -51,7 +51,7 @@ battery = BAT0
 adapter = ${env:POWER}
 full-at = 98
 
-format-charging               = " <label-charging>"
+format-charging               = "<animation-charging> <label-charging>"
 format-charging-foreground    = ${colors.color3}
 format-charging-padding       = 1
 format-charging-underline     = ${colors.color3}
@@ -67,24 +67,18 @@ format-discharging-padding    = 1
 format-discharging-underline  = ${colors.color1}
 label-discharging-foreground  = ${colors.color1}
 
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-3 = 
-ramp-capacity-4 = 
-ramp-capacity-5 = 
-ramp-capacity-6 = 
-ramp-capacity-7 = 
-ramp-capacity-8 = 
-ramp-capacity-9 = 
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
 
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-3 = 
-animation-charging-4 = 
-animation-charging-5 = 
-animation-charging-6 = 
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-framerate = 500
 
 [module/bspwm]
 type = internal/bspwm
@@ -119,7 +113,7 @@ type     = internal/cpu
 interval = 2
 
 format-background           = ${colors.background}
-format-foreground           = ${colors.color7}
+format-foreground           = ${colors.foreground}
 format-padding              = 1
 format-prefix               = ""
 format-prefix-padding-right = 1
@@ -136,8 +130,8 @@ interval = 1
 
 date     = " %y/%m/%d"
 date-alt = " %y/%m/%d"
-time     = " %H:%M"
-time-alt = " %H:%M"
+time     =
+time-alt =
 
 label            = "%date%"
 label-background = ${colors.background}
@@ -196,14 +190,14 @@ format-padding         = 1
 format-underline       = ${colors.background}
 format-background      = ${colors.background}
 format-foreground      = ${colors.color7}
-label                  = %temperature-c:2%
+label                  = %temperature:2%
 
 format-warn            = <ramp> <label-warn>
 format-warn-padding    = 1
 format-warn-background = ${colors.color0}
 format-warn-foreground = ${colors.color1}
 format-warn-underline  = ${colors.color1}
-label-warn             = %temperature-c:2%
+label-warn             = %temperature:2%
 
 ramp-0 = 
 ramp-1 = 
@@ -253,14 +247,14 @@ type = internal/network
 interface = ${env:WLAN}
 interval  = 3.0
 
-format-connected               = <label-connected>
+format-connected               = <label-connected>
 format-connected-foreground    = ${colors.color2}
-label-connected                = %essid%
+label-connected                =  %essid%
 label-connected-padding        = 1
 
-format-disconnected            = 睊<label-disconnected>
+format-disconnected            = <label-disconnected>
 format-disconnected-foreground = ${colors.color5}
-label-disconnected             = disconnected
+label-disconnected             = 睊disconnected
 label-disconnected-padding     = 1
 
 [module/xwindow]
