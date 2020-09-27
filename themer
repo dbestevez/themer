@@ -188,6 +188,10 @@ function updatePolybar() {
 
     echo -en "  Changing polybar theme......................"
 
+    if [[ ! -d $HOME/.config/polybar ]]; then
+        mkdir -p $HOME/.config/polybar
+    fi
+
     cp $DIR/themes/$1/polybar/config $HOME/.config/polybar/config
 
     bars=$(grep "\[bar/.*\]" $HOME/.config/polybar/config | \
@@ -238,6 +242,11 @@ function updateRofi() {
     fi
 
     echo -en "  Changing rofi theme........................."
+
+    if [[ ! -d $HOME/.config/rofi ]]; then
+        mkdir -p $HOME/.config/rofi
+    fi
+
     cp $DIR/themes/$1/rofi/config.rasi $HOME/.config/rofi/config.rasi
     echo -e "\E[37;32mDONE\033[0m"
 }
@@ -253,6 +262,11 @@ function updateTermite() {
     fi
 
     echo -en "  Changing termite theme......................"
+
+    if [[ ! -d $HOME/.config/termite ]]; then
+        mkdir -p $HOME/.config/termite
+    fi
+
     cp $DIR/themes/$1/termite/config $HOME/.config/termite/config
     xdotool key 'ctrl+shift+r'
     echo -e "\E[37;32mDONE\033[0m"
