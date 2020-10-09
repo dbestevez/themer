@@ -32,17 +32,17 @@ line-size           = 2
 padding-left        = 0
 padding-right       = 0
 
-tray-position = center
-tray-padding = 5
+tray-position = right
+tray-padding = 1
 tray transparent = false
 tray-background = ${colors.background}
 
-font-0 = IBM Plex Mono:pixelsize=10;2
-font-1 = BlexMono Nerd Font Mono:pixelsize=16;3
+font-0 = JetBrains Mono:pixelsize=10;2
+font-1 = JetBrainsMono Nerd Font Mono:pixelsize=16;2
 
-modules-left   = menu bspwm xwindow
+modules-left   = menu bspwm
 modules-center =
-modules-right  = lan-d lan-u wlan memory cpu temperature volume time date battery
+modules-right  = lan-d lan-u memory cpu temperature mpd wlan volume battery time
 
 [module/battery]
 type = internal/battery
@@ -51,21 +51,13 @@ battery = BAT0
 adapter = ${env:POWER}
 full-at = 98
 
-format-charging               = "<animation-charging> <label-charging>"
-format-charging-foreground    = ${colors.color3}
-format-charging-padding       = 1
-format-charging-underline     = ${colors.color3}
-
-format-full                   = "<ramp-capacity> <label-full>"
-format-full-foreground        = ${colors.color2}
-format-full-padding           = 1
-format-full-underline         = ${colors.color2}
-
-format-discharging            = "<ramp-capacity> <label-discharging>"
-format-discharging-foreground = ${colors.color1}
-format-discharging-padding    = 1
-format-discharging-underline  = ${colors.color1}
-label-discharging-foreground  = ${colors.color1}
+format-charging            = "<animation-charging>"
+format-charging-padding    = 1
+format-full                = "<ramp-capacity>"
+format-full-foreground     = "${colors.color0}"
+format-full-padding        = 1
+format-discharging         = "<ramp-capacity>"
+format-discharging-padding = 1
 
 ramp-capacity-0 = 
 ramp-capacity-1 = 
@@ -83,30 +75,21 @@ animation-charging-framerate = 500
 [module/bspwm]
 type = internal/bspwm
 pin-workspaces = false
-format-background = ${colors.background}
-format-foreground = ${colors.foreground}
 
-label-empty              = %index%
-label-empty-padding      = 1
-label-empty-underline    = ${colors.background}
-label-focused            = %index%
-label-focused-background = ${colors.color0}
-label-focused-foreground = ${colors.color4}
-label-focused-padding    = 1
-label-focused-underline  = ${colors.color4}
-label-normal             = %index%
-label-occupied           = %index%
-label-occupied-padding   = 1
-label-occupied-underline = ${colors.background}
-label-urgent             = %index%
-label-urgent-padding     = 1
-label-urgent-underline   = ${colors.background}
-
-ws-icon-0       = code;
-ws-icon-1       = ssh;
-ws-icon-2       = web;
-ws-icon-3       = music;
-ws-icon-default = 
+label-empty               = %index%
+label-empty-foreground    = ${colors.color0}
+label-empty-padding       = 1
+label-focused             = %index%
+label-focused-background  = ${colors.color0}
+label-focused-foreground  = ${colors.color4}
+label-focused-underline   = ${colors.color4}
+label-focused-padding     = 1
+label-normal              = %index%
+label-occupied            = %index%
+label-occupied-foreground = ${colors.color0}
+label-occupied-padding    = 1
+label-urgent              = %index%
+label-urgent-padding      = 1
 
 [module/cpu]
 type     = internal/cpu
@@ -119,25 +102,8 @@ format-prefix               = ""
 format-prefix-padding-right = 1
 format-underline            = ${colors.background}
 format-warn-padding         = 1
-format-warn-foreground      = ${colors.color1}
-format-warn-underline       = ${colors.color1}
 
 label = %percentage:2%%
-
-[module/date]
-type = internal/date
-interval = 1
-
-date     = " %y/%m/%d"
-date-alt = " %y/%m/%d"
-time     =
-time-alt =
-
-label            = "%date%"
-label-background = ${colors.background}
-label-foreground = ${colors.color4}
-label-padding    = 1
-label-underline  = ${colors.background}
 
 [module/lan-d]
 type = internal/network
@@ -176,7 +142,36 @@ tail     = true
 exec        = ~/.bin/xmenu-button.sh
 click-left  = ~/.bin/xmenu-dropdown.sh
 click-right = ~/.bin/xmenu-dropdown.sh
-format-foreground  = ${colors.color1}
+format-foreground = ${colors.color0}
+
+[module/mpd]
+type = internal/mpd
+
+format-offline            = ﱙ
+format-offline-foreground = ${colors.color0}
+format-offline-padding    = 1
+format-online             = "<icon-prev><icon-seekb><toggle><icon-seekf><icon-next>"
+
+icon-prev             = 
+icon-prev-padding     = 1
+icon-seekb            = 
+icon-seekb-padding    = 1
+icon-stop             = 
+icon-stop-padding     = 1
+icon-pause            = 
+icon-pause-padding    = 1
+icon-play             = 
+icon-play-padding     = 1
+icon-seekf            = 
+icon-seekf-padding    = 1
+icon-next             = 
+icon-next-padding     = 1
+
+icon-random           = 
+icon-repeat           = 凌
+icon-repeatone        = 綾
+icon-single           = 綾
+icon-consume          = 
 
 [module/temperature]
 type = internal/temperature
@@ -185,19 +180,12 @@ hwmon-path       = ${env:TEMPERATURE}
 thermal-zone     = 0
 warn-temperature = 60
 
-format                 = <ramp> <label>
-format-padding         = 1
-format-underline       = ${colors.background}
-format-background      = ${colors.background}
-format-foreground      = ${colors.color7}
-label                  = %temperature:2%
-
-format-warn            = <ramp> <label-warn>
-format-warn-padding    = 1
-format-warn-background = ${colors.color0}
-format-warn-foreground = ${colors.color1}
-format-warn-underline  = ${colors.color1}
-label-warn             = %temperature:2%
+format              = <ramp> <label>
+format-padding      = 1
+label               = %temperature-c:2%
+format-warn         = <ramp> <label-warn>
+format-warn-padding = 1
+label-warn          = %temperature-c:2%
 
 ramp-0 = 
 ramp-1 = 
@@ -210,36 +198,27 @@ ramp-5 = 
 type = internal/date
 interval = 1
 
-date     = " %y/%m/%d"
-date-alt = " %y/%m/%d"
-time     = " %H:%M"
-time-alt = " %H:%M"
+date     =
+date-alt = " %y/%m/%d"
+time     = "%H:%M"
+time-alt = "%H:%M:%S"
 
-label            = "%time%"
-label-background = ${colors.background}
-label-foreground = ${colors.color3}
-label-padding    = 1
-label-underline  = ${colors.background}
+label         = "%time%%date%"
+label-padding = 1
 
 [module/volume]
 type = internal/alsa
 
-format-volume            = <ramp-volume> <label-volume>
-format-volume-foreground = ${colors.color5}
+format-volume            = <ramp-volume>
 format-volume-padding    = 1
-format-volume-underline  = ${colors.background}
-label-volume             = "%percentage%%"
 
-format-muted-background  = ${colors.color0}
-format-muted-foreground  = ${colors.color5}
+format-muted             = ﱝ
+format-muted-foreground  = ${colors.color0}
 format-muted-padding     = 1
-format-muted-underline   = ${colors.color5}
-label-muted              = "ﱝ %percentage%%"
 
 ramp-volume-0 = 
 ramp-volume-1 = 
-ramp-volume-2 = 墳
-ramp-volume-3 = 
+ramp-volume-2 = 
 
 [module/wlan]
 type = internal/network
@@ -248,20 +227,11 @@ interface = ${env:WLAN}
 interval  = 3.0
 
 format-connected               = <label-connected>
-format-connected-foreground    = ${colors.color2}
-label-connected                =  %essid%
+format-connected-foreground    = ${colors.foreground}
+label-connected                = 直
 label-connected-padding        = 1
 
 format-disconnected            = <label-disconnected>
-format-disconnected-foreground = ${colors.color5}
-label-disconnected             = 睊disconnected
+format-disconnected-foreground = ${colors.color0}
+label-disconnected             = 睊
 label-disconnected-padding     = 1
-
-[module/xwindow]
-type = internal/xwindow
-
-format-background = ${colors.color0}
-format-foreground = ${colors.color2}
-format-padding    = 1
-format-underline  = ${colors.color2}
-label             = %title:0:30:...%
