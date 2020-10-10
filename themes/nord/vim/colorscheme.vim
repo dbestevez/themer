@@ -74,7 +74,7 @@ call Themer("Number",                       g:color5,     g:none,       "NONE")
 call Themer("String",                       g:color2,     g:none,       "NONE")
 
 " Language constructs
-call Themer("Comment",                      g:color22,    g:none,       "NONE")
+call Themer("Comment",                      g:color20,    g:none,       "NONE")
 call Themer("Conditional",                  g:color4,     g:none,       "NONE")
 call Themer("Debug",                        g:color4,     g:none,       "NONE")
 call Themer("Delimiter",                    g:color15,    g:none,       "NONE")
