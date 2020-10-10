@@ -302,43 +302,37 @@ function updateVim() {
         return
     fi
 
-    if [[ -f $DIR/themes/$1/vim/theme.vim ]]; then
-        echo -en "  Changing vim colors........................."
+    echo -en "  Changing vim theme.........................."
+    cat $DIR/src/vim/themer.vim > $HOME/.config/nvim/themer.vim
 
+    if [[ -f $DIR/themes/$1/vim/theme.vim ]]; then
         if [[ ! -d $HOME/.config/nvim/themes ]]; then
             mkdir -p $HOME/.config/nvim/themes
         fi
 
         cp $DIR/themes/$1/vim/theme.vim $HOME/.config/nvim/themes/$1.vim
-        echo "source ~/.config/nvim/themes/$1.vim" > $HOME/.config/nvim/themer.vim
-        echo -e "\E[37;32mDONE\033[0m"
+        echo "source ~/.config/nvim/themes/$1.vim" >> $HOME/.config/nvim/themer.vim
     fi
 
     if [[ -f $DIR/themes/$1/vim/colorscheme.vim ]]; then
-        echo -en "  Changing vim colorscheme...................."
-
         if [[ ! -d $HOME/.config/nvim/colors ]]; then
             mkdir -p $HOME/.config/nvim/colors
         fi
 
         cp $DIR/themes/$1/vim/colorscheme.vim $HOME/.config/nvim/colors/$1.vim
         echo "colorscheme $1" >> $HOME/.config/nvim/themer.vim
-
-        echo -e "\E[37;32mDONE\033[0m"
     fi
 
     if [[ -f $DIR/themes/$1/vim/lightline.vim ]]; then
-        echo -en "  Changing vim lightline theme................"
-
         if [[ ! -d $HOME/.config/nvim/autoload/lightline/colorscheme ]]; then
             mkdir -p $HOME/.config/nvim/autoload/lightline/colorscheme
         fi
 
         cp $DIR/themes/$1/vim/lightline.vim $HOME/.config/nvim/autoload/lightline/colorscheme/$1.vim
         echo "source ~/.config/nvim/autoload/lightline/colorscheme/$1.vim" >> $HOME/.config/nvim/themer.vim
-
-        echo -e "\E[37;32mDONE\033[0m"
     fi
+
+    echo -e "\E[37;32mDONE\033[0m"
 }
 
 # ---
