@@ -310,8 +310,7 @@ function updateVim() {
         fi
 
         cp $DIR/themes/$1/vim/theme.vim $HOME/.config/nvim/themes/$1.vim
-        sed -i -e "/source.*themes.*/d" $HOME/.config/nvim/theme.vim
-        echo "source ~/.vim/themes/$1.vim" >> $HOME/.config/nvim/theme.vim
+        echo "source ~/.config/nvim/themes/$1.vim" > $HOME/.config/nvim/themer.vim
         echo -e "\E[37;32mDONE\033[0m"
     fi
 
@@ -323,8 +322,7 @@ function updateVim() {
         fi
 
         cp $DIR/themes/$1/vim/colorscheme.vim $HOME/.config/nvim/colors/$1.vim
-        sed -i -e "/^colorscheme.*$/d" $HOME/.config/nvim/theme.vim
-        echo "colorscheme $1" >> $HOME/.config/nvim/theme.vim
+        echo "colorscheme $1" >> $HOME/.config/nvim/themer.vim
 
         echo -e "\E[37;32mDONE\033[0m"
     fi
@@ -337,8 +335,7 @@ function updateVim() {
         fi
 
         cp $DIR/themes/$1/vim/lightline.vim $HOME/.config/nvim/autoload/lightline/colorscheme/$1.vim
-        sed -i -e "/source.*lightline.*/d" $HOME/.config/nvim/theme.vim
-        echo "source ~/.vim/autoload/lightline/colorscheme/$1.vim" >> $HOME/.config/nvim/theme.vim
+        echo "source ~/.config/nvim/autoload/lightline/colorscheme/$1.vim" >> $HOME/.config/nvim/themer.vim
 
         echo -e "\E[37;32mDONE\033[0m"
     fi
