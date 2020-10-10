@@ -10,201 +10,160 @@ endif
 
 let g:colors_name = "dracula"
 
-let s:background = [ 16, "#232734" ]
-let s:foreground = [ 17, "#f8f8f2" ]
-let s:none       = [ "NONE", "" ]
-
-let s:color0  = [ 0,  "#20202a" ]
-let s:color1  = [ 1,  "#c74950" ]
-let s:color2  = [ 2,  "#43c46a" ]
-let s:color3  = [ 3,  "#cdd778" ]
-let s:color4  = [ 4,  "#a48bf7" ]
-let s:color5  = [ 5,  "#d96aa9" ]
-let s:color6  = [ 6,  "#6272a4" ]
-let s:color7  = [ 7,  "#bfbfbf" ]
-let s:color8  = [ 8,  "#44475a" ]
-let s:color9  = [ 9,  "#ff5555" ]
-let s:color10 = [ 10, "#50fa7b" ]
-let s:color11 = [ 11, "#f1fa8c" ]
-let s:color12 = [ 12, "#bd93f9" ]
-let s:color13 = [ 13, "#ff79c6" ]
-let s:color14 = [ 14, "#8be9fd" ]
-let s:color15 = [ 15, "#f8f8f2" ]
-
-let s:color16 = [ 16, "#232734" ]
-let s:color17 = [ 17, "#d4d7d6" ]
-let s:color18 = [ 18, "#8a553f" ]
-let s:color19 = [ 19, "#8ec43d" ]
-let s:color20 = [ 20, "#3b758c" ]
-let s:color21 = [ 21, "#43a5d5" ]
-let s:color22 = [ 22, "#555555" ]
-let s:color23 = [ 23, "#db7b55" ]
-
-function! <SID>set_hi(name, fg, bg, style)
-  execute "hi " . a:name . " ctermfg=" . a:fg[0] . " ctermbg=" . a:bg[0] " cterm=" . a:style
-  if a:fg[1] != ""
-    execute "hi " . a:name . " guifg=" . a:fg[1]
-  endif
-  if a:bg[1] != ""
-    execute "hi " . a:name . " guibg=" . a:bg[1]
-  endif
-  execute "hi " . a:name . " gui=" . a:style
-endfun
-
 " Editor
-call <SID>set_hi("Cursor",                       s:none,       s:color13,    "NONE")
-call <SID>set_hi("CursorLine",                   s:none,       s:color0,     "NONE")
-call <SID>set_hi("CursorLineNR",                 s:color13,    s:color0,     "NONE")
-call <SID>set_hi("LineNr",                       s:color8,     s:color0,     "NONE")
-call <SID>set_hi("multiple_cursors_cursor",      s:none,       s:color13,    "NONE")
-call <SID>set_hi("Normal",                       s:color15,    s:none,       "NONE")
+call Themer("Cursor",                       g:none,       g:color13,    "NONE")
+call Themer("CursorLine",                   g:none,       g:color0,     "NONE")
+call Themer("CursorLineNR",                 g:color13,    g:color0,     "NONE")
+call Themer("LineNr",                       g:color8,     g:color0,     "NONE")
+call Themer("multiple_cursors_cursor",      g:none,       g:color13,    "NONE")
+call Themer("Normal",                       g:color15,    g:none,       "NONE")
 
 " Number column
-call <SID>set_hi("CursorColumn",                 s:none,       s:color13,    "NONE")
-call <SID>set_hi("FoldColumn",                   s:color6,     s:none,       "NONE")
-call <SID>set_hi("Folded",                       s:color6,     s:none,       "NONE")
-call <SID>set_hi("SignColumn",                   s:color6,     s:none,       "NONE")
+call Themer("CursorColumn",                 g:none,       g:color13,    "NONE")
+call Themer("FoldColumn",                   g:color6,     g:none,       "NONE")
+call Themer("Folded",                       g:color6,     g:none,       "NONE")
+call Themer("SignColumn",                   g:color6,     g:none,       "NONE")
 
 " Delimiter
-call <SID>set_hi("ColorColumn",                  s:none,       s:color0,     "NONE")
-call <SID>set_hi("VertSplit",                    s:color0,     s:color0,     "NONE")
-call <SID>set_hi("TabLine",                      s:none,       s:none,       "NONE")
-call <SID>set_hi("TabLineFill",                  s:none,       s:none,       "NONE")
-call <SID>set_hi("TabLineSel",                   s:none,       s:none,       "NONE")
+call Themer("ColorColumn",                  g:none,       g:color0,     "NONE")
+call Themer("VertSplit",                    g:color0,     g:color0,     "NONE")
+call Themer("TabLine",                      g:none,       g:none,       "NONE")
+call Themer("TabLineFill",                  g:none,       g:none,       "NONE")
+call Themer("TabLineSel",                   g:none,       g:none,       "NONE")
 
 " File Navigation/Searching
-call <SID>set_hi("Directory",                    s:color3,     s:none,       "NONE")
-call <SID>set_hi("IncSearch",                    s:color0,     s:color12,    "NONE")
-call <SID>set_hi("Search",                       s:color0,     s:color12,    "NONE")
+call Themer("Directory",                    g:color3,     g:none,       "NONE")
+call Themer("IncSearch",                    g:color0,     g:color12,    "NONE")
+call Themer("Search",                       g:color0,     g:color12,    "NONE")
 
 " Completion menu
-call <SID>set_hi("Pmenu",                        s:none,       s:color0,     "NONE")
-call <SID>set_hi("PmenuSel",                     s:background, s:color12,    "NONE")
+call Themer("Pmenu",                        g:none,       g:color0,     "NONE")
+call Themer("PmenuSel",                     g:background, g:color12,    "NONE")
 
 " Status
-call <SID>set_hi("StatusLine",                   s:color15,    s:color0,     "NONE")
-call <SID>set_hi("StatusLineNC",                 s:none,       s:color0,     "NONE")
-call <SID>set_hi("Title",                        s:color9,     s:none,       "NONE")
+call Themer("StatusLine",                   g:color15,    g:color0,     "NONE")
+call Themer("StatusLineNC",                 g:none,       g:color0,     "NONE")
+call Themer("Title",                        g:color9,     g:none,       "NONE")
 
 " Visual aid
-call <SID>set_hi("MatchParen",                   s:color10,    s:none,       "NONE")
-call <SID>set_hi("NonText",                      s:color4,     s:background, "NONE")
-call <SID>set_hi("Visual",                       s:color3,     s:color8,     "NONE")
-call <SID>set_hi("Todo",                         s:color4,     s:none,       "NONE")
-call <SID>set_hi("Underlined",                   s:none,       s:none,       "underline")
-call <SID>set_hi("Error",                        s:none,       s:color9,     "NONE")
-call <SID>set_hi("ErrorMsg",                     s:none,       s:color9,     "NONE")
-call <SID>set_hi("WarningMsg",                   s:color11,    s:none,       "NONE")
-call <SID>set_hi("SpecialKey",                   s:foreground, s:color8,     "NONE")
+call Themer("MatchParen",                   g:color10,    g:none,       "NONE")
+call Themer("NonText",                      g:color4,     g:background, "NONE")
+call Themer("Visual",                       g:color3,     g:color8,     "NONE")
+call Themer("Todo",                         g:color4,     g:none,       "NONE")
+call Themer("Underlined",                   g:none,       g:none,       "underline")
+call Themer("Error",                        g:none,       g:color9,     "NONE")
+call Themer("ErrorMsg",                     g:none,       g:color9,     "NONE")
+call Themer("WarningMsg",                   g:color11,    g:none,       "NONE")
+call Themer("SpecialKey",                   g:foreground, g:color8,     "NONE")
 
 " Diff
-call <SID>set_hi("DiffAdd",                      s:color10,    s:none,       "NONE")
-call <SID>set_hi("DiffDelete",                   s:color9,     s:none,       "NONE")
-call <SID>set_hi("DiffChange",                   s:color11,    s:none,       "NONE")
-call <SID>set_hi("DiffText",                     s:color11,    s:color8,     "NONE")
+call Themer("DiffAdd",                      g:color10,    g:none,       "NONE")
+call Themer("DiffDelete",                   g:color9,     g:none,       "NONE")
+call Themer("DiffChange",                   g:color11,    g:none,       "NONE")
+call Themer("DiffText",                     g:color11,    g:color8,     "NONE")
 
 " Types
-call <SID>set_hi("Boolean",                      s:color4,     s:none,       "NONE")
-call <SID>set_hi("Character",                    s:color3,     s:none,       "NONE")
-call <SID>set_hi("Constant",                     s:color4,     s:none,       "italic")
-call <SID>set_hi("Float",                        s:color4,     s:none,       "NONE")
-call <SID>set_hi("Function",                     s:color10,    s:none,       "NONE")
-call <SID>set_hi("Identifier",                   s:color14,    s:none,       "NONE")
-call <SID>set_hi("Number",                       s:color5,     s:none,       "NONE")
-call <SID>set_hi("String",                       s:color3,     s:none,       "NONE")
+call Themer("Boolean",                      g:color4,     g:none,       "NONE")
+call Themer("Character",                    g:color3,     g:none,       "NONE")
+call Themer("Constant",                     g:color4,     g:none,       "italic")
+call Themer("Float",                        g:color4,     g:none,       "NONE")
+call Themer("Function",                     g:color10,    g:none,       "NONE")
+call Themer("Identifier",                   g:color14,    g:none,       "NONE")
+call Themer("Number",                       g:color5,     g:none,       "NONE")
+call Themer("String",                       g:color3,     g:none,       "NONE")
 
 " Language constructs
-call <SID>set_hi("Comment",                      s:color6,     s:none,       "NONE")
-call <SID>set_hi("Conditional",                  s:color13,    s:none,       "NONE")
-call <SID>set_hi("Debug",                        s:color4,     s:none,       "NONE")
-call <SID>set_hi("Delimiter",                    s:color15,    s:none,       "NONE")
-call <SID>set_hi("Exception",                    s:color13,    s:none,       "NONE")
-call <SID>set_hi("Keyword",                      s:color13,    s:none,       "NONE")
-call <SID>set_hi("Noise",                        s:color23,    s:none,       "NONE")
-call <SID>set_hi("Label",                        s:color13,    s:none,       "NONE")
-call <SID>set_hi("Operator",                     s:color13,    s:none,       "NONE")
-call <SID>set_hi("Repeat",                       s:color13,    s:none,       "NONE")
-call <SID>set_hi("Special",                      s:color13,    s:none,       "NONE")
-call <SID>set_hi("SpecialChar",                  s:color13,    s:none,       "NONE")
-call <SID>set_hi("SpecialComment",               s:color14,    s:none,       "NONE")
-call <SID>set_hi("Statement",                    s:color10,    s:none,       "NONE")
-call <SID>set_hi("Tag",                          s:color14,    s:none,       "NONE")
+call Themer("Comment",                      g:color6,     g:none,       "NONE")
+call Themer("Conditional",                  g:color13,    g:none,       "NONE")
+call Themer("Debug",                        g:color4,     g:none,       "NONE")
+call Themer("Delimiter",                    g:color15,    g:none,       "NONE")
+call Themer("Exception",                    g:color13,    g:none,       "NONE")
+call Themer("Keyword",                      g:color13,    g:none,       "NONE")
+call Themer("Noise",                        g:color23,    g:none,       "NONE")
+call Themer("Label",                        g:color13,    g:none,       "NONE")
+call Themer("Operator",                     g:color13,    g:none,       "NONE")
+call Themer("Repeat",                       g:color13,    g:none,       "NONE")
+call Themer("Special",                      g:color13,    g:none,       "NONE")
+call Themer("SpecialChar",                  g:color13,    g:none,       "NONE")
+call Themer("SpecialComment",               g:color14,    g:none,       "NONE")
+call Themer("Statement",                    g:color10,    g:none,       "NONE")
+call Themer("Tag",                          g:color14,    g:none,       "NONE")
 
 " Neomake
-call <SID>set_hi("NeomakeWarning",               s:color11,    s:background, "NONE")
-call <SID>set_hi("NeomakeError",                 s:color9,     s:background, "NONE")
-call <SID>set_hi("NeomakeInfo",                  s:color4,     s:background, "NONE")
+call Themer("NeomakeWarning",               g:color11,    g:background, "NONE")
+call Themer("NeomakeError",                 g:color9,     g:background, "NONE")
+call Themer("NeomakeInfo",                  g:color4,     g:background, "NONE")
 
 " C like
-call <SID>set_hi("Define",                       s:color13,    s:none,       "NONE")
-call <SID>set_hi("Include",                      s:color13,    s:none,       "NONE")
-call <SID>set_hi("Macro",                        s:color13,    s:none,       "NONE")
-call <SID>set_hi("PreCondit",                    s:color13,    s:none,       "NONE")
-call <SID>set_hi("PreProc",                      s:color13,    s:none,       "NONE")
-call <SID>set_hi("StorageClass",                 s:color14,    s:none,       "NONE")
-call <SID>set_hi("Type",                         s:color14,    s:none,       "NONE")
-call <SID>set_hi("Typedef",                      s:color13,    s:none,       "NONE")
+call Themer("Define",                       g:color13,    g:none,       "NONE")
+call Themer("Include",                      g:color13,    g:none,       "NONE")
+call Themer("Macro",                        g:color13,    g:none,       "NONE")
+call Themer("PreCondit",                    g:color13,    g:none,       "NONE")
+call Themer("PreProc",                      g:color13,    g:none,       "NONE")
+call Themer("StorageClass",                 g:color14,    g:none,       "NONE")
+call Themer("Type",                         g:color14,    g:none,       "NONE")
+call Themer("Typedef",                      g:color13,    g:none,       "NONE")
 
 " CSS
-call <SID>set_hi("cssClassName",                 s:color6,     s:none,       "NONE")
-call <SID>set_hi("cssClassNameDot",              s:color6,     s:none,       "NONE")
-call <SID>set_hi("cssValueName",                 s:color13,    s:none,       "NONE")
-call <SID>set_hi("cssValueNumber",               s:color13,    s:none,       "NONE")
-call <SID>set_hi("cssValueLength",               s:color13,    s:none,       "NONE")
-call <SID>set_hi("cssVendor",                    s:color4,     s:none,       "NONE")
-call <SID>set_hi("cssFunctionName",              s:color13,    s:none,       "NONE")
-call <SID>set_hi("cssUnitDecorators",            s:color3,     s:none,       "NONE")
-call <SID>set_hi("cssCommonAttr",                s:color4,     s:none,       "NONE")
-call <SID>set_hi("cssAttrRegion",                s:color4,     s:none,       "NONE")
-call <SID>set_hi("cssAttrComma",                 s:color15,    s:none,       "NONE")
-call <SID>set_hi("cssNoise",                     s:color4,     s:none,       "NONE")
-call <SID>set_hi("cssColor",                     s:color5,     s:none,       "NONE")
-call <SID>set_hi("cssPseudoClassFn",             s:color6,     s:none,       "NONE")
-call <SID>set_hi("cssPseudoClassId",             s:color6,     s:none,       "NONE")
-call <SID>set_hi("cssSelectorOp",                s:color15,    s:none,       "NONE")
+call Themer("cssClassName",                 g:color6,     g:none,       "NONE")
+call Themer("cssClassNameDot",              g:color6,     g:none,       "NONE")
+call Themer("cssValueName",                 g:color13,    g:none,       "NONE")
+call Themer("cssValueNumber",               g:color13,    g:none,       "NONE")
+call Themer("cssValueLength",               g:color13,    g:none,       "NONE")
+call Themer("cssVendor",                    g:color4,     g:none,       "NONE")
+call Themer("cssFunctionName",              g:color13,    g:none,       "NONE")
+call Themer("cssUnitDecorators",            g:color3,     g:none,       "NONE")
+call Themer("cssCommonAttr",                g:color4,     g:none,       "NONE")
+call Themer("cssAttrRegion",                g:color4,     g:none,       "NONE")
+call Themer("cssAttrComma",                 g:color15,    g:none,       "NONE")
+call Themer("cssNoise",                     g:color4,     g:none,       "NONE")
+call Themer("cssColor",                     g:color5,     g:none,       "NONE")
+call Themer("cssPseudoClassFn",             g:color6,     g:none,       "NONE")
+call Themer("cssPseudoClassId",             g:color6,     g:none,       "NONE")
+call Themer("cssSelectorOp",                g:color15,    g:none,       "NONE")
 
 " HTML
-call <SID>set_hi("htmlTag",                      s:color4,     s:none,       "NONE")
-call <SID>set_hi("htmlTagName",                  s:color4,     s:none,       "NONE")
-call <SID>set_hi("htmlArg",                      s:color14,    s:none,       "NONE")
+call Themer("htmlTag",                      g:color4,     g:none,       "NONE")
+call Themer("htmlTagName",                  g:color4,     g:none,       "NONE")
+call Themer("htmlArg",                      g:color14,    g:none,       "NONE")
 
 " Javascript
-call <SID>set_hi("jsFunction",                   s:color14,    s:none,       "NONE")
-call <SID>set_hi("jsFuncCall",                   s:color15,    s:none,       "NONE")
-call <SID>set_hi("jsObjectProp",                 s:color13,    s:none,       "NONE")
-call <SID>set_hi("jsThis",                       s:color14,    s:none,       "NONE")
-call <SID>set_hi("jsNull",                       s:color12,    s:none,       "NONE")
+call Themer("jsFunction",                   g:color14,    g:none,       "NONE")
+call Themer("jsFuncCall",                   g:color15,    g:none,       "NONE")
+call Themer("jsObjectProp",                 g:color13,    g:none,       "NONE")
+call Themer("jsThis",                       g:color14,    g:none,       "NONE")
+call Themer("jsNull",                       g:color12,    g:none,       "NONE")
 
 " PHP
-call <SID>set_hi("phpClass",                     s:color7,     s:none,       "NONE")
-call <SID>set_hi("phpClasses",                   s:color5,     s:none,       "NONE")
-call <SID>set_hi("phpComment",                   s:color6,     s:none,       "NONE")
-call <SID>set_hi("phpConstants",                 s:color9,     s:none,       "italic")
-call <SID>set_hi("phpControlStructure",          s:color10,    s:none,       "NONE")
-call <SID>set_hi("phpDocComment",                s:color6,     s:none,       "NONE")
-call <SID>set_hi("phpDocTags",                   s:color14,    s:none,       "NONE")
-call <SID>set_hi("phpFunction",                  s:color15,    s:none,       "NONE")
-call <SID>set_hi("phpFunctions",                 s:color6,     s:none,       "NONE")
-call <SID>set_hi("phpKeyword",                   s:color13,    s:none,       "NONE")
-call <SID>set_hi("phpKeywords",                  s:color15,    s:none,       "NONE")
-call <SID>set_hi("phpMethodsVar",                s:color15,    s:none,       "NONE")
-call <SID>set_hi("phpNew",                       s:color4,     s:none,       "NONE")
-call <SID>set_hi("phpNewObject",                 s:color15,    s:none,       "NONE")
-call <SID>set_hi("phpOperator",                  s:color4,     s:none,       "NONE")
-call <SID>set_hi("phpStructureKeyword",          s:color10,    s:none,       "NONE")
-call <SID>set_hi("phpTryCatch",                  s:color6,     s:none,       "NONE")
-call <SID>set_hi("phpTryCatchedException",       s:color9,     s:none,       "NONE")
-call <SID>set_hi("phpTryFinally",                s:color9,     s:none,       "NONE")
-call <SID>set_hi("phpTryStart",                  s:color9,     s:none,       "NONE")
-call <SID>set_hi("phpType",                      s:color14,    s:none,       "italic")
-call <SID>set_hi("phpVarSelector",               s:color13,    s:none,       "NONE")
-call <SID>set_hi("phpVariable",                  s:color4,     s:none,       "NONE")
-call <SID>set_hi("phpParent",                    s:color10,    s:none,       "NONE")
+call Themer("phpClass",                     g:color7,     g:none,       "NONE")
+call Themer("phpClasses",                   g:color5,     g:none,       "NONE")
+call Themer("phpComment",                   g:color6,     g:none,       "NONE")
+call Themer("phpConstants",                 g:color9,     g:none,       "italic")
+call Themer("phpControlStructure",          g:color10,    g:none,       "NONE")
+call Themer("phpDocComment",                g:color6,     g:none,       "NONE")
+call Themer("phpDocTags",                   g:color14,    g:none,       "NONE")
+call Themer("phpFunction",                  g:color15,    g:none,       "NONE")
+call Themer("phpFunctions",                 g:color6,     g:none,       "NONE")
+call Themer("phpKeyword",                   g:color13,    g:none,       "NONE")
+call Themer("phpKeywords",                  g:color15,    g:none,       "NONE")
+call Themer("phpMethodsVar",                g:color15,    g:none,       "NONE")
+call Themer("phpNew",                       g:color4,     g:none,       "NONE")
+call Themer("phpNewObject",                 g:color15,    g:none,       "NONE")
+call Themer("phpOperator",                  g:color4,     g:none,       "NONE")
+call Themer("phpStructureKeyword",          g:color10,    g:none,       "NONE")
+call Themer("phpTryCatch",                  g:color6,     g:none,       "NONE")
+call Themer("phpTryCatchedException",       g:color9,     g:none,       "NONE")
+call Themer("phpTryFinally",                g:color9,     g:none,       "NONE")
+call Themer("phpTryStart",                  g:color9,     g:none,       "NONE")
+call Themer("phpType",                      g:color14,    g:none,       "italic")
+call Themer("phpVarSelector",               g:color13,    g:none,       "NONE")
+call Themer("phpVariable",                  g:color4,     g:none,       "NONE")
+call Themer("phpParent",                    g:color10,    g:none,       "NONE")
 
 " YAML
-call <SID>set_hi("yamlConstant",                 s:color9,     s:none,       "NONE")
-call <SID>set_hi("yamlBlockMappingKey",          s:color14,    s:none,       "NONE")
-call <SID>set_hi("yamlFlowMappingKey",           s:color14,    s:none,       "NONE")
-call <SID>set_hi("yamlKeyValueDelimiter",        s:color15,    s:none,       "NONE")
-call <SID>set_hi("yamlFlowIndicator",            s:color15,    s:none,       "NONE")
-call <SID>set_hi("yamlBlockCollectionItemStart", s:color15,    s:none,       "NONE")
+call Themer("yamlConstant",                 g:color9,     g:none,       "NONE")
+call Themer("yamlBlockMappingKey",          g:color14,    g:none,       "NONE")
+call Themer("yamlFlowMappingKey",           g:color14,    g:none,       "NONE")
+call Themer("yamlKeyValueDelimiter",        g:color15,    g:none,       "NONE")
+call Themer("yamlFlowIndicator",            g:color15,    g:none,       "NONE")
+call Themer("yamlBlockCollectionItemStart", g:color15,    g:none,       "NONE")
