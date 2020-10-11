@@ -51,12 +51,12 @@ battery = BAT0
 adapter = ${env:POWER}
 full-at = 98
 
-format-charging            = "<animation-charging>"
+format-charging            = "%{A1:dunstify Charging <label-charging> --icon=battery-good-charging:}<animation-charging>%{A}"
 format-charging-padding    = 1
-format-full                = "<ramp-capacity>"
+format-full                = "%{A1:dunstify Full <label-full> --icon=battery-full:}<ramp-capacity>%{A}"
 format-full-foreground     = "${colors.color0}"
 format-full-padding        = 1
-format-discharging         = "<ramp-capacity>"
+format-discharging         = "%{A1:dunstify Discharging <label-discharging> --icon=battery-good-charging:}<ramp-capacity>%{A}"
 format-discharging-padding = 1
 
 ramp-capacity-0 = 
@@ -150,8 +150,8 @@ type = internal/mpd
 format-offline            = %{A1:mopidy &:}ﱙ%{A}
 format-offline-foreground = ${colors.color0}
 format-offline-padding    = 1
-format-online             = "<icon-prev><icon-seekb><toggle><icon-seekf><icon-next> %{A1:dunstify <label-song> --icon=music-player:}ﱘ %{A}"
-label-song                = "'%artist%' '%title%'"
+format-online             = "<icon-prev><icon-seekb><toggle><icon-seekf><icon-next> <label-song> "
+label-song                = "%{A1:~/.config/polybar/scripts/ncmpcpp-song.sh -a:}ﱘ%{A}"
 
 icon-prev             = 
 icon-prev-padding     = 1
@@ -208,10 +208,9 @@ tail = true
 label         = %output%
 label-padding = 1
 
-exec         = ~/.config/polybar/scripts/volume.sh listen
+exec         = ~/.config/polybar/scripts/volume.sh listen -f "#3B4252"
 click-right  = exec pavucontrol &
-click-left   = ~/.config/polybar/scripts/volume.sh togmute
-click-middle = ~/.config/polybar/scripts/volume.sh next-sink
+click-left   = ~/.config/polybar/scripts/volume.sh toggle
 scroll-up    = ~/.config/polybar/scripts/volume.sh up
 scroll-down  = ~/.config/polybar/scripts/volume.sh down
 
