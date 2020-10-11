@@ -79,6 +79,7 @@ function main() {
 
     echo "Applying $THEME theme..."
 
+    updateDunst     $THEME
     updatePicom     $THEME
     updateMutt      $THEME
     updatePolybar   $THEME
@@ -87,8 +88,8 @@ function main() {
     updateZsh       $THEME
     updateTmux      $THEME
     updateVim       $THEME
-    updateWallpaper $THEME
     updateBspwm     $THEME
+    updateWallpaper $THEME
 }
 
 # ---
@@ -116,14 +117,46 @@ function random() {
 # @param $1 The theme name.
 # ---
 function updateBspwm() {
-    if [[ ! -x `command -v bspwm` ]] || [[ ! -f $DIR/themes/$1/bspwm/config ]]; then
+    command -v bspwm > /dev/null 2>&1 || return
+
+    echo -en "  Changing bspwm theme........................"
+
+    [ -f $HOME/.config/bspwm/theme ] && rm $HOME/.config/bspwm/theme
+
+    if  [[ ! -f $DIR/themes/$1/bspwm/config ]]; then
+        echo -e "\E[1;33mSKIP\033[0m"
         return
     fi
 
-    echo -en "  Changing bspwm theme........................"
+    mkdir -p $HOME/.config/bspwm
     cp $DIR/themes/$1/bspwm/config $HOME/.config/bspwm/theme
     source $HOME/.config/bspwm/theme
-    echo -e "\E[37;32mDONE\033[0m"
+
+    echo -e "\E[1;32mDONE\033[0m"
+}
+
+# ---
+# Updates the dunst configuration.
+#
+# @param $1 The theme name.
+# ---
+function updateDunst() {
+    command -v dunstify > /dev/null 2>&1 || return
+
+    echo -en "  Changing dunst theme........................"
+
+    [ -f $HOME/.config/dunst/dunstrc ] && rm $HOME/.config/dunst/dunstrc
+    killall dunst > /dev/null 2>&1
+
+    if  [[ ! -f $DIR/themes/$1/dunst/dunstrc ]]; then
+        echo -e "\E[1;33mSKIP\033[0m"
+        return
+    fi
+
+    mkdir -p $HOME/.config/dunst
+    cp $DIR/themes/$1/dunst/dunstrc $HOME/.config/dunst/dunstrc
+
+    echo -e "\E[1;32mDONE\033[0m"
 }
 
 # ---
@@ -132,26 +165,23 @@ function updateBspwm() {
 # @param $1 The theme name.
 # ---
 function updatePicom() {
-    if [[ ! -x `command -v picom` ]]; then
-        return
-    fi
+    command -v picom > /dev/null 2>&1 || return
 
     echo -en "  Changing picom config......................."
 
-    [ -f $HOME/.picom.conf ] && rm $HOME/.picom.conf
+    [ -f $HOME/.config/picom/picom.conf ] && rm $HOME/.config/picom/picom.conf
     killall picom > /dev/null 2>&1
 
-    if  [[ -f $DIR/themes/$1/picom/picom.conf ]]; then
-        if [[ ! -d $HOME/.config/picom ]]; then
-            mkdir -p $HOME/.config/picom
-        fi
-
-        cp $DIR/themes/$1/picom/picom.conf $HOME/.config/picom/picom.conf
+    if  [[ ! -f $DIR/themes/$1/picom/picom.conf ]]; then
+        echo -e "\E[1;33mSKIP\033[0m"
+        return
     fi
 
+    mkdir -p $HOME/.config/picom
+    cp $DIR/themes/$1/picom/picom.conf $HOME/.config/picom/picom.conf
     picom > /dev/null 2>&1 &
 
-    echo -e "\E[37;32mDONE\033[0m"
+    echo -e "\E[1;32mDONE\033[0m"
 }
 
 # ---
@@ -162,18 +192,21 @@ function updatePicom() {
 function updateMutt() {
     command -v neomutt > /dev/null 2>&1 || return
 
+    echo -en "  Changing mutt theme........................."
+
+    [ -f $HOME/.config/mutt/theme ] && rm $HOME/.config/mutt/theme
+
     if [[ ! -f $DIR/themes/$1/mutt/config ]]; then
+        echo -e "\E[1;33mSKIP\033[0m"
         return
     fi
 
-    echo -en "  Changing mutt theme........................."
-
+    mkdir -p $HOME/.config/mutt
     cp $DIR/themes/$1/mutt/config $HOME/.config/mutt/theme
-
     sed -i -e "/^source.*theme$/d" $(readlink -f $HOME/.muttrc)
     echo "source ~/.config/mutt/theme" >> $HOME/.muttrc
 
-    echo -e "\E[37;32mDONE\033[0m"
+    echo -e "\E[1;32mDONE\033[0m"
 }
 
 # ---
@@ -182,16 +215,18 @@ function updateMutt() {
 # @param $1 The theme name.
 # ---
 function updatePolybar() {
-    if [[ ! -x `command -v polybar` ]] || [[ ! -f $DIR/themes/$1/polybar/config ]]; then
-        return
-    fi
+    command -v polybar > /dev/null 2>&1 || return
 
     echo -en "  Changing polybar theme......................"
 
-    if [[ ! -d $HOME/.config/polybar ]]; then
-        mkdir -p $HOME/.config/polybar
+    [ -f $HOME/.config/polybar/config ] && rm $HOME/.config/polybar/config
+
+    if [[ ! -f $DIR/themes/$1/polybar/config ]]; then
+        echo -e "\E[1;33mSKIP\033[0m"
+        return
     fi
 
+    mkdir -p $HOME/.config/polybar
     cp $DIR/themes/$1/polybar/config $HOME/.config/polybar/config
 
     bars=$(grep "\[bar/.*\]" $HOME/.config/polybar/config | \
@@ -228,7 +263,7 @@ function updatePolybar() {
         bspc config -m $PRIMARY bottom_padding $(($height + $border * 2))
     fi
 
-    echo -e "\E[37;32mDONE\033[0m"
+    echo -e "\E[1;32mDONE\033[0m"
 }
 
 # ---
@@ -237,18 +272,21 @@ function updatePolybar() {
 # @param $1 The theme name.
 # ---
 function updateRofi() {
-    if [[ ! -x `command -v rofi` ]] || [[ ! -f $DIR/themes/$1/rofi/config.rasi ]]; then
-        return
-    fi
+    command -v rofi > /dev/null 2>&1 || return
 
     echo -en "  Changing rofi theme........................."
 
-    if [[ ! -d $HOME/.config/rofi ]]; then
-        mkdir -p $HOME/.config/rofi
+    [ -f $HOME/.config/rofi/config.rasi ] && rm $HOME/.config/rofi/config.rasi
+
+    if [[ ! -f $DIR/themes/$1/rofi/config.rasi ]]; then
+        echo -e "\E[1;33mSKIP\033[0m"
+        return
     fi
 
+    mkdir -p $HOME/.config/rofi
     cp $DIR/themes/$1/rofi/config.rasi $HOME/.config/rofi/config.rasi
-    echo -e "\E[37;32mDONE\033[0m"
+
+    echo -e "\E[1;32mDONE\033[0m"
 }
 
 # ---
@@ -257,23 +295,25 @@ function updateRofi() {
 # @param $1 The theme name.
 # ---
 function updateTermite() {
-    if [[ ! -x `command -v termite` ]] || [[ ! -f $DIR/themes/$1/termite/config ]]; then
-        return
-    fi
+    command -v termite > /dev/null 2>&1 || return
 
     echo -en "  Changing termite theme......................"
 
-    if [[ ! -d $HOME/.config/termite ]]; then
-        mkdir -p $HOME/.config/termite
+    [ -f $HOME/.config/termite/config ] && rm $HOME/.config/termite/config
+
+    if [[ ! -f $DIR/themes/$1/termite/config ]]; then
+        echo -e "\E[1;33mSKIP\033[0m"
+        return
     fi
 
+    mkdir -p $HOME/.config/termite
     cp $DIR/themes/$1/termite/config $HOME/.config/termite/config
 
     if [[ -x `command -v xdotool` ]]; then
         xdotool key 'ctrl+shift+r'
     fi
 
-    echo -e "\E[37;32mDONE\033[0m"
+    echo -e "\E[1;32mDONE\033[0m"
 }
 
 # ---
@@ -282,18 +322,25 @@ function updateTermite() {
 # @param $1 The theme name.
 # ---
 function updateTmux() {
-    if [[ ! -x `command -v tmux` ]] || [[ ! -f $DIR/themes/$THEME/tmux/theme.conf ]]; then
+    command -v tmux > /dev/null 2>&1 || return
+
+    echo -en "  Changing tmux theme........................."
+
+    [ -f $HOME/.config/tmux/theme.conf ] && rm $HOME/.config/tmux/theme.conf
+
+    if [[ ! -f $DIR/themes/$1/tmux/theme.conf ]]; then
+        echo -e "\E[1;33mSKIP\033[0m"
         return
     fi
 
-    echo -en "  Changing tmux theme........................."
+    mkdir -p $HOME/.config/tmux/theme.conf
     cp $DIR/themes/$THEME/tmux/theme.conf $HOME/.config/tmux/theme.conf
 
     if [[ `ps aux | grep tmux | tail -n +2` ]]; then
         tmux source-file $HOME/.config/tmux/theme.conf
     fi
 
-    echo -e "\E[37;32mDONE\033[0m"
+    echo -e "\E[1;32mDONE\033[0m"
 }
 
 # ---
@@ -307,13 +354,19 @@ function updateVim() {
     fi
 
     echo -en "  Changing vim theme.........................."
+
+    [ -f $HOME/.config/nvim/themer.vim ] && rm $HOME/.config/nvim/themer.vim
+
+    if [[ ! -f $DIR/themes/$1/vim/theme.vim ]]; then
+        echo -e "\E[1;33mSKIP\033[0m"
+        return
+    fi
+
+    mkdir -p $HOME/.config/nvim
     cat $DIR/src/vim/themer.vim > $HOME/.config/nvim/themer.vim
 
     if [[ -f $DIR/themes/$1/vim/theme.vim ]]; then
-        if [[ ! -d $HOME/.config/nvim/themes ]]; then
-            mkdir -p $HOME/.config/nvim/themes
-        fi
-
+        mkdir -p $HOME/.config/nvim/themes
         cp $DIR/themes/$1/vim/theme.vim $HOME/.config/nvim/themes/$1.vim
         echo "source ~/.config/nvim/themes/$1.vim" >> $HOME/.config/nvim/themer.vim
     fi
@@ -336,7 +389,7 @@ function updateVim() {
         echo "source ~/.config/nvim/autoload/lightline/colorscheme/$1.vim" >> $HOME/.config/nvim/themer.vim
     fi
 
-    echo -e "\E[37;32mDONE\033[0m"
+    echo -e "\E[1;32mDONE\033[0m"
 }
 
 # ---
@@ -371,7 +424,7 @@ function updateWallpaper() {
     feh $ARGS > /dev/null 2>&1
     betterlockscreen -u $LOCK -b 3 -r 1920x1080 > /dev/null 2>&1
 
-    echo -e "\E[37;32mDONE\033[0m"
+    echo -e "\E[1;32mDONE\033[0m"
 }
 
 # ---
@@ -380,14 +433,21 @@ function updateWallpaper() {
 # @param $1 The theme name.
 # ---
 function updateZsh() {
-    if [[ ! -x `command -v zsh` ]] || [[ ! -f $DIR/themes/$1/zsh/theme.sh ]]; then
+    command -v zsh > /dev/null 2>&1 || return
+
+    echo -en "  Changing zsh theme.........................."
+
+    [ -f $HOME/.config/zsh/config/environments/theme.sh ] && rm $HOME/.config/zsh/config/environments/theme.sh
+
+    if [[ ! -f $DIR/themes/$1/zsh/theme.sh ]]; then
+        echo -e "\E[1;33mSKIP\033[0m"
         return
     fi
 
-    echo -en "  Changing zsh theme.........................."
+    mkdir -p $HOME/.config/zsh/config/environments/theme.sh
     cp $DIR/themes/$1/zsh/theme.sh $HOME/.config/zsh/config/environments/theme.sh
 
-    echo -e "\E[37;32mDONE\033[0m"
+    echo -e "\E[1;32mDONE\033[0m"
 }
 
 main "$@"
