@@ -40,7 +40,7 @@ tray-background = ${colors.background}
 font-0 = JetBrains Mono:pixelsize=10;2
 font-1 = JetBrainsMono Nerd Font Mono:pixelsize=16;2
 
-modules-left   = menu bspwm
+modules-left   = menu bspwm xwindow
 modules-center =
 modules-right  = lan-d lan-u memory cpu temperature mpd wlan volume battery time
 
@@ -147,10 +147,11 @@ format-foreground = ${colors.color0}
 [module/mpd]
 type = internal/mpd
 
-format-offline            = ﱙ
+format-offline            = %{A1:mopidy &:}ﱙ%{A}
 format-offline-foreground = ${colors.color0}
 format-offline-padding    = 1
-format-online             = "<icon-prev><icon-seekb><toggle><icon-seekf><icon-next>"
+format-online             = "<icon-prev><icon-seekb><toggle><icon-seekf><icon-next> %{A1:dunstify <label-song> --icon=music-player:}ﱘ %{A}"
+label-song                = "'%artist%' '%title%'"
 
 icon-prev             = 
 icon-prev-padding     = 1
@@ -166,12 +167,6 @@ icon-seekf            = 
 icon-seekf-padding    = 1
 icon-next             = 
 icon-next-padding     = 1
-
-icon-random           = 
-icon-repeat           = 凌
-icon-repeatone        = 綾
-icon-single           = 綾
-icon-consume          = 
 
 [module/temperature]
 type = internal/temperature
@@ -199,26 +194,26 @@ type = internal/date
 interval = 1
 
 date     =
-date-alt = " %y/%m/%d"
+date-alt = "%{A1:~/.config/polybar/scripts/calendar.sh --popup &:}%y/%m/%d%{A} "
 time     = "%H:%M"
 time-alt = "%H:%M:%S"
 
-label         = "%time%%date%"
+label         = "%date%%time%"
 label-padding = 1
 
 [module/volume]
-type = internal/alsa
+type = custom/script
+tail = true
 
-format-volume            = <ramp-volume>
-format-volume-padding    = 1
+label         = %output%
+label-padding = 1
 
-format-muted             = ﱝ
-format-muted-foreground  = ${colors.color0}
-format-muted-padding     = 1
-
-ramp-volume-0 = 
-ramp-volume-1 = 
-ramp-volume-2 = 
+exec         = ~/.config/polybar/scripts/volume.sh listen
+click-right  = exec pavucontrol &
+click-left   = ~/.config/polybar/scripts/volume.sh togmute
+click-middle = ~/.config/polybar/scripts/volume.sh next-sink
+scroll-up    = ~/.config/polybar/scripts/volume.sh up
+scroll-down  = ~/.config/polybar/scripts/volume.sh down
 
 [module/wlan]
 type = internal/network
@@ -228,10 +223,19 @@ interval  = 3.0
 
 format-connected               = <label-connected>
 format-connected-foreground    = ${colors.foreground}
-label-connected                = 直
+label-connected                = %{A1:dunstify %essid% ' %downspeed%   %upspeed%' --icon=network-wireless:}直%{A}
 label-connected-padding        = 1
 
 format-disconnected            = <label-disconnected>
 format-disconnected-foreground = ${colors.color0}
 label-disconnected             = 睊
 label-disconnected-padding     = 1
+
+[module/xwindow]
+type = internal/xwindow
+
+format-background = ${colors.color0}
+format-foreground = ${colors.color4}
+format-underline  = ${colors.color4}
+label             = %title:0:30:...%
+label-padding     = 1
