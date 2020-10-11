@@ -1,0 +1,65 @@
+# vim: ft=dosini
+[global]
+bounce_freq          = 0
+hide_duplicate_count = no
+history_length       = 15
+idle_threshold       = 0
+indicate_hidden      = yes
+show_age_threshold   = 3600
+sort                 = no
+stack_duplicates     = yes
+startup_notification = false
+sticky_history       = yes
+
+geometry             = "350x50-15+45"
+shrink               = no
+monitor              = 0
+follow               = none
+show_indicators      = no
+
+dmenu                = /usr/bin/rofi -dmenu -p dunst:
+browser              = /usr/bin/firefox -new-tab
+
+alignment            = center
+font                 = JetBrainsMono Nerd Font Mono 10
+format               = "<b>%s</b>\n%b"
+markup               = yes
+plain_text           = no
+word_wrap            = no
+ignore_newline       = no
+
+transparency         = 5
+line_height          = 5
+separator_height     = 5
+padding              = 10
+horizontal_padding   = 10
+separator_color      = frame
+icon_position        = left
+max_icon_size        = 80
+icon_path            = /usr/share/icons/Paper/48x48/mimetypes/:/usr/share/icons/Paper/48x48/status/:/usr/share/icons/Paper/48x48/devices/:/usr/share/icons/Paper/48x48/notifications/:/usr/share/icons/Paper/48x48/emblems/
+frame_width          = 5
+frame_color          = "#3B4252"
+
+[urgency_low]
+frame_color = "#3B7C87"
+foreground  = "#3B7C87"
+background  = "#191311"
+timeout     = 5
+
+[urgency_normal]
+frame_color = "#3B4252"
+foreground  = "#81A1C1"
+background  = "#2E3440"
+timeout     = 5
+
+[urgency_critical]
+frame_color = "#B7472A"
+foreground  = "#B7472A"
+background  = "#191311"
+timeout     = 10
+
+[shortcuts]
+close     = ctrl+space
+close_all = ctrl+shift+space
+history   = ctrl+shift+comma
+context   = ctrl+shift+period
