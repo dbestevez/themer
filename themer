@@ -268,7 +268,11 @@ function updateTermite() {
     fi
 
     cp $DIR/themes/$1/termite/config $HOME/.config/termite/config
-    xdotool key 'ctrl+shift+r'
+
+    if [[ -x `command -v xdotool` ]]; then
+        xdotool key 'ctrl+shift+r'
+    fi
+
     echo -e "\E[37;32mDONE\033[0m"
 }
 
