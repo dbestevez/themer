@@ -42,7 +42,7 @@ font-1 = JetBrainsMono Nerd Font Mono:pixelsize=16;2
 
 modules-left   = menu bspwm xwindow
 modules-center =
-modules-right  = lan-d lan-u memory cpu temperature mpd wlan volume battery time
+modules-right  = memory cpu temperature mpd wlan lan volume battery time
 
 [module/battery]
 type = internal/battery
@@ -105,21 +105,21 @@ format-warn-padding         = 1
 
 label = %percentage:2%%
 
-[module/lan-d]
+[module/lan]
 type = internal/network
+
 interface = ${env:ETH}
+interval  = 3.0
 
-label-connected            =  %downspeed:8%
-label-connected-foreground = ${colors.color2}
-label-connected-padding    = 1
+format-connected               = <label-connected>
+format-connected-foreground    = ${colors.foreground}
+label-connected                = %{A1:dunstify Wired ' %downspeed%   %upspeed%' --icon=network-wired:}%{A}
+label-connected-padding        = 1
 
-[module/lan-u]
-type = internal/network
-interface = ${env:ETH}
-
-label-connected            =  %upspeed:8%
-label-connected-foreground = ${colors.color1}
-label-connected-padding    = 1
+format-disconnected            = <label-disconnected>
+format-disconnected-foreground = ${colors.color0}
+label-disconnected             = 
+label-disconnected-padding     = 1
 
 [module/memory]
 type = internal/memory
