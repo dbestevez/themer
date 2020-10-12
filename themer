@@ -146,7 +146,6 @@ function updateDunst() {
     echo -en "  Changing dunst theme........................"
 
     [ -f $HOME/.config/dunst/dunstrc ] && rm $HOME/.config/dunst/dunstrc
-    killall dunst > /dev/null 2>&1
 
     if  [[ ! -f $DIR/themes/$1/dunst/dunstrc ]]; then
         echo -e "\E[1;33mSKIP\033[0m"
@@ -155,6 +154,7 @@ function updateDunst() {
 
     mkdir -p $HOME/.config/dunst
     cp $DIR/themes/$1/dunst/dunstrc $HOME/.config/dunst/dunstrc
+    killall dunst > /dev/null 2>&1
 
     echo -e "\E[1;32mDONE\033[0m"
 }
@@ -333,7 +333,7 @@ function updateTmux() {
         return
     fi
 
-    mkdir -p $HOME/.config/tmux/theme.conf
+    mkdir -p $HOME/.config/tmux
     cp $DIR/themes/$THEME/tmux/theme.conf $HOME/.config/tmux/theme.conf
 
     if [[ `ps aux | grep tmux | tail -n +2` ]]; then
