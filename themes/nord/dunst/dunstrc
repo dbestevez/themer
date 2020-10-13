@@ -21,7 +21,7 @@ dmenu                = /usr/bin/rofi -dmenu -p dunst:
 browser              = /usr/bin/firefox -new-tab
 
 alignment            = center
-font                 = JetBrainsMono Nerd Font Mono 10
+font                 = JetBrainsMono NL 10
 format               = "<b>%s</b>\n%b"
 markup               = yes
 plain_text           = no
