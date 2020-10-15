@@ -42,7 +42,7 @@ font-1 = JetBrainsMono Nerd Font Mono:pixelsize=16;2
 
 modules-left   = menu bspwm xwindow
 modules-center =
-modules-right  = memory cpu temperature mpd wlan lan volume battery time
+modules-right  = memory cpu temperature mpd task  wlan lan volume battery time
 
 [module/battery]
 type = internal/battery
@@ -167,6 +167,18 @@ icon-seekf            = 
 icon-seekf-padding    = 1
 icon-next             = 
 icon-next-padding     = 1
+
+[module/task]
+type       = custom/script
+interval   = 2
+
+label         = %output%
+label-padding = 1
+
+exec         = ~/.config/polybar/scripts/hamster.sh show -f "#3B4252"
+click-right  = ~/.config/polybar/scripts/hamster.sh open
+click-left   = ~/.config/polybar/scripts/hamster.sh notify
+click-middle = ~/.config/polybar/scripts/hamster.sh stop
 
 [module/temperature]
 type = internal/temperature
