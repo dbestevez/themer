@@ -1,7 +1,7 @@
 configuration {
 	width: 30;
 	lines: 8;
-	font: "JetBrainsMono NL 12";
+	font: "JetBrainsMonoNL Nerd Font 12";
 	location: 0;
 	fixed-num-lines: true;
 	terminal: "termite";
@@ -48,7 +48,7 @@ inputbar {
 }
 
 textbox-prompt-colon {
-    border: 0 0 2px 0;
+    border: 0 0 3px 0;
     border-color: @selected-foreground;
     expand: false;
     margin: 0;
@@ -114,7 +114,7 @@ mode-switcher {
 
 button {
     background-color: @border-color;
-    border: 0 0 2px 0;
+    border: 0 0 5px 0;
     border-color: @border-color;
     text-color: @selected-foreground;
 }
