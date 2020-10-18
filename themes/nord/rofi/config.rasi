@@ -114,15 +114,16 @@ mode-switcher {
 
 button {
     background-color: @border-color;
-    border: 0 0 5px 0;
+    border: 0 0 3px 0;
     border-color: @border-color;
+    padding: 3px;
     text-color: @selected-foreground;
 }
 
 button.selected {
     background-color: @selected-background;
     text-color:       @selected-foreground;
-    border: 0 0 2px 0;
+    border: 0 0 3px 0;
     border-color: @selected-foreground;
 }
 
