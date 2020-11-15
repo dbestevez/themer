@@ -30,12 +30,12 @@ let s:p.replace.warning = [ [ g:color11, g:color0 ] ]
 let s:p.visual.warning  = [ [ g:color11, g:color0 ] ]
 
 let s:p.tabline.left    = [ [ g:color7,  g:color0 ] ]
-let s:p.tabline.tabsel  = [ [ g:color4,  g:color8 ] ]
+let s:p.tabline.tabsel  = [ [ g:fg_hl,   g:bg_hl  ] ]
 let s:p.tabline.middle  = [ [ g:color7,  g:color0 ] ]
 let s:p.tabline.right   = [ [ g:color1,  g:color8 ] ]
 
-let g:lightline#colorscheme#nord#palette = lightline#colorscheme#flatten(s:p)
-let g:lightline.colorscheme = 'nord'
+let g:lightline#colorscheme#flat#palette = lightline#colorscheme#flatten(s:p)
+let g:lightline.colorscheme = 'flat'
 
 let g:lightline.active.left  = [ [ 'mode', 'paste' ], [ 'fugitive', 'filename', 'ctrlpitem' ], [ 'ctrlp' ] ]
 let g:lightline.active.right = [ [ 'lineinfo', 'percent' ], [ 'debug', 'warnings', 'errors' ] ]
