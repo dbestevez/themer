@@ -24,13 +24,13 @@ configuration {
 }
 
 * {
-    background-color: #2e3440;
-    text-color: #d8dee9;
-    border-color: #3b4252;
+    background-color: $flat_bg;
+    text-color: $flat_fg;
+    border-color: $flat_fg_mt;
     border-width: 5px;
 
-    selected-background: #4C566A;
-    selected-foreground: #81A1C1;
+    selected-background: $flat_bg_hl;
+    selected-foreground: $flat_fg_hl;
 }
 
 window {
@@ -40,7 +40,7 @@ window {
 }
 
 textbox {
-    text-color: #bf616a;
+    text-color: $color1;
 }
 
 inputbar {
@@ -83,19 +83,19 @@ element.selected {
 }
 
 element.urgent {
-    text-color: #bf616a;
+    text-color: $color1;
 }
 
 element.active {
-    text-color: #A3BE8C;
+    text-color: $color2;
 }
 
 element.selected.active {
-    text-color: #A3BE8C;
+    text-color: $color2;
 }
 
-element.selected.urget {
-    text-color: #bf616a;
+element.selected.urgent {
+    text-color: $color1;
 }
 
 scrollbar {
