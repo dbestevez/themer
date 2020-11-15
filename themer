@@ -18,9 +18,11 @@ Usage: themer [OPTION] THEME
 Changes the wallpaper and current theme for bspwm, polybar and more.
 
 Options:
+  -c, --colors  The colors to use.
   -h, --help    Display this help and exit
   -l, --list    Display the list of available themes
   -r, --random  Applies a random theme
+  -t, --theme   The theme to configure
 EOF
 
     exit 0;
@@ -30,14 +32,11 @@ EOF
 # Displays a list of available themes
 # ---
 function list() {
-    echo "Available themes:"
+    local themes=$(ls $DIR/themes | tr "\n" " ")
+    local colors=$(ls $DIR/colors | sed -e "s/\.sh//g"  | tr "\n" " ")
 
-    ls -la $DIR/themes | \
-        grep "^d" | \
-        sed -e "s/\s\+/ /g" | \
-        cut -d ' ' -f 9 | \
-        grep "^[^.]" | \
-        sed "s/^/    /g"
+    echo -e "Themes\n   $themes"
+    echo -e "Colors\n   $colors"
 
     exit 0
 }
@@ -46,56 +45,75 @@ function list() {
 # Changes the current theme.
 # ---
 function main() {
-    LAST=`cat $DIR/last`
+    local colors=$(cat $DIR/last | grep colors | sed -e "s/colors:\s*//")
+    local theme=$(cat $DIR/last | grep theme | sed -e "s/theme:\s*//")
 
     while [[ $# -gt 0 ]]; do
         case "$1" in
-            -h | --help ) help ;;
+            -h | --help )
+                help ;;
 
-            -l | --list ) list ;;
+            -c | --colors )
+                colors=$2
+                shift
+                ;;
 
-            -r | --random ) THEME=$(random) ;;
+            -l | --list )
+                list
+                ;;
 
-            -*)           help "Unknown option '$1'" ;;
-            * )           THEME=$1 ;;
+            -r | --random )
+                theme=$(random_theme)
+                colors=$(random_colors)
+                ;;
+
+            -t | --theme )
+                theme=$2
+                shift
+                ;;
+
+            * )
+                help "Unknown option '$1'"
+                ;;
         esac
 
         shift;
     done
 
-    # Apply last used theme
-    if [[ ! $THEME ]] && [[ $LAST ]]; then
-        THEME=$LAST
-    fi
-
     # No theme to apply
-    if [[ ! $THEME ]] || [[ ! -d $DIR/themes/$THEME ]]; then
+    if [[ ! $theme ]] || [[ ! -d $DIR/themes/$theme ]]; then
         echo -e "\E[31;5merror: unknown theme\033[0m"
         help
         exit -1
     fi
 
-    echo $THEME > $DIR/last
+    echo "theme: $theme" > $DIR/last
+    echo "colors: $colors" >> $DIR/last
 
-    echo "Applying $THEME theme..."
+    echo "Applying $theme theme with $colors colors..."
+    if [ ! -f $DIR/colors/$colors.sh ]; then
+        help "Unknown color scheme '$1'"
+    fi
 
-    updateDunst     $THEME
-    updatePicom     $THEME
-    updateMutt      $THEME
-    updatePolybar   $THEME
-    updateRofi      $THEME
-    updateTermite   $THEME
-    updateZsh       $THEME
-    updateTmux      $THEME
-    updateVim       $THEME
-    updateBspwm     $THEME
-    updateWallpaper $THEME
+    source $DIR/colors/$colors.sh
+
+    updateDunst     $theme
+    updatePicom     $theme
+    updateMutt      $theme
+    updatePolybar   $theme
+    updateRofi      $theme
+    updateTermite   $theme
+    updateZsh       $theme
+    updateTmux      $theme
+    updateVim       $theme
+    updateBspwm     $theme
+    updateWallpaper $colors
 }
 
 # ---
 # Returns a random theme.
 # ---
-function random() {
+function random_theme() {
     themes=$(list | cut -d':' -f 2)
     size=$(echo "$themes" | wc -w)
 
@@ -129,7 +147,7 @@ function updateBspwm() {
     fi
 
     mkdir -p $HOME/.config/bspwm
-    cp $DIR/themes/$1/bspwm/config $HOME/.config/bspwm/theme
+    envsubst < $DIR/themes/$1/bspwm/config > $HOME/.config/bspwm/theme
     source $HOME/.config/bspwm/theme
 
     echo -e "\E[1;32mDONE\033[0m"
@@ -153,7 +171,7 @@ function updateDunst() {
     fi
 
     mkdir -p $HOME/.config/dunst
-    cp $DIR/themes/$1/dunst/dunstrc $HOME/.config/dunst/dunstrc
+    envsubst < $DIR/themes/$1/dunst/dunstrc > $HOME/.config/dunst/dunstrc
     killall dunst > /dev/null 2>&1
 
     echo -e "\E[1;32mDONE\033[0m"
@@ -227,7 +245,7 @@ function updatePolybar() {
     fi
 
     mkdir -p $HOME/.config/polybar
-    cp $DIR/themes/$1/polybar/config $HOME/.config/polybar/config
+    envsubst < $DIR/themes/$1/polybar/config > $HOME/.config/polybar/config
 
     bars=$(grep "\[bar/.*\]" $HOME/.config/polybar/config | \
         sed -e "s/\[bar\/\(.*\)\]/\1/g")
@@ -284,7 +302,7 @@ function updateRofi() {
     fi
 
     mkdir -p $HOME/.config/rofi
-    cp $DIR/themes/$1/rofi/config.rasi $HOME/.config/rofi/config.rasi
+    envsubst < $DIR/themes/$1/rofi/config.rasi > $HOME/.config/rofi/config.rasi
 
     echo -e "\E[1;32mDONE\033[0m"
 }
@@ -307,7 +325,7 @@ function updateTermite() {
     fi
 
     mkdir -p $HOME/.config/termite
-    cp $DIR/themes/$1/termite/config $HOME/.config/termite/config
+    envsubst < $DIR/themes/$1/termite/config > $HOME/.config/termite/config
 
     if [[ -x `command -v xdotool` ]]; then
         xdotool key 'ctrl+shift+r'
@@ -334,7 +352,7 @@ function updateTmux() {
     fi
 
     mkdir -p $HOME/.config/tmux
-    cp $DIR/themes/$THEME/tmux/theme.conf $HOME/.config/tmux/theme.conf
+    envsubst < $DIR/themes/$1/tmux/theme.conf > $HOME/.config/tmux/theme.conf
 
     if [[ `ps aux | grep tmux | tail -n +2` ]]; then
         tmux source-file $HOME/.config/tmux/theme.conf
@@ -367,7 +385,7 @@ function updateVim() {
 
     if [[ -f $DIR/themes/$1/vim/theme.vim ]]; then
         mkdir -p $HOME/.config/nvim/themes
-        cp $DIR/themes/$1/vim/theme.vim $HOME/.config/nvim/themes/$1.vim
+        envsubst < $DIR/themes/$1/vim/theme.vim > $HOME/.config/nvim/themes/$1.vim
         echo "source ~/.config/nvim/themes/$1.vim" >> $HOME/.config/nvim/themer.vim
     fi
 
@@ -399,23 +417,23 @@ function updateVim() {
 # ---
 function updateWallpaper() {
     if [[ ! -x `command -v feh` ]] || \
-            [[ ! -d $DIR/themes/$1/wallpaper  ]] || \
-            [[ ! `ls $DIR/themes/$1/wallpaper | grep ".*\.\(png\|jpg\)"` ]]; then
+            [[ ! -d $DIR/wallpapers/$1  ]] || \
+            [[ ! `ls $DIR/wallpapers/$1 | grep ".*\.\(png\|jpg\)"` ]]; then
         return
     fi
 
     echo -en "  Changing wallpaper.........................."
 
-    WALLPAPER=`ls $DIR/themes/$1/wallpaper | grep ".*\.\(png\|jpg\)"`
+    WALLPAPER=`ls $DIR/wallpapers/$1 | grep ".*\.\(png\|jpg\)"`
     ARGS=''
     LOCK=''
     i=0
 
     for w in $WALLPAPER; do
-        ARGS="$ARGS--bg-scale $DIR/themes/$1/wallpaper/$w "
+        ARGS="$ARGS--bg-scale $DIR/wallpapers/$1/$w "
 
         if [ $i -eq 0 ]; then
-            LOCK="$DIR/themes/$1/wallpaper/$w"
+            LOCK="$DIR/wallpapers/$1/$w"
         fi
 
         i=$(($i+1))
