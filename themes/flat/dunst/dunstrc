@@ -38,24 +38,24 @@ icon_position        = left
 max_icon_size        = 80
 icon_path            = /usr/share/icons/Paper/48x48/mimetypes/:/usr/share/icons/Paper/48x48/status/:/usr/share/icons/Paper/48x48/devices/:/usr/share/icons/Paper/48x48/notifications/:/usr/share/icons/Paper/48x48/emblems/
 frame_width          = 5
-frame_color          = "#3B4252"
+frame_color          = "$color0"
 
 [urgency_low]
-frame_color = "#3B4252"
-foreground  = "#A3BE8C"
-background  = "#2E3440"
+frame_color = "$color0"
+foreground  = "$color2"
+background  = "$color16"
 timeout     = 5
 
 [urgency_normal]
-frame_color = "#3B4252"
-foreground  = "#81A1C1"
-background  = "#2E3440"
+frame_color = "$color0"
+foreground  = "$color4"
+background  = "$color16"
 timeout     = 5
 
 [urgency_critical]
-frame_color = "#3B4252"
-foreground  = "#BF616A"
-background  = "#2E3440"
+frame_color = "$color0"
+foreground  = "$color1"
+background  = "$color16"
 timeout     = 10
 
 [shortcuts]
