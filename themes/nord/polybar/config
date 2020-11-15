@@ -151,7 +151,7 @@ format-offline            = %{A1:mopidy &:}ﱙ%{A}
 format-offline-foreground = ${colors.color0}
 format-offline-padding    = 1
 format-online             = "<icon-prev><icon-seekb><toggle><icon-seekf><icon-next> <label-song> "
-label-song                = "%{A1:~/.config/polybar/scripts/ncmpcpp-song.sh -a:}ﱘ%{A}"
+label-song                = "%{A1:~/.bin/ncmpcpp-song.sh -a:}ﱘ%{A}"
 
 icon-prev             = 
 icon-prev-padding     = 1
@@ -175,10 +175,10 @@ interval   = 2
 label         = %output%
 label-padding = 1
 
-exec         = ~/.config/polybar/scripts/hamster.sh show -f "#3B4252"
-click-right  = ~/.config/polybar/scripts/hamster.sh open
-click-left   = ~/.config/polybar/scripts/hamster.sh notify
-click-middle = ~/.config/polybar/scripts/hamster.sh stop
+exec         = ~/.bin/hamster.sh show -f "#3B4252"
+click-right  = ~/.bin/hamster.sh open
+click-left   = ~/.bin/hamster.sh notify
+click-middle = ~/.bin/hamster.sh stop
 
 [module/temperature]
 type = internal/temperature
@@ -206,7 +206,7 @@ type = internal/date
 interval = 1
 
 date     =
-date-alt = "%{A1:~/.config/polybar/scripts/calendar.sh --popup &:}%y/%m/%d%{A} "
+date-alt = "%{A1:~/.bin/calendar.sh --popup &:}%y/%m/%d%{A} "
 time     = "%H:%M"
 time-alt = "%H:%M:%S"
 
@@ -220,11 +220,11 @@ tail = true
 label         = %output%
 label-padding = 1
 
-exec         = ~/.config/polybar/scripts/volume.sh listen -f "#3B4252"
+exec         = ~/.bin/volume.sh listen -f "#3B4252"
 click-right  = exec pavucontrol &
-click-left   = ~/.config/polybar/scripts/volume.sh toggle
-scroll-up    = ~/.config/polybar/scripts/volume.sh up
-scroll-down  = ~/.config/polybar/scripts/volume.sh down
+click-left   = ~/.bin/volume.sh toggle
+scroll-up    = ~/.bin/volume.sh up
+scroll-down  = ~/.bin/volume.sh down
 
 [module/wlan]
 type = internal/network
