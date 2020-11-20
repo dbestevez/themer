@@ -29,9 +29,9 @@ let s:p.tabline.tabsel  = [ [ g:color15, g:color8 ] ]
 let s:p.tabline.middle  = [ [ g:color15, g:color16 ] ]
 let s:p.tabline.right   = [ [ g:color15, g:color8 ] ]
 
-let g:lightline#colorscheme#nightfall#palette = lightline#colorscheme#flatten(s:p)
+let g:lightline#colorscheme#air#palette = lightline#colorscheme#flatten(s:p)
 
 let g:lightline.active.left = [ [ 'mode', 'paste' ], [ 'fugitive', 'ctrlp' ], [ 'filename', 'ctrlpitem' ] ]
 let g:lightline.active.right = [ [ 'lineinfo' ], [ 'percent' ], [ 'debug', 'warnings', 'errors' ] ]
 
-let g:lightline.colorscheme = 'nightfall'
+let g:lightline.colorscheme = 'air'
