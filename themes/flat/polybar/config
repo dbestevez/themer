@@ -138,7 +138,7 @@ tail     = true
 exec        = ~/.bin/xmenu-button.sh
 click-left  = ~/.bin/xmenu-dropdown.sh
 click-right = ~/.bin/xmenu-dropdown.sh
-format-foreground = ${colors.foreground_muted}
+format-foreground = ${colors.foreground}
 
 [module/mpd]
 type = internal/mpd
