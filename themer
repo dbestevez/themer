@@ -113,10 +113,29 @@ function main() {
 }
 
 # ---
+# Returns a random color scheme.
+# ---
+function random_colors() {
+    colors=$(ls colors | sed -e "s/\.sh//g")
+    size=$(echo "$colors" | wc -w)
+
+    i=0
+    array=()
+    for c in $colors; do
+        array[$i]="$c"
+        i=$(($i+1))
+    done
+
+    color=$(($RANDOM % $size))
+
+    echo ${array[$color]}
+}
+
+# ---
 # Returns a random theme.
 # ---
 function random_theme() {
-    themes=$(list | cut -d':' -f 2)
+    themes=$(ls themes)
     size=$(echo "$themes" | wc -w)
 
     i=0
