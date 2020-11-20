@@ -1,5 +1,6 @@
 ; vim:ft=dosini
 [settings]
+pseudo-transparency = true
 screenchange-reload = true
 
 [colors]
