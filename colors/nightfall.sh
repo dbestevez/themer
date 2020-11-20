@@ -32,4 +32,4 @@ export flat_fg=$color5
 export flat_fg_hl=$color5
 export flat_fg_hl_val=5
 export flat_fg_mt=$color0
-export flat_tmux_fg_hl="colour6"
+export flat_tmux_fg_hl="colour5"
