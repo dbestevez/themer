@@ -23,11 +23,24 @@ export color21="#43a5d5"
 export color22="#555555"
 export color23="#db7b55"
 
+# Air theme
+export air_bg=$color16
+export air_danger=$color1
+export air_cursor=$color6
+export air_fg=$color6
+export air_hl=$color6
+export air_info=$color6
+export air_mt=$color8
+export air_separator=$color8
+export air_tmux_fg_hl="colour6"
+export air_warning=$color3
+
 # Flat theme
 export flat_bg=$color16
 export flat_bg_hl=$color8
 export flat_bg_hl_val=8
 export flat_bg_mt=$color16
+export flat_cursor=$color6
 export flat_fg=$color6
 export flat_fg_hl=$color6
 export flat_fg_hl_val=6
