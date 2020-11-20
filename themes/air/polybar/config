@@ -3,12 +3,14 @@
 screenchange-reload = true
 
 [colors]
-background = #d5d5d6
-foreground = #B4ADA9
-danger     = #7C5175
-success    = #17bebb
-info       = #356085
-warning    = #fed02e
+background = $air_bg
+danger     = $air_danger
+foreground = $air_fg
+highlight  = $air_hl
+info       = $air_info
+muted      = $air_mt
+separator  = $air_separator
+warning    = $air_warning
 
 [bar/bottom]
 height       = 24
@@ -27,7 +29,6 @@ foreground = ${colors.foreground}
 tray-position    = center
 tray-background  =
 tray-padding     = 5
-tray-transparent = true
 
 font-0 = MesloLGSDZ Nerd Font:pixelsize=10;2
 
@@ -43,7 +44,7 @@ monitor      = ${env:PRIMARY}
 width        = 100%
 wm-restack   = bspwm
 
-background =
+background = #00000000
 foreground = ${colors.foreground}
 
 font-0 = MesloLGSDZ Nerd Font:pixelsize=10;3
@@ -72,7 +73,7 @@ format-discharging-prefix-foreground = ${colors.danger}
 label-discharging-margin-right       = 1
 
 format-full                          = "<ramp-capacity> <label-full>"
-format-full-foreground               = ${colors.info}
+format-full-foreground               = ${colors.foreground}
 format-full-prefix                   = "• "
 format-full-prefix-foreground        = ${colors.danger}
 label-full-margin-right              = 1
@@ -101,15 +102,15 @@ type = internal/bspwm
 
 pin-workspaces = false
 
-label-empty               = %icon% %index%
-label-empty-foreground    = ${colors.danger}
+label-empty               = •
+label-empty-foreground    = ${colors.muted}
 label-empty-padding       = 1
-label-focused             = %icon% %index%
-label-focused-foreground  = ${colors.info}
+label-focused             = •
+label-focused-foreground  = ${colors.highlight}
 label-focused-padding     = 1
-label-normal              = %icon% %index%
-label-occupied            = %icon% %index%
-label-occupied-foreground = ${colors.danger}
+label-normal              = •
+label-occupied            = •
+label-occupied-foreground = ${colors.muted}
 label-occupied-padding    = 1
 label-urgent              = %icon% %index%
 label-urgent-foreground   = ${colors.danger}
@@ -126,7 +127,7 @@ type = internal/cpu
 
 interval = 2
 
-format-foreground           = ${colors.info}
+format-foreground           = ${colors.foreground}
 format-prefix               = 
 format-prefix-padding-right = 1
 label                       = %percentage:2%%
@@ -141,15 +142,15 @@ time     = "%H:%M"
 time-alt = "%H:%M:%S"
 
 label              = "%date%%time%"
-label-foreground   = ${colors.info}
+label-foreground   = ${colors.foreground}
 label-margin-right = 1
 
 [module/lan]
 type = internal/network
 interface = ${env:ETH}
 
-label-connected               =  %upspeed:8% %{F#7C5175}•%{F#356085}  %downspeed:8%
-label-connected-foreground    = ${colors.info}
+label-connected               =  %upspeed:8% %{F$air_separator}•%{F$air_fg}  %downspeed:8%
+label-connected-foreground    = ${colors.foreground}
 
 [module/memory]
 type = internal/memory
@@ -159,28 +160,28 @@ interval = 2
 format-prefix               = 
 format-prefix-padding-right = 1
 label                       = "%percentage_used:2%%"
-format-prefix-foreground    = ${colors.info}
-label-foreground            = ${colors.info}
+format-prefix-foreground    = ${colors.foreground}
+label-foreground            = ${colors.foreground}
 
 [module/mpd]
 type = internal/mpd
 
 format-offline            = <label-offline>
-format-offline-foreground = ${colors.info}
+format-offline-foreground = ${colors.foreground}
 format-offline-margin     = 1
 label-offline             = ﱙ offline
 
 format-online             = "<icon-prev> <icon-seekb> <icon-stop> <toggle> <icon-seekf> <icon-next> <label-time> <label-song>"
-format-online-foreground  = ${colors.info}
+format-online-foreground  = ${colors.foreground}
 format-online-margin      = 1
 format-online-spacing     = 1
 
 label-song            = "  %artist% - %title%"
 label-song-ellipsis   = true
-label-song-foreground = ${colors.info}
+label-song-foreground = ${colors.foreground}
 label-song-maxlen     = 40
 label-song-prefix     = •
-label-time-foreground = ${colors.danger}
+label-time-foreground = ${colors.highlight}
 
 icon-prev      = 
 icon-stop      = 
@@ -200,15 +201,16 @@ type         = custom/menu
 expand-right = false
 
 label-open                 = 
-label-open-foreground      = ${colors.danger}
-label-open-padding-right   = 1
+label-open-foreground      = ${colors.foreground}
+label-open-padding-right   = 2
 
 label-close                = 
-label-close-foreground     = ${colors.info}
-label-close-padding        = 1
+label-close-foreground     = ${colors.foreground}
+label-close-padding-left   = 1
+label-close-padding-right  = 2
 
 label-separator            = •
-label-separator-foreground = ${colors.info}
+label-separator-foreground = ${colors.separator}
 
 ; Lock
 menu-0-0               = 
@@ -232,7 +234,7 @@ menu-0-2-padding       = 1
 type = custom/text
 
 content            = " • "
-content-foreground = ${colors.danger}
+content-foreground = ${colors.separator}
 
 [module/temperature]
 type = internal/temperature
@@ -242,12 +244,12 @@ thermal-zone     = 0
 warn-temperature = 60
 
 format                 = <ramp><label>
-format-foreground      = ${colors.info}
-label                  = %temperature:2%
+format-foreground      = ${colors.foreground}
+label                  = %temperature-c:2%
 
-format-warn            = TMP: <label-warn>
+format-warn            = <ramp><label-warn>
 format-warn-foreground = ${colors.danger}
-label-warn             = %temperature:2%
+label-warn             = %temperature-c:2%
 
 ramp-0 = 
 ramp-1 = 
@@ -261,7 +263,7 @@ ramp-padding-right = 1
 type = internal/alsa
 
 format-volume            = <ramp-volume> <label-volume>
-format-volume-foreground = ${colors.info}
+format-volume-foreground = ${colors.foreground}
 label-volume             = "%percentage:3%%"
 
 format-muted-foreground  = ${colors.danger}
@@ -279,7 +281,7 @@ interface = ${env:WLAN}
 interval  = 3.0
 
 format-connected               =  <label-connected>
-format-connected-foreground    = ${colors.info}
+format-connected-foreground    = ${colors.foreground}
 label-connected                = %essid%
 
 format-disconnected            = 睊<label-disconnected>
@@ -289,7 +291,7 @@ label-disconnected             = %ifname% disconnected
 [module/xwindow]
 type = internal/xwindow
 
-format-foreground        = ${colors.danger}
+format-foreground        = ${colors.info}
 format-suffix            = " • "
-format-suffix-foreground = ${colors.info}
+format-suffix-foreground = ${colors.separator}
 label                    = %title:0:30:...%
