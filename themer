@@ -9,8 +9,7 @@ DIR=`dirname $(readlink -f $0)`
 # ---
 function help() {
     if [ "$*" != "" ] ; then
-        echo "themer: $*"
-        echo "";
+        echo -e "\E[31;7m$*\033[0m"
     fi
 
 cat << EOF
@@ -25,7 +24,11 @@ Options:
   -t, --theme   The theme to configure
 EOF
 
-    exit 0;
+    if [ "$*" != "" ] ; then
+        exit 1
+    fi
+
+    exit 0
 }
 
 # ---
@@ -82,18 +85,17 @@ function main() {
 
     # No theme to apply
     if [[ ! $theme ]] || [[ ! -d $DIR/themes/$theme ]]; then
-        echo -e "\E[31;5merror: unknown theme\033[0m"
-        help
-        exit -1
+        help "Unknown theme \"$theme\""
+    fi
+
+    if [ ! -f $DIR/colors/$colors.sh ]; then
+        help "Unknown color scheme \"$colors\""
     fi
 
     echo "theme: $theme" > $DIR/last
     echo "colors: $colors" >> $DIR/last
 
     echo "Applying $theme theme with $colors colors..."
-    if [ ! -f $DIR/colors/$colors.sh ]; then
-        help "Unknown color scheme '$1'"
-    fi
 
     source $DIR/colors/$colors.sh
 
