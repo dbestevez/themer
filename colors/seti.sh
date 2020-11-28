@@ -38,7 +38,7 @@ export air_tmux_fg_hl="colour4"
 
 # Flat theme
 export flat_bg=$color16
-export flat_bg_hl=$color8
+export flat_bg_hl=$color0
 export flat_bg_hl_val=8
 export flat_bg_mt=$color16
 export flat_cursor=$color3
@@ -47,3 +47,15 @@ export flat_fg_hl=$color4
 export flat_fg_hl_val=4
 export flat_fg_mt=$color0
 export flat_tmux_fg_hl="colour4"
+
+# Tabular theme
+export future_bg=$color16
+export future_bg_hl=$color8
+export future_bg_hl_val=8
+export future_bg_mt=$color16
+export future_cursor=$color6
+export future_fg=$color7
+export future_fg_hl=$color4
+export future_fg_hl_val=4
+export future_fg_mt=$color8
+export future_tmux_fg_hl="colour4"

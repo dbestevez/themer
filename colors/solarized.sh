@@ -46,3 +46,15 @@ export flat_fg_hl=$color6
 export flat_fg_hl_val=6
 export flat_fg_mt=$color0
 export flat_tmux_fg_hl="colour6"
+
+# Tabular theme
+export future_bg=$color8
+export future_bg_hl=$color8
+export future_bg_hl_val=8
+export future_bg_mt=$color16
+export future_cursor=$color6
+export future_fg=$color7
+export future_fg_hl=$color6
+export future_fg_hl_val=6
+export future_fg_mt=$color16
+export future_tmux_fg_hl="colour4"
