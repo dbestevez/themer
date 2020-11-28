@@ -29,11 +29,11 @@ let s:p.tabline.tabsel  = [ [ g:color15, g:color16 ] ]
 let s:p.tabline.middle  = [ [ g:color7, g:color0 ] ]
 let s:p.tabline.right   = copy(s:p.tabline.tabsel)
 
-let g:lightline#colorscheme#fox#palette = lightline#colorscheme#flatten(s:p)
+let g:lightline#colorscheme#future#palette = lightline#colorscheme#flatten(s:p)
 
 let g:lightline.separator = { 'left': '', 'right': '' }
 let g:lightline.subseparator = { 'left': '', 'right': '' }
 let g:lightline.tabline_separator = { 'left': '', 'right': '' }
 let g:lightline.tabline_subseparator = { 'left': '', 'right': '' }
 
-let g:lightline.colorscheme = 'fox'
+let g:lightline.colorscheme = 'future'

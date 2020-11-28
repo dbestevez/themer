@@ -8,7 +8,7 @@ if exists("syntax_on")
   syntax reset
 endif
 
-let g:colors_name = "fox"
+let g:colors_name = "future"
 
 " Editor
 call Themer("Cursor",                       g:none,       g:color11,    "NONE")
