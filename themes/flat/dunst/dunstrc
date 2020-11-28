@@ -43,19 +43,19 @@ frame_color          = "$color0"
 [urgency_low]
 frame_color = "$color0"
 foreground  = "$color2"
-background  = "$color16"
+background  = "$flat_bg"
 timeout     = 5
 
 [urgency_normal]
 frame_color = "$color0"
-foreground  = "$color4"
-background  = "$color16"
+foreground  = "$flat_fg"
+background  = "$flat_bg"
 timeout     = 5
 
 [urgency_critical]
 frame_color = "$color0"
 foreground  = "$color1"
-background  = "$color16"
+background  = "$flat_bg"
 timeout     = 10
 
 [shortcuts]
