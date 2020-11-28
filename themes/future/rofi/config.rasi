@@ -1,0 +1,129 @@
+configuration {
+	lines: 8;
+	font: "CaskaydiaCove Nerd Font 12";
+	location: 6;
+    yoffset: -7;
+	fixed-num-lines: false;
+	terminal: "termite";
+	ssh-command: "{terminal} -e "{ssh-client} {host}"";
+	sidebar-mode: true;
+	line-margin: 10;
+	fullscreen: false;
+	fake-transparency: true;
+	display-window: "ﬓ";
+	display-run: "";
+	display-ssh: "";
+	display-combi: "";
+	kb-remove-char-back: "BackSpace";
+	kb-remove-to-eol: "Control+Delete";
+	kb-accept-entry: "Return";
+	kb-mode-next: "Shift+Right,Control+l";
+	kb-mode-previous: "Shift+Left,Control+h";
+	kb-row-up: "Up,Control+k";
+	kb-row-down: "Down,Control+j";
+}
+
+* {
+    background-color: rgba(0, 0, 0, 0);
+    text-color: $flat_fg;
+    border-color: $flat_fg_mt;
+    border-size: 0;
+
+    selected-background: $future_bg_hl;
+    selected-foreground: $future_fg_hl;
+}
+
+window {
+    width: 20%;
+    children: [ listview, inputbar ];
+}
+
+textbox {
+    text-color: $color1;
+}
+
+textbox-s-t-l-w {
+	font: "CaskaydiaCove Nerd Font Mono 16";
+    background-color: none;
+    expand: false;
+    str: "";
+    text-color: $color7;
+}
+
+textbox-s-t-r-w {
+    background-color: $color8;
+    expand: false;
+    font: "CaskaydiaCove Nerd Font Mono 16";
+    margin: 0 0 0 -2px;
+    spacing: 0;
+    str: "";
+    text-color: $color7;
+}
+
+textbox-s-t-r-b {
+    expand: false;
+    font: "CaskaydiaCove Nerd Font Mono 16";
+    margin: 0 0 0 -2px;
+    spacing: 0;
+    str: "";
+    text-color: $color8;
+}
+
+inputbar {
+    children: [ textbox-s-t-l-w, prompt, textbox-s-t-r-w, entry, textbox-s-t-r-b ];
+}
+
+prompt {
+    background-color: $color7;
+    expand: false;
+    margin: 0 0 0 -2px;
+    padding: 0px 5px;
+    spacing: 0;
+	font: "CaskaydiaCove Nerd Font Mono 14";
+    text-color: $flat_bg;
+}
+
+entry {
+    background-color: $color8;
+    margin: 0 0 0 -2px;
+    expand: true;
+    padding: 6px;
+	font: "Cascadia Code 9";
+}
+
+listview {
+    background-color: $color8;
+    fixed-height: 0;
+    margin: 0 0 8px 36px;
+    border-color: @separatorcolor;
+    scrollbar: false;
+}
+
+element {
+  padding: 2px;
+  margin: 4px;
+}
+
+element.selected {
+    background-color: @selected-background;
+    text-color: @selected-foreground;
+}
+
+element.urgent {
+    text-color: $color1;
+}
+
+element.active {
+    text-color: $color2;
+}
+
+element.selected.active {
+    text-color: $color2;
+}
+
+element.selected.urgent {
+    text-color: $color1;
+}
+
+/* vim:ft=css
+ *
