@@ -483,7 +483,7 @@ function updateZsh() {
         return
     fi
 
-    mkdir -p $HOME/.config/zsh/config/environments/theme.sh
+    mkdir -p $HOME/.config/zsh/config/environments
     cp $DIR/themes/$1/zsh/theme.sh $HOME/.config/zsh/config/environments/theme.sh
 
     echo -e "\E[1;32mDONE\033[0m"
