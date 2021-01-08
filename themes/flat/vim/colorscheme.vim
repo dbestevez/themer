@@ -27,7 +27,7 @@ call Themer("SignColumn",                   g:color6,  g:none,    "NONE")
 
 " Delimiter
 call Themer("ColorColumn",                  g:none,    g:color0,  "NONE")
-call Themer("VertSplit",                    g:color0,  g:bg,      "NONE")
+call Themer("VertSplit",                    g:color0,  g:color16, "NONE")
 call Themer("TabLine",                      g:none,    g:none,    "NONE")
 call Themer("TabLineFill",                  g:none,    g:none,    "NONE")
 call Themer("TabLineSel",                   g:none,    g:none,    "NONE")
@@ -48,14 +48,14 @@ call Themer("Title",                        g:color9,  g:none,    "NONE")
 
 " Visual aid
 call Themer("MatchParen",                   g:color9,  g:none,    "NONE")
-call Themer("NonText",                      g:color4,  g:bg,      "NONE")
+call Themer("NonText",                      g:color4,  g:color16, "NONE")
 call Themer("Visual",                       g:color3,  g:color8,  "NONE")
 call Themer("Todo",                         g:color4,  g:none,    "NONE")
 call Themer("Underlined",                   g:none,    g:none,    "underline")
 call Themer("Error",                        g:none,    g:color9,  "NONE")
 call Themer("ErrorMsg",                     g:none,    g:color9,  "NONE")
 call Themer("WarningMsg",                   g:color11, g:none,    "NONE")
-call Themer("SpecialKey",                   g:fg,      g:color8,  "NONE")
+call Themer("SpecialKey",                   g:color11, g:color8,  "NONE")
 
 " Diff
 call Themer("DiffAdd",                      g:color10, g:none,    "NONE")
@@ -91,9 +91,9 @@ call Themer("Statement",                    g:color4,  g:none,    "NONE")
 call Themer("Tag",                          g:color11, g:none,    "NONE")
 
 " Neomake
-call Themer("NeomakeWarning",               g:color11, g:bg,      "NONE")
-call Themer("NeomakeError",                 g:color9,  g:bg,      "NONE")
-call Themer("NeomakeInfo",                  g:color4,  g:bg,      "NONE")
+call Themer("NeomakeWarning",               g:color11, g:color16, "NONE")
+call Themer("NeomakeError",                 g:color9,  g:color16, "NONE")
+call Themer("NeomakeInfo",                  g:color4,  g:color16, "NONE")
 
 " C like
 call Themer("Define",                       g:color5,  g:none,    "NONE")

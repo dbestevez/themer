@@ -3,12 +3,12 @@
 screenchange-reload = true
 
 [colors]
-background           = $flat_bg
-background_highlight = $flat_bg_hl
-background_muted     = $flat_bg_mt
-foreground           = $flat_fg
-foreground_highlight = $flat_fg_hl
-foreground_muted     = $flat_fg_mt
+background           = $flat_nm_bg
+background_highlight = $flat_hl_bg
+background_muted     = $flat_mt_bg
+foreground           = $flat_nm_fg
+foreground_highlight = $flat_hl_fg
+foreground_muted     = $flat_mt_fg
 
 [bar/top]
 height       = 30
@@ -170,7 +170,7 @@ interval   = 2
 label         = %output%
 label-padding = 1
 
-exec         = ~/.bin/hamster.sh show -f "$flat_fg_mt"
+exec         = ~/.bin/hamster.sh show -f "$flat_mt_fg"
 click-right  = ~/.bin/hamster.sh open
 click-left   = ~/.bin/hamster.sh notify
 click-middle = ~/.bin/hamster.sh stop

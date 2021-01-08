@@ -30,7 +30,7 @@ filter_unmatched_urls = true
 
 [colors]
 background        = $color16
-cursor            = $flat_cursor
+cursor            = $flat_termite_cursor
 cursor_foreground = $color16
 foreground        = $color7
 foreground_bold   = $color15

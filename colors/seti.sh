@@ -37,16 +37,19 @@ export air_warning=$color3
 export air_tmux_fg_hl="colour4"
 
 # Flat theme
-export flat_bg=$color16
-export flat_bg_hl=$color0
-export flat_bg_hl_val=8
-export flat_bg_mt=$color16
-export flat_cursor=$color3
-export flat_fg=$color4
-export flat_fg_hl=$color4
-export flat_fg_hl_val=4
-export flat_fg_mt=$color0
-export flat_tmux_fg_hl="colour4"
+export flat_hl_bg=$color0
+export flat_hl_fg=$color4
+export flat_mt_bg=$color16
+export flat_mt_fg=$color0
+export flat_nm_bg=$color16
+export flat_nm_fg=$color4
+export flat_termite_cursor=$color3
+export flat_tmux_hl_bg="colour8"
+export flat_tmux_hl_fg="colour4"
+export flat_tmux_nm_bg="colour0"
+export flat_tmux_nm_fg="colour7"
+export flat_vim_hl_fg=4
+export flat_vim_nm_fg=7
 
 # Tabular theme
 export future_bg=$color16
