@@ -241,7 +241,7 @@ function updateMutt() {
     fi
 
     mkdir -p $HOME/.config/mutt
-    cp $DIR/themes/$1/mutt/config $HOME/.config/mutt/theme
+    envsubst < $DIR/themes/$1/mutt/config > $HOME/.config/mutt/theme
     sed -i -e "/^source.*theme$/d" $(readlink -f $HOME/.muttrc)
     echo "source ~/.config/mutt/theme" >> $HOME/.muttrc
 
