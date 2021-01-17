@@ -56,14 +56,15 @@ export flat_mt_bg=$color16
 export flat_mt_fg=$color0
 export flat_nm_bg=$color16
 export flat_nm_fg=$color6
+export flat_cava_hl_fg=$color8
 export flat_mutt_hl_bg="color8"
 export flat_mutt_hl_fg="color6"
 export flat_mutt_nm_fg="color12"
 export flat_termite_cursor=$color6
-export flat_tmux_nm_bg="colour0"
-export flat_tmux_nm_fg="colour12"
 export flat_tmux_hl_bg="colour8"
 export flat_tmux_hl_fg="colour6"
+export flat_tmux_nm_bg="colour0"
+export flat_tmux_nm_fg="colour12"
 export flat_vim_hl_fg=6
 export flat_vim_nm_fg=7
 
