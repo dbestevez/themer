@@ -100,6 +100,7 @@ function main() {
     source $DIR/colors/$colors.sh
 
     updateDunst     $theme
+    updateCava      $theme
     updatePicom     $theme
     updateMutt      $theme
     updatePolybar   $theme
@@ -170,6 +171,30 @@ function updateBspwm() {
     mkdir -p $HOME/.config/bspwm
     envsubst < $DIR/themes/$1/bspwm/config > $HOME/.config/bspwm/theme
     source $HOME/.config/bspwm/theme
+
+    echo -e "\E[1;32mDONE\033[0m"
+}
+
+# ---
+# Updates the dunst configuration.
+#
+# @param $1 The theme name.
+# ---
+function updateCava() {
+    command -v cava > /dev/null 2>&1 || return
+
+    echo -en "  Changing cava theme........................."
+
+    [ -f $HOME/.config/cava/config ] && rm $HOME/.config/cava/config
+
+    if  [[ ! -f $DIR/themes/$1/cava/config ]]; then
+        echo -e "\E[1;33mSKIP\033[0m"
+        return
+    fi
+
+    mkdir -p $HOME/.config/cava
+    envsubst < $DIR/themes/$1/cava/config > $HOME/.config/cava/config
+    killall dunst > /dev/null 2>&1
 
     echo -e "\E[1;32mDONE\033[0m"
 }

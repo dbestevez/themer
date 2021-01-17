@@ -1,0 +1,9 @@
+[general]
+framerate   = 60
+autosens    = 1
+bars        = 0
+bar_width   = 1
+bar_spacing = 1
+
+[color]
+foreground = '$flat_cava_hl_fg'
