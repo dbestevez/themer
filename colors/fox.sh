@@ -42,6 +42,7 @@ export flat_mt_bg=$color16
 export flat_mt_fg=$color0
 export flat_nm_bg=$color16
 export flat_nm_fg=$color7
+export flat_cava_hl_fg=$color8
 export flat_mutt_hl_bg="color8"
 export flat_mutt_hl_fg="color6"
 export flat_mutt_nm_fg="color7"

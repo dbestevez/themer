@@ -38,7 +38,7 @@ export color17=$nord6     # foreground 3
 export color18=$nord3     # background 3
 export color20="#3b758c"
 export color22="#555555"
-export color23="#db7b55"
+export color23=$nord12
 
 # Air theme
 export air_bg=$color16
@@ -59,6 +59,7 @@ export flat_mt_bg=$color16
 export flat_mt_fg=$color0
 export flat_nm_bg=$color16
 export flat_nm_fg=$color7
+export flat_cava_hl_fg=$color8
 export flat_mutt_hl_bg="color18"
 export flat_mutt_hl_fg="color4"
 export flat_mutt_nm_fg="color18"
