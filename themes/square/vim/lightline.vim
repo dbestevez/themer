@@ -34,7 +34,7 @@ let s:p.tabline.tabsel  = [ [ g:color0, g:color7 ] ]
 let s:p.tabline.middle  = [ [ g:color7, g:color0 ] ]
 let s:p.tabline.right   = copy(s:p.normal.right)
 
-let g:lightline#colorscheme#seti#palette = lightline#colorscheme#flatten(s:p)
+let g:lightline#colorscheme#square#palette = lightline#colorscheme#flatten(s:p)
 
 let g:lightline.active.left  = [ [ 'mode', 'paste' ], [ 'fugitive', 'ctrlpitem' ], [ 'filename' ], [ 'ctrlp' ] ]
 let g:lightline.active.right = [ [ 'lineinfo' ], [ 'percent' ], [ 'debug', 'warnings', 'errors' ] ]
@@ -43,4 +43,4 @@ let g:lightline.subseparator = { 'left': '', 'right': '' }
 let g:lightline.tabline_separator = { 'left': '', 'right': '' }
 let g:lightline.tabline_subseparator = { 'left': '', 'right': '' }
 
-let g:lightline.colorscheme = 'seti'
+let g:lightline.colorscheme = 'square'
