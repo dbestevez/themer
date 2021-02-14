@@ -33,9 +33,10 @@ export color13=$violet
 export color14=$base1
 export color15=$base3
 export color16=$base03
-export color20="#3b758c"
-export color22="#555555"
-export color23="#db7b55"
+export color17="#3b758c"
+export color18="#02556a"
+export color19="#555555"
+export color20="#db7b55"
 
 # Air theme
 export air_bg=$color16
@@ -53,20 +54,26 @@ export air_warning=$color3
 export flat_hl_bg=$color8
 export flat_hl_fg=$color6
 export flat_mt_bg=$color16
-export flat_mt_fg=$color0
+export flat_mt_fg=$color18
 export flat_nm_bg=$color16
 export flat_nm_fg=$color6
 export flat_cava_hl_fg=$color8
-export flat_mutt_hl_bg="color8"
+export flat_mutt_hl_bg="color18"
 export flat_mutt_hl_fg="color6"
-export flat_mutt_nm_fg="color12"
+export flat_mutt_nm_fg="color18"
+export flat_rofi_hl_bg=$color8
+export flat_rofi_hl_fg=$color6
+export flat_rofi_mt_bg=$color0
+export flat_rofi_mt_fg=$color18
+export flat_rofi_nm_bg=$color16
+export flat_rofi_nm_fg=$color7
 export flat_termite_cursor=$color6
 export flat_tmux_hl_bg="colour8"
 export flat_tmux_hl_fg="colour6"
 export flat_tmux_nm_bg="colour0"
-export flat_tmux_nm_fg="colour12"
+export flat_tmux_nm_fg="colour18"
 export flat_vim_hl_fg=6
-export flat_vim_nm_fg=7
+export flat_vim_nm_fg=18
 
 # Tabular theme
 export future_bg=$color8
