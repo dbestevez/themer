@@ -25,9 +25,6 @@ size_hints = true
 # Hide links that are no longer valid in url select overlay mode
 filter_unmatched_urls = true
 
-# emit escape sequences for extra modified keys
-#modify_other_keys = true
-
 [colors]
 background        = $color16
 cursor            = $flat_termite_cursor
