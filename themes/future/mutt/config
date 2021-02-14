@@ -1,5 +1,5 @@
 # Status format
-set status_format = "Folder: %f  %r%m messages  %?n?%n new  ?%?d?%d to delete  ?%?t?%t tagged  ?%?p?%p postponed ?"
+set status_format = " %f   %m  ﯬ %?n?%n  ?%?p?%p   ?%?d?%d   ?%?t?%t  ?"
 
 # Colors
 color normal            color7  color16

@@ -26,7 +26,7 @@ call Themer("SignColumn",                   g:color6,     g:none,       "NONE")
 
 " Delimiter
 call Themer("ColorColumn",                  g:none,       g:color0,     "NONE")
-call Themer("VertSplit",                    g:color0,     g:background, "NONE")
+call Themer("VertSplit",                    g:color0,     g:color16,    "NONE")
 call Themer("TabLine",                      g:none,       g:none,       "NONE")
 call Themer("TabLineFill",                  g:none,       g:none,       "NONE")
 call Themer("TabLineSel",                   g:none,       g:none,       "NONE")
@@ -47,14 +47,14 @@ call Themer("Title",                        g:color9,     g:none,       "NONE")
 
 " Visual aid
 call Themer("MatchParen",                   g:color9,     g:none,       "NONE")
-call Themer("NonText",                      g:color4,     g:background, "NONE")
+call Themer("NonText",                      g:color4,     g:color16,    "NONE")
 call Themer("Visual",                       g:color3,     g:color8,     "NONE")
 call Themer("Todo",                         g:color4,     g:none,       "NONE")
 call Themer("Underlined",                   g:none,       g:none,       "underline")
 call Themer("Error",                        g:none,       g:color9,     "NONE")
 call Themer("ErrorMsg",                     g:none,       g:color9,     "NONE")
 call Themer("WarningMsg",                   g:color11,    g:none,       "NONE")
-call Themer("SpecialKey",                   g:foreground, g:color8,     "NONE")
+call Themer("SpecialKey",                   g:color7,     g:color8,     "NONE")
 
 " Diff
 call Themer("DiffAdd",                      g:color10,    g:none,       "NONE")
@@ -73,13 +73,13 @@ call Themer("Number",                       g:color5,     g:none,       "NONE")
 call Themer("String",                       g:color2,     g:none,       "NONE")
 
 " Language constructs
-call Themer("Comment",                      g:color22,    g:none,       "NONE")
+call Themer("Comment",                      g:color19,    g:none,       "NONE")
 call Themer("Conditional",                  g:color4,     g:none,       "NONE")
 call Themer("Debug",                        g:color4,     g:none,       "NONE")
 call Themer("Delimiter",                    g:color15,    g:none,       "NONE")
 call Themer("Exception",                    g:color4,     g:none,       "NONE")
 call Themer("Keyword",                      g:color4,     g:none,       "NONE")
-call Themer("Noise",                        g:color23,    g:none,       "NONE")
+call Themer("Noise",                        g:color20,    g:none,       "NONE")
 call Themer("Label",                        g:color11,    g:none,       "NONE")
 call Themer("Operator",                     g:color4,     g:none,       "NONE")
 call Themer("Repeat",                       g:color4,     g:none,       "NONE")
@@ -90,9 +90,9 @@ call Themer("Statement",                    g:color4,     g:none,       "NONE")
 call Themer("Tag",                          g:color11,    g:none,       "NONE")
 
 " Neomake
-call Themer("NeomakeWarning",               g:color11,    g:background, "NONE")
-call Themer("NeomakeError",                 g:color9,     g:background, "NONE")
-call Themer("NeomakeInfo",                  g:color4,     g:background, "NONE")
+call Themer("NeomakeWarning",               g:color11,    g:color16,    "NONE")
+call Themer("NeomakeError",                 g:color9,     g:color16,    "NONE")
+call Themer("NeomakeInfo",                  g:color4,     g:color16,    "NONE")
 
 " C like
 call Themer("Define",                       g:color5,     g:none,       "NONE")
@@ -137,10 +137,10 @@ call Themer("jsNull",                       g:color9,     g:none,       "NONE")
 " PHP
 call Themer("phpClass",                     g:color7,     g:none,       "NONE")
 call Themer("phpClasses",                   g:color5,     g:none,       "NONE")
-call Themer("phpComment",                   g:color22,    g:none,       "NONE")
+call Themer("phpComment",                   g:color20,    g:none,       "NONE")
 call Themer("phpConstants",                 g:color9,     g:none,       "italic")
 call Themer("phpControlStructure",          g:color10,    g:none,       "NONE")
-call Themer("phpDocComment",                g:color22,    g:none,       "NONE")
+call Themer("phpDocComment",                g:color20,    g:none,       "NONE")
 call Themer("phpDocTags",                   g:color14,    g:none,       "NONE")
 call Themer("phpFunction",                  g:color15,    g:none,       "NONE")
 call Themer("phpFunctions",                 g:color6,     g:none,       "NONE")

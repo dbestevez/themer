@@ -25,12 +25,12 @@ configuration {
 
 * {
     background-color: rgba(0, 0, 0, 0);
-    text-color: $flat_fg;
-    border-color: $flat_fg_mt;
+    text-color: $future_nm_fg;
+    border-color: $future_nm_bg;
     border-size: 0;
 
-    selected-background: $future_bg_hl;
-    selected-foreground: $future_fg_hl;
+    selected-background: $future_hl_bg;
+    selected-foreground: $future_hl_fg;
 }
 
 window {
@@ -76,19 +76,20 @@ inputbar {
 prompt {
     background-color: $color7;
     expand: false;
+    fixed-height: 0;
     margin: 0 0 0 -2px;
-    padding: 0px 5px;
+    padding: 0px 5px 0px 5px;
     spacing: 0;
 	font: "CaskaydiaCove Nerd Font Mono 14";
-    text-color: $flat_bg;
+    text-color: $future_nm_bg;
 }
 
 entry {
     background-color: $color8;
     margin: 0 0 0 -2px;
     expand: true;
-    padding: 6px;
-	font: "Cascadia Code 9";
+    padding: 6px 6px 0 6px;
+    font: "Cascadia Code 10";
 }
 
 listview {
@@ -126,4 +127,3 @@ element.selected.urgent {
 }
 
 /* vim:ft=css
- *
