@@ -67,3 +67,9 @@ export future_nm_bg=$color16
 export future_nm_fg=$color7
 export future_termite_cursor=$color4
 export future_tmux_hl_fg="colour4"
+
+# Square theme
+export square_nm_bg=$color16
+export square_nm_fg=$color7
+export square_hl_bg=$color0
+export square_termite_cursor=$color4
