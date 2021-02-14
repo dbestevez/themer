@@ -3,12 +3,12 @@
 screenchange-reload = true
 
 [colors]
-background           = $flat_nm_bg
-background_highlight = $flat_hl_bg
-background_muted     = $flat_mt_bg
-foreground           = $flat_nm_fg
-foreground_highlight = $flat_hl_fg
-foreground_muted     = $flat_mt_fg
+hl_bg = $flat_hl_bg
+hl_fg = $flat_hl_fg
+mt_bg = $flat_mt_bg
+mt_fg = $flat_mt_fg
+nm_bg = $flat_nm_bg
+nm_fg = $flat_nm_fg
 
 [bar/top]
 height       = 30
@@ -20,17 +20,17 @@ scroll-up    = bspwm-desknext
 width        = 100%
 wm-restack   = bspwm
 
-background          = ${colors.background}
-border-bottom-color = ${colors.foreground}
+background          = ${colors.nm_bg}
+border-bottom-color = ${colors.nm_fg}
 border-bottom-size  = 0
-foreground          = ${colors.foreground}
-line-size           = 2
+foreground          = ${colors.nm_fg}
+line-size           = 0
 padding-left        = 0
 padding-right       = 0
 
 tray-position   = right
 tray-padding    = 1
-tray-background = ${colors.background}
+tray-background = ${colors.nm_bg}
 
 font-0 = JetBrains Mono:pixelsize=10;2
 font-1 = JetBrainsMono Nerd Font Mono:pixelsize=16;2
@@ -49,7 +49,7 @@ full-at = 98
 format-charging            = "%{A1:dunstify Charging <label-charging> --icon=battery-good-charging:}<animation-charging>%{A}"
 format-charging-padding    = 1
 format-full                = "%{A1:dunstify Full <label-full> --icon=battery-full:}<ramp-capacity>%{A}"
-format-full-foreground     = "${colors.foreground_muted}"
+format-full-foreground     = "${colors.mt_fg}"
 format-full-padding        = 1
 format-discharging         = "%{A1:dunstify Discharging <label-discharging> --icon=battery-good-charging:}<ramp-capacity>%{A}"
 format-discharging-padding = 1
@@ -72,16 +72,16 @@ type = internal/bspwm
 pin-workspaces = false
 
 label-empty               = %index%
-label-empty-foreground    = ${colors.foreground_muted}
+label-empty-foreground    = ${colors.mt_fg}
 label-empty-padding       = 1
 label-focused             = %index%
-label-focused-background  = ${colors.background_highlight}
-label-focused-foreground  = ${colors.foreground_highlight}
-label-focused-underline   = ${colors.foreground_highlight}
+label-focused-background  = ${colors.hl_bg}
+label-focused-foreground  = ${colors.hl_fg}
+;label-focused-underline   = ${colors.hl_fg}
 label-focused-padding     = 1
 label-normal              = %index%
 label-occupied            = %index%
-label-occupied-foreground = ${colors.foreground_muted}
+label-occupied-foreground = ${colors.mt_fg}
 label-occupied-padding    = 1
 label-urgent              = %index%
 label-urgent-padding      = 1
@@ -90,12 +90,12 @@ label-urgent-padding      = 1
 type     = internal/cpu
 interval = 2
 
-format-background           = ${colors.background}
-format-foreground           = ${colors.foreground}
+format-background           = ${colors.nm_bg}
+format-foreground           = ${colors.nm_fg}
 format-padding              = 1
 format-prefix               = ""
 format-prefix-padding-right = 1
-format-underline            = ${colors.background}
+;format-underline            = ${colors.nm_bg}
 format-warn-padding         = 1
 
 label = %percentage:2%%
@@ -107,12 +107,12 @@ interface = ${env:ETH}
 interval  = 3.0
 
 format-connected               = <label-connected>
-format-connected-foreground    = ${colors.foreground}
+format-connected-foreground    = ${colors.nm_fg}
 label-connected                = %{A1:dunstify Wired ' %downspeed%   %upspeed%' --icon=network-wired:}%{A}
 label-connected-padding        = 1
 
 format-disconnected            = <label-disconnected>
-format-disconnected-foreground = ${colors.foreground_muted}
+format-disconnected-foreground = ${colors.mt_fg}
 label-disconnected             = 
 label-disconnected-padding     = 1
 
@@ -120,12 +120,12 @@ label-disconnected-padding     = 1
 type = internal/memory
 interval = 2
 
-format-background           = ${colors.background}
-format-foreground           = ${colors.foreground}
+format-background           = ${colors.nm_bg}
+format-foreground           = ${colors.nm_fg}
 format-padding              = 1
 format-prefix               = 
 format-prefix-padding-right = 1
-format-underline            = ${colors.background}
+;format-underline            = ${colors.nm_bg}
 
 label = %percentage_used:2%%
 
@@ -137,13 +137,13 @@ tail     = true
 exec        = ~/.bin/xmenu-button.sh
 click-left  = ~/.bin/xmenu-dropdown.sh
 click-right = ~/.bin/xmenu-dropdown.sh
-format-foreground = ${colors.foreground}
+format-foreground = ${colors.nm_fg}
 
 [module/mpd]
 type = internal/mpd
 
 format-offline            = %{A1:mopidy &:}ﱙ%{A}
-format-offline-foreground = ${colors.foreground_muted}
+format-offline-foreground = ${colors.mt_fg}
 format-offline-padding    = 1
 format-online             = "<icon-prev><icon-seekb><toggle><icon-seekf><icon-next> <label-song> "
 label-song                = "%{A1:~/.bin/ncmpcpp-song.sh -a:}ﱘ%{A}"
@@ -228,20 +228,20 @@ interface = ${env:WLAN}
 interval  = 3.0
 
 format-connected               = <label-connected>
-format-connected-foreground    = ${colors.foreground}
+format-connected-foreground    = ${colors.nm_fg}
 label-connected                = %{A1:dunstify %essid% ' %downspeed%   %upspeed%' --icon=network-wireless:}直%{A}
 label-connected-padding        = 1
 
 format-disconnected            = <label-disconnected>
-format-disconnected-foreground = ${colors.foreground_muted}
+format-disconnected-foreground = ${colors.mt_fg}
 label-disconnected             = 睊
 label-disconnected-padding     = 1
 
 [module/xwindow]
 type = internal/xwindow
 
-format-background = ${colors.background_highlight}
-format-foreground = ${colors.foreground_highlight}
-format-underline  = ${colors.foreground_highlight}
+format-background = ${colors.hl_bg}
+format-foreground = ${colors.hl_fg}
+;format-underline  = ${colors.hl_fg}
 label             = %title:0:30:...%
 label-padding     = 1

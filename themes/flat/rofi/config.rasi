@@ -24,17 +24,17 @@ configuration {
 }
 
 * {
-    background-color: $flat_nm_bg;
-    text-color: $flat_nm_fg;
-    border-color: $flat_mt_fg;
-    border-width: 5px;
-    selected-background: $flat_hl_bg;
-    selected-foreground: $flat_hl_fg;
+    background-color: $flat_rofi_nm_bg;
+    text-color: $flat_rofi_nm_fg;
+    border-color: $flat_rofi_hl_bg;
+    nm-bg: $flat_rofi_mt_bg;
+    nm-fg: $flat_rofi_mt_fg;
+    hl-bg: $flat_rofi_hl_bg;
+    hl-fg: $flat_rofi_hl_fg;
 }
 
 window {
-    background-color: @background-color;
-    border: @border-width;
+    border: 5px;
     padding: 10px;
 }
 
@@ -48,25 +48,22 @@ inputbar {
 
 textbox-prompt-colon {
     border: 0 0 2px 0;
-    border-color: @selected-foreground;
     expand: false;
     margin: 0;
     padding: 5px 15px 5px 10px;
     spacing: 0;
     str: "";
-    text-color: @selected-foreground;
+    text-color: @nm-fg;
 }
 
 entry {
     border: 0 0 2px 0;
-    border-color: @selected-foreground;
     margin: 0 0 0 -2px;
     padding: 5px 10px;
 }
 
 listview {
     fixed-height: 0;
-    border-color: @separatorcolor;
     spacing: 2px;
     scrollbar: false;
     margin: 10px 0 0 0;
@@ -77,8 +74,8 @@ element {
 }
 
 element.selected {
-    background-color: @border-color;
-    text-color: @selected-foreground;
+    background-color: @hl-bg;
+    text-color: @hl-fg;
 }
 
 element.urgent {
@@ -97,33 +94,20 @@ element.selected.urgent {
     text-color: $color1;
 }
 
-scrollbar {
-    width: 4px;
-    border: 1px;
-    border-color: @border-color;
-    handle-width: 8px;
-    handle-color: @border-color;
-    padding: 0;
-}
-
 mode-switcher {
-    background-color: @border-color;
+    background-color: @nm-bg;
     margin: 10px 0 0 0;
 }
 
 button {
-    background-color: @border-color;
-    border: 0 0 2px 0;
-    border-color: @border-color;
+    background-color: @nm-bg;
     padding: 3px;
-    text-color: @selected-foreground;
+    text-color: @nm-fg;
 }
 
 button.selected {
-    background-color: @selected-background;
-    text-color: @selected-foreground;
-    border: 0 0 2px 0;
-    border-color: @selected-foreground;
+    background-color: @hl-bg;
+    text-color: @hl-fg;
 }
 
 /* vim:ft=css
