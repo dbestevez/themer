@@ -1,0 +1,116 @@
+configuration {
+	width: 30;
+	lines: 8;
+	font: "FuraMono Nerd Font 12";
+	location: 0;
+	fixed-num-lines: true;
+	terminal: "termite";
+	ssh-command: "{terminal} -e "{ssh-client} {host}"";
+	sidebar-mode: true;
+	line-margin: 10;
+	fullscreen: false;
+	fake-transparency: true;
+	display-window: "ﬓ";
+	display-run: "";
+	display-ssh: "";
+	display-combi: "";
+	kb-remove-char-back: "BackSpace";
+	kb-remove-to-eol: "Control+Delete";
+	kb-accept-entry: "Return";
+	kb-mode-next: "Shift+Right,Control+l";
+	kb-mode-previous: "Shift+Left,Control+h";
+	kb-row-up: "Up,Control+k";
+	kb-row-down: "Down,Control+j";
+}
+
+* {
+    background-color: $square_rofi_hl_bg;
+    text-color: $square_rofi_nm_fg;
+    border-color: $square_rofi_hl_bg;
+    nm-bg: $square_rofi_nm_bg;
+    nm-fg: $square_rofi_nm_fg;
+    hl-bg: $square_rofi_hl_bg;
+    hl-fg: $square_rofi_hl_fg;
+}
+
+textbox {
+    text-color: $color1;
+}
+
+inputbar {
+    children: [ textbox-prompt-colon, entry ];
+}
+
+textbox-prompt-colon {
+    background-color: @nm-bg;
+    border: 8px;
+    border-color: @nm-bg;
+    expand: false;
+    margin: 0;
+    padding: 5px 5px 5px 13px;
+    spacing: 0;
+    str: "";
+    text-color: @nm-fg;
+}
+
+entry {
+    background-color: @hl-bg;
+    border: 8px;
+    border-color: @nm-bg;
+    margin: 0 0 0 -2px;
+    padding: 5px 10px;
+}
+
+listview {
+    fixed-height: 0;
+    border: 0 8px;
+    border-color: @nm-bg;
+    spacing: 2px;
+    scrollbar: false;
+    padding: 8px;
+    margin: -2px 0 0 0;
+}
+
+element {
+  padding: 5px;
+}
+
+element.selected {
+    background-color: @hl-bg;
+    text-color: @hl-fg;
+}
+
+element.urgent {
+    text-color: $color1;
+}
+
+element.active {
+    text-color: $color2;
+}
+
+element.selected.active {
+    text-color: $color2;
+}
+
+element.selected.urgent {
+    text-color: $color1;
+}
+
+mode-switcher {
+    background-color: @nm-bg;
+    margin: -2px 0 0 0;
+    padding: 8px;
+}
+
+button {
+    background-color: @hl-bg;
+    padding: 3px;
+    text-color: @nm-fg;
+}
+
+button.selected {
+    background-color: $color2;
+    text-color: @nm-bg;
+}
+
+/* vim:ft=css
