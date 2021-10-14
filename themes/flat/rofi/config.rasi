@@ -4,7 +4,7 @@ configuration {
 	font: "JetBrainsMonoNL Nerd Font 12";
 	location: 0;
 	fixed-num-lines: true;
-	terminal: "termite";
+	terminal: "kitty";
 	ssh-command: "{terminal} -e "{ssh-client} {host}"";
 	sidebar-mode: true;
 	line-margin: 10;
@@ -17,6 +17,7 @@ configuration {
 	kb-remove-char-back: "BackSpace";
 	kb-remove-to-eol: "Control+Delete";
 	kb-accept-entry: "Return";
+	kb-mode-complete: "";
 	kb-mode-next: "Shift+Right,Control+l";
 	kb-mode-previous: "Shift+Left,Control+h";
 	kb-row-up: "Up,Control+k";
@@ -25,6 +26,10 @@ configuration {
 
 * {
     background-color: $flat_rofi_nm_bg;
+    normal-background: $flat_rofi_nm_bg;
+    alternate-normal-background: $flat_rofi_nm_bg;
+    normal-foreground: $flat_rofi_hl_fg;
+    alternate-normal-foreground: $flat_rofi_hl_fg;
     text-color: $flat_rofi_nm_fg;
     border-color: $flat_rofi_hl_bg;
     nm-bg: $flat_rofi_mt_bg;
@@ -34,6 +39,8 @@ configuration {
 }
 
 window {
+    background-color: $flat_rofi_nm_bg;
+    text-color: $flat_rofi_nm_fg;
     border: 5px;
     padding: 10px;
 }
@@ -63,6 +70,7 @@ entry {
 }
 
 listview {
+    border: 0;
     fixed-height: 0;
     spacing: 2px;
     scrollbar: false;
@@ -103,6 +111,7 @@ button {
     background-color: @nm-bg;
     padding: 3px;
     text-color: @nm-fg;
+    horizontal-align: 0.5;
 }
 
 button.selected {

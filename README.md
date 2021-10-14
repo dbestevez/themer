@@ -5,10 +5,10 @@ This script helps me to customize my current desktop environment. It is focused 
 The list of applications I customize with themer (for now) are:
 
   - [bspwm](https://github.com/baskerville/bspwm)
+  - [kitty](https://github.com/kovidgoyal/kitty)
   - mutt
   - [polybar](https://github.com/jaagr/polybar)
   - [rofi](https://github.com/DaveDavenport/rofi)
-  - [termite](https://github.com/thestinger/termite)
   - tmux
   - vim (colorscheme and lightline plugin)
 
@@ -54,4 +54,4 @@ To install a theme execute:
 $ themer <theme>
 ```
 
-> Themer will automatically reload configuration for bspwm, polybar, rofi, termite and tmux, no restart required. Vim and mutt have to be restarted to use the installed theme.
+> Themer will automatically reload configuration for bspwm, polybar, rofi, kitty and tmux, no restart required. Vim and mutt have to be restarted to use the installed theme.

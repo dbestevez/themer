@@ -16,7 +16,6 @@ export nord13="#ebcb8b"
 export nord14="#a3be8c"
 export nord15="#b48ead"
 
-# Termite
 export color0=$nord1      # background 1
 export color1=$nord11
 export color2=$nord14
@@ -59,6 +58,7 @@ export flat_mt_fg=$color18
 export flat_nm_bg=$color16
 export flat_nm_fg=$color7
 export flat_cava_hl_fg=$color8
+export flat_kitty_cursor=$color6
 export flat_mutt_hl_bg="color18"
 export flat_mutt_hl_fg="color4"
 export flat_mutt_nm_fg="color18"
@@ -68,7 +68,6 @@ export flat_rofi_mt_bg=$color0
 export flat_rofi_mt_fg=$color18
 export flat_rofi_nm_bg=$color16
 export flat_rofi_nm_fg=$color7
-export flat_termite_cursor=$color6
 export flat_tmux_hl_bg="colour8"
 export flat_tmux_hl_fg="colour4"
 export flat_tmux_nm_bg="colour0"
@@ -83,17 +82,17 @@ export future_mt_bg=$color16
 export future_mt_fg=$color16
 export future_nm_bg=$color8
 export future_nm_fg=$color7
-export future_termite_cursor=$color6
+export future_kitty_cursor=$color6
 export future_tmux_hl_fg="colour4"
 
 # Square theme
 export square_nm_bg=$color16
 export square_nm_fg=$color7
 export square_hl_bg=$color8
+export square_kitty_cursor=$color6
 export square_rofi_hl_bg=$color0
 export square_rofi_hl_fg=$color4
 export square_rofi_nm_bg=$color16
 export square_rofi_nm_fg=$color7
-export square_termite_cursor=$color6
 export square_tmux_nm_bg="colour0"
 export square_tmux_nm_fg="colour7"

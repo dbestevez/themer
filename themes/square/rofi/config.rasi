@@ -4,7 +4,7 @@ configuration {
 	font: "FuraMono Nerd Font 12";
 	location: 0;
 	fixed-num-lines: true;
-	terminal: "termite";
+	terminal: "kitty";
 	ssh-command: "{terminal} -e "{ssh-client} {host}"";
 	sidebar-mode: true;
 	line-margin: 10;

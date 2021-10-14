@@ -4,7 +4,7 @@ configuration {
 	location: 6;
     yoffset: -7;
 	fixed-num-lines: false;
-	terminal: "termite";
+	terminal: "kitty";
 	ssh-command: "{terminal} -e "{ssh-client} {host}"";
 	sidebar-mode: true;
 	line-margin: 10;

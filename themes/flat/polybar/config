@@ -77,7 +77,6 @@ label-empty-padding       = 1
 label-focused             = %index%
 label-focused-background  = ${colors.hl_bg}
 label-focused-foreground  = ${colors.hl_fg}
-;label-focused-underline   = ${colors.hl_fg}
 label-focused-padding     = 1
 label-normal              = %index%
 label-occupied            = %index%

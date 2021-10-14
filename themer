@@ -101,11 +101,11 @@ function main() {
 
     updateDunst     $theme
     updateCava      $theme
-    updatePicom     $theme
+    updateKitty     $theme
     updateMutt      $theme
+    updatePicom     $theme
     updatePolybar   $theme
     updateRofi      $theme
-    updateTermite   $theme
     updateZsh       $theme
     updateTmux      $theme
     updateVim       $theme
@@ -224,26 +224,28 @@ function updateDunst() {
 }
 
 # ---
-# Updates the picom configuration.
+# Changes the kitty theme.
 #
 # @param $1 The theme name.
 # ---
-function updatePicom() {
-    command -v picom > /dev/null 2>&1 || return
+function updateKitty() {
+    command -v kitty > /dev/null 2>&1 || return
 
-    echo -en "  Changing picom config......................."
+    echo -en "  Changing kitty theme........................"
 
-    [ -f $HOME/.config/picom/picom.conf ] && rm $HOME/.config/picom/picom.conf
-    killall picom > /dev/null 2>&1
+    [ -f $HOME/.config/kitty/kitty.conf ] && rm $HOME/.config/kitty/kitty.conf
 
-    if  [[ ! -f $DIR/themes/$1/picom/picom.conf ]]; then
+    if [[ ! -f $DIR/themes/$1/kitty/kitty.conf ]]; then
         echo -e "\E[1;33mSKIP\033[0m"
         return
     fi
 
-    mkdir -p $HOME/.config/picom
-    cp $DIR/themes/$1/picom/picom.conf $HOME/.config/picom/picom.conf
-    picom > /dev/null 2>&1 &
+    mkdir -p $HOME/.config/kitty
+    envsubst < $DIR/themes/$1/kitty/kitty.conf > $HOME/.config/kitty/kitty.conf
+
+    if [[ -x `command -v xdotool` ]]; then
+        xdotool key 'ctrl+shift+F5'
+    fi
 
     echo -e "\E[1;32mDONE\033[0m"
 }
@@ -269,6 +271,31 @@ function updateMutt() {
     envsubst < $DIR/themes/$1/mutt/config > $HOME/.config/mutt/theme
     sed -i -e "/^source.*theme$/d" $(readlink -f $HOME/.muttrc)
     echo "source ~/.config/mutt/theme" >> $HOME/.muttrc
+
+    echo -e "\E[1;32mDONE\033[0m"
+}
+
+# ---
+# Updates the picom configuration.
+#
+# @param $1 The theme name.
+# ---
+function updatePicom() {
+    command -v picom > /dev/null 2>&1 || return
+
+    echo -en "  Changing picom config......................."
+
+    [ -f $HOME/.config/picom/picom.conf ] && rm $HOME/.config/picom/picom.conf
+    killall picom > /dev/null 2>&1
+
+    if  [[ ! -f $DIR/themes/$1/picom/picom.conf ]]; then
+        echo -e "\E[1;33mSKIP\033[0m"
+        return
+    fi
+
+    mkdir -p $HOME/.config/picom
+    cp $DIR/themes/$1/picom/picom.conf $HOME/.config/picom/picom.conf
+    picom > /dev/null 2>&1 &
 
     echo -e "\E[1;32mDONE\033[0m"
 }
@@ -349,33 +376,6 @@ function updateRofi() {
 
     mkdir -p $HOME/.config/rofi
     envsubst < $DIR/themes/$1/rofi/config.rasi > $HOME/.config/rofi/config.rasi
-
-    echo -e "\E[1;32mDONE\033[0m"
-}
-
-# ---
-# Changes the termite theme.
-#
-# @param $1 The theme name.
-# ---
-function updateTermite() {
-    command -v termite > /dev/null 2>&1 || return
-
-    echo -en "  Changing termite theme......................"
-
-    [ -f $HOME/.config/termite/config ] && rm $HOME/.config/termite/config
-
-    if [[ ! -f $DIR/themes/$1/termite/config ]]; then
-        echo -e "\E[1;33mSKIP\033[0m"
-        return
-    fi
-
-    mkdir -p $HOME/.config/termite
-    envsubst < $DIR/themes/$1/termite/config > $HOME/.config/termite/config
-
-    if [[ -x `command -v xdotool` ]]; then
-        xdotool key 'ctrl+shift+r'
-    fi
 
     echo -e "\E[1;32mDONE\033[0m"
 }
