@@ -227,9 +227,9 @@ format-online-prefix-padding    = 1
 format-online                   = "<icon-prev><icon-seekb><icon-stop><toggle><icon-seekf><icon-next><label-time> <label-song>"
 format-online-background        = ${colors.hl_bg}
 format-online-foreground        = ${colors.color7}
-label-song                      = "%{B#5a9ab8}%{F#0f1317}  %{F#5a9ab8}%{B#0f1317} %artist% - %title% "
+label-song                      = "%{B$color4}%{F$square_nm_bg}  %{F$color4}%{B$square_hl_bg} %artist% - %title% "
 label-song-foreground           = ${colors.color2}
-label-time                      = "%{B#090b0d} %{B#cec54b}%{F#0f1317}  %{F#cec54b}%{B#0f1317} %elapsed%/%total% %{B#090b0d}"
+label-time                      = "%{B$square_nm_bg} %{B$color3}%{F$square_nm_bg}  %{F$color3}%{B$square_hl_bg} %elapsed%/%total% %{B$square_nm_bg}"
 
 icon-prev             = 
 icon-prev-foreground  = ${colors.color5}
