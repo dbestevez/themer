@@ -38,7 +38,6 @@ configuration {
     alternate-active-background: $square_rofi_hl_bg;
     alternate-normal-background: $square_rofi_hl_bg;
     alternate-normal-foreground: $square_rofi_nm_fg;
-    alternate-urgent-background: #fca;
     normal-background:           $square_rofi_hl_bg;
     normal-foreground:           $square_rofi_nm_fg;
     selected-active-background:  $color2;
@@ -47,7 +46,6 @@ configuration {
     selected-normal-foreground:  @nm-bg;
     selected-urgent-background:  $square_rofi_hl_bg;
     selected-urgent-foreground:  $square_rofi_hl_bg;
-    urgent-background:           #fca;
     urgent-foreground:           rgba ( 218, 66, 129, 100 % );
 }
 

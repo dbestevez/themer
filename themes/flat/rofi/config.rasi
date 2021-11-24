@@ -36,6 +36,19 @@ configuration {
     nm-fg: $flat_rofi_mt_fg;
     hl-bg: $flat_rofi_hl_bg;
     hl-fg: $flat_rofi_hl_fg;
+
+    active-background:           $flat_rofi_nm_bg;
+    active-foreground:           $color4;
+    alternate-active-background: $flat_rofi_hl_bg;
+    alternate-normal-foreground: $flat_rofi_nm_fg;
+    normal-foreground:           $flat_rofi_nm_fg;
+    selected-active-background:  $flat_rofi_hl_bg;
+    selected-active-foreground:  $flat_rofi_nm_bg;
+    selected-normal-background:  $flat_rofi_hl_bg;
+    selected-normal-foreground:  $flat_rofi_hl_fg;
+    selected-urgent-background:  $flat_rofi_hl_bg;
+    selected-urgent-foreground:  $flat_rofi_hl_fg;
+    urgent-foreground:           $color1;
 }
 
 window {
@@ -81,7 +94,7 @@ element {
   padding: 5px;
 }
 
-element.selected {
+element selected {
     background-color: @hl-bg;
     text-color: @hl-fg;
 }
