@@ -33,8 +33,8 @@ call Themer("TabLineSel",                   g:none,       g:none,       "NONE")
 
 " File Navigation/Searching
 call Themer("Directory",                    g:color4,     g:none,       "NONE")
-call Themer("IncSearch",                    g:color15,    g:color7,     "NONE")
-call Themer("Search",                       g:color15,    g:color7,     "NONE")
+call Themer("IncSearch",                    g:color0,     g:color4,     "NONE")
+call Themer("Search",                       g:color0,     g:color4,     "NONE")
 
 " Completion menu
 call Themer("Pmenu",                        g:none,       g:color0,     "NONE")
@@ -141,7 +141,7 @@ call Themer("phpComment",                   g:color4,     g:none,       "NONE")
 call Themer("phpConstants",                 g:color9,     g:none,       "italic")
 call Themer("phpControlStructure",          g:color10,    g:none,       "NONE")
 call Themer("phpDocComment",                g:color4,     g:none,       "NONE")
-call Themer("phpDocTags",                   g:color23,    g:none,       "italic")
+call Themer("phpDocTags",                   g:color6,     g:none,       "italic")
 call Themer("phpFunction",                  g:color9,     g:none,       "NONE")
 call Themer("phpFunctions",                 g:color5,     g:none,       "NONE")
 call Themer("phpKeyword",                   g:color11,    g:none,       "NONE")
@@ -156,7 +156,7 @@ call Themer("phpTryCatchedException",       g:color9,     g:none,       "NONE")
 call Themer("phpTryFinally",                g:color9,     g:none,       "NONE")
 call Themer("phpTryStart",                  g:color9,     g:none,       "NONE")
 call Themer("phpType",                      g:color20,    g:none,       "italic")
-call Themer("phpVarSelector",               g:color22,    g:none,       "NONE")
+call Themer("phpVarSelector",               g:color10,    g:none,       "NONE")
 call Themer("phpVariable",                  g:color15,    g:none,       "NONE")
 call Themer("phpParent",                    g:color15,    g:none,       "NONE")
 
