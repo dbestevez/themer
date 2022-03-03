@@ -14,15 +14,15 @@ let g:colors_name = "square"
 call Themer("Cursor",                       g:none,       g:color11,    "NONE")
 call Themer("CursorLine",                   g:none,       g:color8,     "NONE")
 call Themer("CursorLineNR",                 g:color15,    g:color8,     "NONE")
-call Themer("LineNr",                       g:color7,     g:color0,     "NONE")
+call Themer("LineNr",                       g:color8,     g:none,       "NONE")
 call Themer("multiple_cursors_cursor",      g:none,       g:color11,    "NONE")
 call Themer("Normal",                       g:color15,    g:background, "NONE")
 
 " Number column
 call Themer("CursorColumn",                 g:none,       g:color5,     "NONE")
-call Themer("FoldColumn",                   g:color6,     g:color0,     "NONE")
+call Themer("FoldColumn",                   g:color6,     g:none,       "NONE")
 call Themer("Folded",                       g:color6,     g:none,       "NONE")
-call Themer("SignColumn",                   g:color6,     g:color0,     "NONE")
+call Themer("SignColumn",                   g:color6,     g:none,       "NONE")
 
 " Delimiter
 call Themer("ColorColumn",                  g:none,       g:color0,     "NONE")
