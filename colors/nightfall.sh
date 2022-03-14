@@ -13,12 +13,16 @@ export color11="#ccbd8c"
 export color12="#3377aa"
 export color13="#ba77a9"
 export color14="#77a9ba"
-export color15="#d6d6d6"
-export color16="#191119"
-export color17="#d4d7d6"
-export color18="#5a404f"
-export color19="#3d556d"
-export color20="#ff7944"
+export color15="#d4d7d6"
+export color16="#191119" # background0
+export color17="#291c29" # background1
+export color18="#402b37" # background2
+export color19="#5a404f" # background3
+export color20="#785469" # foreground012
+export color21="#ba77a9" # foreground3
+export color22="#ba77a9" # cursor
+export color23="#3d556d" # comments
+export color24="#d57f5e" # warning
 
 # Air theme
 export air_bg=$color16
@@ -31,31 +35,6 @@ export air_mt=$color4
 export air_separator=$color5
 export air_tmux_fg_hl="colour5"
 export air_warning=$color3
-
-# Flat theme
-export flat_hl_bg=$color8
-export flat_hl_fg=$color5
-export flat_mt_bg=$color16
-export flat_mt_fg=$color18
-export flat_nm_bg=$color16
-export flat_nm_fg=$color5
-export flat_cava_hl_fg=$color8
-export flat_kitty_cursor=$color5
-export flat_mutt_hl_bg="color18"
-export flat_mutt_hl_fg="color5"
-export flat_mutt_nm_fg="color18"
-export flat_rofi_hl_bg=$color8
-export flat_rofi_hl_fg=$color5
-export flat_rofi_mt_bg=$color0
-export flat_rofi_mt_fg=$color18
-export flat_rofi_nm_bg=$color16
-export flat_rofi_nm_fg=$color5
-export flat_tmux_hl_bg="colour8"
-export flat_tmux_hl_fg="colour5"
-export flat_tmux_nm_bg="colour0"
-export flat_tmux_nm_fg="colour18"
-export flat_vim_hl_fg=5
-export flat_vim_nm_fg=18
 
 # Future theme
 export future_hl_bg=$color8

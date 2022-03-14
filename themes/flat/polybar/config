@@ -3,12 +3,14 @@
 screenchange-reload = true
 
 [colors]
-hl_bg = $flat_hl_bg
-hl_fg = $flat_hl_fg
-mt_bg = $flat_mt_bg
-mt_fg = $flat_mt_fg
-nm_bg = $flat_nm_bg
-nm_fg = $flat_nm_fg
+background1 = $color17
+background2 = $color18
+foreground012 = $color20
+foreground3 = $color21
+color1 = $color1
+color2 = $color2
+color3 = $color3
+color4 = $color4
 
 [bar/top]
 height       = 30
@@ -20,22 +22,20 @@ scroll-up    = bspwm-desknext
 width        = 100%
 wm-restack   = bspwm
 
-background          = ${colors.nm_bg}
-border-bottom-color = ${colors.nm_fg}
-border-bottom-size  = 0
-foreground          = ${colors.nm_fg}
+background          = ${colors.background1}
+foreground          = ${colors.foreground3}
 line-size           = 0
 padding-left        = 0
 padding-right       = 0
 
 tray-position   = right
 tray-padding    = 1
-tray-background = ${colors.nm_bg}
+tray-background = ${colors.background1}
 
 font-0 = JetBrains Mono:pixelsize=10;2
 font-1 = JetBrainsMono Nerd Font Mono:pixelsize=16;2
 
-modules-left   = menu bspwm xwindow
+modules-left   = powermenu bspwm xwindow
 modules-center =
 modules-right  = memory cpu temperature mpd task  wlan lan volume battery time
 
@@ -46,13 +46,15 @@ battery = BAT0
 adapter = ${env:POWER}
 full-at = 98
 
-format-charging            = "%{A1:dunstify Charging <label-charging> --icon=battery-good-charging:}<animation-charging>%{A}"
-format-charging-padding    = 1
-format-full                = "%{A1:dunstify Full <label-full> --icon=battery-full:}<ramp-capacity>%{A}"
-format-full-foreground     = "${colors.mt_fg}"
-format-full-padding        = 1
-format-discharging         = "%{A1:dunstify Discharging <label-discharging> --icon=battery-good-charging:}<ramp-capacity>%{A}"
-format-discharging-padding = 1
+format-charging               = "%{A1:dunstify Charging <label-charging> --icon=battery-good-charging:}<animation-charging>%{A}"
+format-charging-foreground    = ${colors.color3}
+format-charging-padding       = 1
+format-full                   = "%{A1:dunstify Full <label-full> --icon=battery-full:}<ramp-capacity>%{A}"
+format-full-foreground        = "${colors.foreground012}"
+format-full-padding           = 1
+format-discharging-foreground = ${colors.color1}
+format-discharging            = "%{A1:dunstify Discharging <label-discharging> --icon=battery-good-charging:}<ramp-capacity>%{A}"
+format-discharging-padding    = 1
 
 ramp-capacity-0 = 
 ramp-capacity-1 = 
@@ -72,15 +74,15 @@ type = internal/bspwm
 pin-workspaces = false
 
 label-empty               = %index%
-label-empty-foreground    = ${colors.mt_fg}
+label-empty-foreground    = ${colors.foreground012}
 label-empty-padding       = 1
 label-focused             = %index%
-label-focused-background  = ${colors.hl_bg}
-label-focused-foreground  = ${colors.hl_fg}
+label-focused-background  = ${colors.background2}
+label-focused-foreground  = ${colors.foreground3}
 label-focused-padding     = 1
 label-normal              = %index%
 label-occupied            = %index%
-label-occupied-foreground = ${colors.mt_fg}
+label-occupied-foreground = ${colors.foreground012}
 label-occupied-padding    = 1
 label-urgent              = %index%
 label-urgent-padding      = 1
@@ -89,12 +91,9 @@ label-urgent-padding      = 1
 type     = internal/cpu
 interval = 2
 
-format-background           = ${colors.nm_bg}
-format-foreground           = ${colors.nm_fg}
 format-padding              = 1
 format-prefix               = ""
 format-prefix-padding-right = 1
-;format-underline            = ${colors.nm_bg}
 format-warn-padding         = 1
 
 label = %percentage:2%%
@@ -106,12 +105,11 @@ interface = ${env:ETH}
 interval  = 3.0
 
 format-connected               = <label-connected>
-format-connected-foreground    = ${colors.nm_fg}
 label-connected                = %{A1:dunstify Wired ' %downspeed%   %upspeed%' --icon=network-wired:}%{A}
 label-connected-padding        = 1
 
 format-disconnected            = <label-disconnected>
-format-disconnected-foreground = ${colors.mt_fg}
+format-disconnected-foreground = ${colors.foreground012}
 label-disconnected             = 
 label-disconnected-padding     = 1
 
@@ -119,30 +117,47 @@ label-disconnected-padding     = 1
 type = internal/memory
 interval = 2
 
-format-background           = ${colors.nm_bg}
-format-foreground           = ${colors.nm_fg}
 format-padding              = 1
 format-prefix               = 
 format-prefix-padding-right = 1
-;format-underline            = ${colors.nm_bg}
 
 label = %percentage_used:2%%
 
-[module/menu]
-type     = custom/script
-interval = 90
-tail     = true
+[module/powermenu]
+type         = custom/menu
+expand-right = true
 
-exec        = ~/.bin/xmenu-button.sh
-click-left  = ~/.bin/xmenu-dropdown.sh
-click-right = ~/.bin/xmenu-dropdown.sh
-format-foreground = ${colors.nm_fg}
+label-open             = 
+label-open-foreground  = ${colors.foreground012}
+label-open-padding     = 1
+
+label-close            = 
+label-close-padding    = 1
+label-close-foreground = ${colors.color4}
+
+; Lock
+menu-0-0               = 
+menu-0-0-exec          = betterlockscreen -l blur
+menu-0-0-foreground    = ${colors.color2}
+menu-0-0-padding       = 1
+
+; Reboot
+menu-0-1               = 
+menu-0-1-exec          = reboot
+menu-0-1-foreground    = ${colors.color3}
+menu-0-1-padding       = 1
+
+; Poweroff
+menu-0-2               = 
+menu-0-2-exec          = shutdown -P now
+menu-0-2-foreground    = ${colors.color1}
+menu-0-2-padding       = 1
 
 [module/mpd]
 type = internal/mpd
 
 format-offline            = %{A1:mopidy &:}ﱙ%{A}
-format-offline-foreground = ${colors.mt_fg}
+format-offline-foreground = ${colors.foreground012}
 format-offline-padding    = 1
 format-online             = "<icon-prev><icon-seekb><toggle><icon-seekf><icon-next> <label-song> "
 label-song                = "%{A1:~/.bin/ncmpcpp-song.sh -a:}ﱘ%{A}"
@@ -169,7 +184,7 @@ interval   = 2
 label         = %output%
 label-padding = 1
 
-exec         = ~/.bin/hamster.sh show -f "$flat_mt_fg"
+exec         = ~/.bin/hamster.sh show -f "$color20"
 click-right  = ~/.bin/hamster.sh open
 click-left   = ~/.bin/hamster.sh notify
 click-middle = ~/.bin/hamster.sh stop
@@ -214,7 +229,7 @@ tail = true
 label         = %output%
 label-padding = 1
 
-exec         = ~/.bin/volume.sh listen -f "$flat_mt"
+exec         = ~/.bin/volume.sh listen -f "$color20"
 click-right  = exec pavucontrol &
 click-left   = ~/.bin/volume.sh toggle
 scroll-up    = ~/.bin/volume.sh up
@@ -227,20 +242,18 @@ interface = ${env:WLAN}
 interval  = 3.0
 
 format-connected               = <label-connected>
-format-connected-foreground    = ${colors.nm_fg}
 label-connected                = %{A1:dunstify %essid% ' %downspeed%   %upspeed%' --icon=network-wireless:}直%{A}
 label-connected-padding        = 1
 
 format-disconnected            = <label-disconnected>
-format-disconnected-foreground = ${colors.mt_fg}
+format-disconnected-foreground = ${colors.foreground012}
 label-disconnected             = 睊
 label-disconnected-padding     = 1
 
 [module/xwindow]
 type = internal/xwindow
 
-format-background = ${colors.hl_bg}
-format-foreground = ${colors.hl_fg}
-;format-underline  = ${colors.hl_fg}
+format-background = ${colors.background2}
+format-foreground = ${colors.foreground3}
 label             = %title:0:30:...%
 label-padding     = 1

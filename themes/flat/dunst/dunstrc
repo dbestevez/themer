@@ -21,7 +21,7 @@ dmenu                = /usr/bin/rofi -dmenu -p dunst:
 browser              = /usr/bin/firefox -new-tab
 
 alignment            = center
-font                 = JetBrainsMonoNL Nerd Font Mono 10
+font                 = JetBrainsMono Nerd Font Mono 10
 format               = "<b>%s</b>\n%b"
 markup               = yes
 plain_text           = no
@@ -42,20 +42,20 @@ frame_color          = "$color0"
 
 [urgency_low]
 frame_color = "$color0"
-foreground  = "$color2"
-background  = "$flat_nm_bg"
+foreground  = "$color21"
+background  = "$color16"
 timeout     = 5
 
 [urgency_normal]
 frame_color = "$color0"
-foreground  = "$flat_nm_fg"
-background  = "$flat_nm_bg"
+foreground  = "$color21"
+background  = "$color16"
 timeout     = 5
 
 [urgency_critical]
 frame_color = "$color0"
 foreground  = "$color1"
-background  = "$flat_nm_bg"
+background  = "$color16"
 timeout     = 10
 
 [shortcuts]

@@ -3,27 +3,27 @@ set status_format = " %f▕  %m▕?%?n? ﯬ %n▕ %?p?  %p▕?%?d?  %d�
 set pager_format  = " %C/%m▕ %f▕ %s %* ▕%?X?  %X▕? %P "
 
 # Colors
-color normal            $flat_mutt_nm_fg color16
-color status            $flat_mutt_nm_fg color0
-color index             $flat_mutt_nm_fg color16 '.*'
-color indicator         $flat_mutt_hl_fg $flat_mutt_hl_bg
+color normal            color20 color16
+color status            color20 color0
+color index             color20 color16 '.*'
+color indicator         color21 color18
 color index_number      color7  color16
 color index_collapsed   color1  color16
 color index_size        color5  color16
-color index_subject     $flat_mutt_nm_fg color16 '.*'
+color index_subject     color20 color16 '.*'
 color index_author      color4  color16 '.*'
 color index_date        color2  color16
 color index_flags       color1  color16 '.*'
 color header            color4  color16 'From: .*'
 color header            color2  color16 'Date: .*'
-color header            $flat_mutt_nm_fg color16 'Subject: .*'
+color header            color20 color16 'Subject: .*'
 color header            color1  color16 'To: .*'
 color message           color17 color16
-color body              $flat_mutt_nm_fg color16 '.*'
+color body              color20 color16 '.*'
 color bold              color15 color16
 color signature         color5  color16
-color attachment        $flat_mutt_hl_fg color16
+color attachment        color21 color16
 color sidebar_new       color1  color16
 color sidebar_divider   color0  color16
-color sidebar_indicator $flat_mutt_hl_fg color16
-color tree              $flat_mutt_nm_fg color16
+color sidebar_indicator color21 color16
+color tree              color20 color16
