@@ -13,7 +13,7 @@ rofi.display-window:      window
 rofi.bw:                  1
 rofi.padding:             15
 rofi.terminal:            kitty
-rofi.ssh-command:         {terminal} -e "{ssh-client} {host}"
+rofi.ssh-command:         {terminal} {ssh-client} {host}
 rofi.separator-style:     solid
 rofi.sidebar-mode:        true
 rofi.line-margin:         10

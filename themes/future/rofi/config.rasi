@@ -5,7 +5,7 @@ configuration {
     yoffset: -7;
 	fixed-num-lines: false;
 	terminal: "kitty";
-	ssh-command: "{terminal} -e "{ssh-client} {host}"";
+	ssh-command: "{terminal} {ssh-client} {host}";
 	sidebar-mode: true;
 	line-margin: 10;
 	fullscreen: false;
