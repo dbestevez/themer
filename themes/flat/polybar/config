@@ -13,9 +13,10 @@ color3 = $color3
 color4 = $color4
 
 [bar/top]
-height       = 30
 border-size  = 0
+dpi          = 144
 fixed-center = true
+height       = 42
 monitor      = ${env:PRIMARY}
 scroll-down  = bspwm-deskprev
 scroll-up    = bspwm-desknext
@@ -33,7 +34,7 @@ tray-padding    = 1
 tray-background = ${colors.background1}
 
 font-0 = JetBrains Mono:pixelsize=10;2
-font-1 = JetBrainsMono Nerd Font Mono:pixelsize=16;2
+font-1 = JetBrainsMono Nerd Font Mono:pixelsize=16;6
 
 modules-left   = powermenu bspwm xwindow
 modules-center =

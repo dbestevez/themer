@@ -34,8 +34,8 @@ call Themer("TabLineSel",                   g:none,    g:none,    "NONE")
 
 " File Navigation/Searching
 call Themer("Directory",                    g:color3,  g:none,    "NONE")
-call Themer("IncSearch",                    g:color0,  g:color4,  "NONE")
-call Themer("Search",                       g:color0,  g:color4,  "NONE")
+call Themer("IncSearch",                    g:color20, g:color18, "NONE")
+call Themer("Search",                       g:color20, g:color18, "NONE")
 
 " Completion menu
 call Themer("Pmenu",                        g:none,    g:color0,  "NONE")
