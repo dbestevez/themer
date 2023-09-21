@@ -1,7 +1,7 @@
 configuration {
 	width: 30;
 	lines: 8;
-	font: "JetBrainsMono Nerd Font 12";
+	font: "JetBrainsMonoNL Nerd Font 12";
 	location: 0;
 	fixed-num-lines: true;
 	terminal: "kitty";
@@ -10,9 +10,11 @@ configuration {
 	line-margin: 10;
 	fullscreen: false;
 	fake-transparency: true;
-	display-window: "ﬓ";
+	display-window: "";
+	display-drun: "󰀻";
 	display-run: "";
-	display-ssh: "";
+    show-icons: true;
+	display-ssh: "󰣀";
 	display-combi: "";
 	kb-remove-char-back: "BackSpace";
 	kb-remove-to-eol: "Control+Delete";
