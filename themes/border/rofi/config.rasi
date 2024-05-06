@@ -1,0 +1,142 @@
+configuration {
+	width: 30;
+	lines: 8;
+	font: "JetBrainsMonoNL Nerd Font 12";
+	location: 0;
+	fixed-num-lines: true;
+	terminal: "kitty";
+	ssh-command: "{terminal} {ssh-client} {host}";
+	sidebar-mode: true;
+	line-margin: 10;
+	fullscreen: false;
+	fake-transparency: true;
+	display-window: "";
+	display-drun: "󰀻";
+	display-run: "";
+    show-icons: true;
+	display-ssh: "󰣀";
+	display-combi: "";
+	kb-remove-char-back: "BackSpace";
+	kb-remove-to-eol: "Control+Delete";
+	kb-accept-entry: "Return";
+	kb-mode-complete: "";
+	kb-mode-next: "Shift+Right,Control+l";
+	kb-mode-previous: "Shift+Left,Control+h";
+	kb-row-up: "Up,Control+k";
+	kb-row-down: "Down,Control+j";
+}
+
+* {
+    background-color:            #282a36;
+    text-color:                  #6272a4;
+    border-color:                #6272a4;
+    active-background:           #282a36;
+    active-foreground:           #a48bf7;
+    normal-background:           #282a36;
+    normal-foreground:           #6272a4;
+    urgent-background:           #282a36;
+    urgent-foreground:           #c74950;
+    alternate-active-background: #282a36;
+    alternate-active-foreground: #6272a4;
+    alternate-normal-background: #282a36;
+    alternate-normal-foreground: #6272a4;
+    alternate-urgent-background: #282a36;
+    alternate-urgent-foreground: #c74950;
+    selected-active-background:  #282a36;
+    selected-active-foreground:  #a48bf7;
+    selected-normal-background:  #282a36;
+    selected-normal-foreground:  #6272a4;
+    selected-urgent-background:  #282a36;
+    selected-urgent-foreground:  #c74950;
+}
+
+window {
+    background-color: #282a36;
+    text-color: #6272a4;
+    border: 2px;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+textbox {
+    text-color: #c74950;
+}
+
+inputbar {
+    border: 2px;
+    border-color: #6272a4;
+    border-radius: 10px;
+    children: [ textbox-prompt-colon, entry ];
+}
+
+textbox-prompt-colon {
+    expand: false;
+    margin: 0;
+    padding: 5px 15px 8px 10px;
+    spacing: 0;
+    str: "";
+    text-color: #6272a4;
+}
+
+entry {
+    margin: 0 0 0 -2px;
+    padding: 5px 10px;
+    placeholder: "";
+    text-color: #ff79c6;
+}
+
+listview {
+    border: 0;
+    fixed-height: 0;
+    margin: 5px 0 0 0;
+    scrollbar: false;
+    spacing: 2px;
+}
+
+element {
+  padding: 10px;
+}
+
+element selected {
+    border: 2px;
+    border-color: #d96aa9;
+    border-radius: 10px;
+    text-color: #ff79c6;
+}
+
+element.urgent {
+    text-color: #c74950;
+}
+
+element.active {
+    text-color: #43c46a;
+}
+
+element.selected.active {
+    text-color: #d96aa9;
+}
+
+element.selected.urgent {
+    text-color: #c74950;
+}
+
+mode-switcher {
+    margin: 0 -5px;
+    spacing: 0;
+}
+
+button {
+    background-color: #282a36;
+    border: 2px;
+    border-radius: 10px;
+    horizontal-align: 0.5;
+    margin: 0 5px;
+    padding: 5px;
+    text-color: #6272a4;
+}
+
+button.selected {
+    border-color: #d96aa9;
+    text-color: #d96aa9;
+}
+/* vim:ft=css
