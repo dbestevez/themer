@@ -11,7 +11,10 @@ stack_duplicates     = yes
 startup_notification = false
 sticky_history       = yes
 
-geometry             = "350x50-15+45"
+origin               = bottom-right
+offset               = 5x5
+width                = 350
+height               = 80
 shrink               = no
 monitor              = 0
 follow               = none
@@ -36,28 +39,28 @@ horizontal_padding   = 10
 separator_color      = frame
 icon_position        = left
 max_icon_size        = 80
-icon_path            = /usr/share/icons/Paper/48x48/mimetypes/:/usr/share/icons/Paper/48x48/status/:/usr/share/icons/Paper/48x48/devices/:/usr/share/icons/Paper/48x48/notifications/:/usr/share/icons/Paper/48x48/emblems/
+icon_path            = /usr/share/icons/Dracula/16/actions/:/usr/share/icons/Dracula/16/apps/:/usr/share/icons/Dracula/16/devices/:/usr/share/icons/Dracula/16/mimetypes/:/usr/share/icons/Dracula/16/panel/:/usr/share/icons/Dracula/16/places/
 frame_width          = 2
-frame_color          = "$color0"
+frame_color          = "#33364a"
 corner_radius        = 10
 gap_size             = 10
 
 [urgency_low]
-frame_color = "$color0"
-foreground  = "$color21"
-background  = "$color16"
+frame_color = "#6272a4"
+foreground  = "#6272a4"
+background  = "#282a36"
 timeout     = 5
 
 [urgency_normal]
-frame_color = "$color13"
-foreground  = "$color21"
-background  = "$color16"
+frame_color = "#6272a4"
+foreground  = "#6272a4"
+background  = "#282a36"
 timeout     = 5
 
 [urgency_critical]
-frame_color = "$color0"
-foreground  = "$color1"
-background  = "$color16"
+frame_color = "#ff79c6"
+foreground  = "#ff79c6"
+background  = "#282a36"
 timeout     = 10
 
 [shortcuts]
