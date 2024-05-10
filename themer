@@ -101,16 +101,17 @@ function main() {
 
     updateDunst     $theme
     updateCava      $theme
-    updateHyprland  $theme
     updateKitty     $theme
     updateMutt      $theme
     updatePicom     $theme
     updatePolybar   $theme
+    updateWaybar    $theme
     updateRofi      $theme
     updateZsh       $theme
     updateTmux      $theme
     updateVim       $theme
     updateBspwm     $theme
+    updateHyprland  $theme
     updateWallpaper $colors
 }
 
@@ -511,6 +512,35 @@ function updateWallpaper() {
 
     feh $ARGS > /dev/null 2>&1
     betterlockscreen -u $LOCK --blur 3 > /dev/null 2>&1
+
+    echo -e "\E[1;32mDONE\033[0m"
+}
+
+# ---
+# Changes the waybar theme.
+#
+# @param $1 The theme name.
+# ---
+function updateWaybar() {
+    command -v waybar > /dev/null 2>&1 || return
+
+    echo -en "  Changing waybar theme......................."
+
+    [ -f $HOME/.config/waybar ] && rm $HOME/.config/waybar
+
+    if [[ ! -d $DIR/themes/$1/waybar ]]; then
+        echo -e "\E[1;33mSKIP\033[0m"
+        return
+    fi
+
+    mkdir -p $HOME/.config/waybar
+    envsubst < $DIR/themes/$1/waybar/config > $HOME/.config/waybar/config
+    envsubst < $DIR/themes/$1/waybar/style.css > $HOME/.config/waybar/style.css
+
+    killall waybar > /dev/null 2>&1
+
+
+    waybar > /dev/null 2>&1 &
 
     echo -e "\E[1;32mDONE\033[0m"
 }
