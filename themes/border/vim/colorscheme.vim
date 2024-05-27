@@ -1,7 +1,7 @@
 let g:indentLine_setColors  = 1
 let g:indentLine_color_term = 8
 
-set fillchars+=vert:\·
+set fillchars=vert:\ " Remove separator
 set background=dark
 highlight clear
 
@@ -9,7 +9,7 @@ if exists("syntax_on")
   syntax reset
 endif
 
-let g:colors_name = "flat"
+let g:colors_name = "border"
 
 " Editor
 call Themer("Cursor",                       g:none,    g:color11, "NONE")
@@ -48,8 +48,8 @@ call Themer("Title",                        g:color9,  g:none,    "NONE")
 
 " Visual aid
 call Themer("MatchParen",                   g:color9,  g:none,    "NONE")
-call Themer("NonText",                      g:color4,  g:color16, "NONE")
-call Themer("Visual",                       g:color3,  g:color8,  "NONE")
+call Themer("NonText",                      g:color0,  g:color16, "NONE")
+call Themer("Visual",                       g:color13, g:color8,  "NONE")
 call Themer("Todo",                         g:color4,  g:none,    "NONE")
 call Themer("Underlined",                   g:none,    g:none,    "underline")
 call Themer("Error",                        g:none,    g:color9,  "NONE")

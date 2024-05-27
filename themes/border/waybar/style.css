@@ -53,7 +53,7 @@ window#waybar.chromium {
 #pulseaudio,
 #scratchpad,
 #temperature,
-#tray image,
+#tray > * > image,
 #window,
 #wireplumber,
 #workspaces button {
