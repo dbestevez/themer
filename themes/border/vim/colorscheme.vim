@@ -1,7 +1,7 @@
 let g:indentLine_setColors  = 1
 let g:indentLine_color_term = 8
 
-set fillchars=vert:\ " Remove separator
+set fillchars+=vert:\▏
 set background=dark
 highlight clear
 
@@ -27,7 +27,7 @@ call Themer("SignColumn",                   g:color6,  g:none,    "NONE")
 
 " Delimiter
 call Themer("ColorColumn",                  g:none,    g:color0,  "NONE")
-call Themer("VertSplit",                    g:color0,  g:color16, "NONE")
+call Themer("WinSeparator",                 g:color0,  g:color16, "NONE")
 call Themer("TabLine",                      g:none,    g:none,    "NONE")
 call Themer("TabLineFill",                  g:none,    g:none,    "NONE")
 call Themer("TabLineSel",                   g:none,    g:none,    "NONE")
@@ -174,3 +174,9 @@ call Themer("yamlFlowMappingKey",           g:color14, g:none,    "NONE")
 call Themer("yamlKeyValueDelimiter",        g:color15, g:none,    "NONE")
 call Themer("yamlFlowIndicator",            g:color15, g:none,    "NONE")
 call Themer("yamlBlockCollectionItemStart", g:color15, g:none,    "NONE")
+
+" ColorColumn
+call Themer("CocFloating",                  g:none,    g:color16, "NONE")
+call Themer("CocDeprecatedHighlight",       g:color8,  g:none,    "strikethrough")
+call Themer("CocUnusedHighlight",           g:color8,  g:none,    "strikethrough")
+call Themer("CocWarningHighlight",          g:none,    g:none,    "underline")

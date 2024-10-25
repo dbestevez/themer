@@ -23,10 +23,10 @@ let s:p.replace.error   = [ [ g:color1,  g:color17 ] ]
 let s:p.visual.error    = [ [ g:color1,  g:color17 ] ]
 
 " Info
-let s:p.normal.info     = [ [ g:color6,  g:color17 ] ]
-let s:p.insert.info     = [ [ g:color6,  g:color17 ] ]
-let s:p.replace.info    = [ [ g:color6,  g:color17 ] ]
-let s:p.visual.info     = [ [ g:color6,  g:color17 ] ]
+let s:p.normal.info     = [ [ g:color14,  g:color17 ] ]
+let s:p.insert.info     = [ [ g:color14,  g:color17 ] ]
+let s:p.replace.info    = [ [ g:color14,  g:color17 ] ]
+let s:p.visual.info     = [ [ g:color14,  g:color17 ] ]
 
 " Warning
 let s:p.normal.warning  = [ [ g:color3,  g:color17 ] ]
