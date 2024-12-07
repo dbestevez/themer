@@ -1,7 +1,7 @@
 configuration {
 	width: 30;
 	lines: 8;
-	font: "JetBrainsMonoNL Nerd Font 12";
+	font: "JetBrainsMono Nerd Font 12";
 	location: 0;
 	fixed-num-lines: true;
 	terminal: "kitty";
