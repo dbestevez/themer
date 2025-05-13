@@ -1,0 +1,163 @@
+{
+    "layer": "top", // Waybar at top layer
+    "position": "top", // Waybar position (top|bottom|left|right)
+    "spacing": 0, // Gaps between modules (4px)
+    // Choose the order of the modules
+    "modules-left": ["custom/powermenu", "custom/separator", "hyprland/workspaces"],
+    "modules-center": [],
+    "modules-right": ["cpu", "memory", "temperature", "custom/separator", "network", "group/audio", "battery", "custom/separator", "clock", "custom/separator", "tray"],
+
+    // Modules configuration
+    "battery": {
+        "format": "{icon}",
+        "tooltip-format": "{capacity}%",
+        "format-icons": ["", "", "", "", ""]
+    },
+
+    "clock": {
+        "locale": "en_GB.UTF-8",
+        "timezone": "Europe/Madrid",
+        "format": "{:%H:%M}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "mode"          : "month",
+            "mode-mon-col"  : 3,
+            "weeks-pos"     : "left",
+            "on-scroll"     : 1,
+            "on-click-right": "mode",
+            "format": {
+                "months":     "<span color='$color3'><b>{}</b></span>",
+                "days":       "<span color='$color7'>{}</span>",
+                "weeks":      "<span color='$color9'><b>{}</b></span> ",
+                "weekdays":   "<span color='$color6'><b>{}</b></span>",
+                "today":      "<span color='$color2'><b>{}</b></span>"
+            }
+        },
+        "actions":  {
+            "on-click-right": "mode",
+            "on-scroll-up": "shift_down",
+            "on-scroll-down": "shift_up"
+        }
+    },
+
+    "cpu": {
+        "format": "󰻠 {usage:2}%",
+        "on-click": "kitty gotop",
+        "tooltip": true
+    },
+
+    "custom/media": {
+        "format": "{icon} {}",
+        "return-type": "json",
+        "max-length": 40,
+        "format-icons": {
+            "spotify": "",
+            "default": "🎜"
+        },
+        "escape": true,
+        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
+        // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+    },
+
+    "custom/separator": {
+        "format": "·",
+        "tooltip": false
+    },
+
+    "custom/poweroff": {
+        "format": "",
+        "tooltip": "Power off",
+        "on-click": "poweroff"
+    },
+
+    "custom/reboot": {
+        "format": "",
+        "tooltip": "Power off",
+        "on-click": "poweroff"
+    },
+
+    "custom/logout": {
+        "format": "󰍃",
+        "tooltip": "Logout",
+        "on-click": "hyprctl dispatch exit"
+    },
+
+    "custom/powermenu": {
+        "format": "",
+        "on-click": "powermenu.sh",
+        "tooltip": false,
+    },
+
+	"group/audio": {
+        "orientation": "inherit",
+        "drawer": {
+            "children-class": "button",
+            "transition-duration": 500,
+            "transition-left-to-right": false,
+        },
+		"modules": [
+            "pulseaudio#sink",
+			"pulseaudio#source",
+		]
+	},
+
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "persistent-workspaces": { "1": [], "2": [], "3": [], "4": [], "5": [] },
+        "format-icons": {
+            "1": " ₁",
+            "2": "󰈹 ₂",
+            "3": "󰒱 ₃",
+            "4": " ₄",
+            "5": " ₅",
+            "6": "󰑣 ₆",
+        }
+    },
+
+    "memory": {
+        "format": "󰍛 {:2}%",
+        "on-click": "kitty gotop"
+    },
+
+    "network": {
+        "format-wifi": "  {signalStrength}%",
+        "format-ethernet": "󰈀",
+        "tooltip-format": "{essid}   {signalStrength}% \n{ifname} via {gwaddr}\n{ipaddr}/{cidr}",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "󰪎",
+    },
+
+    "temperature": {
+        "critical-threshold": 80,
+        "format-critical": "{icon} {temperatureC:2}°",
+        "format": "{icon} {temperatureC:2}°",
+        "format-icons": ["", "", "", "", "", ""],
+        "on-click": "kitty gotop"
+    },
+
+    "pulseaudio#sink": {
+        "format": "{icon} {volume}%",
+        "format-muted": " {volume}%",
+        "format-icons": ["", "", ""],
+        "tooltip-format": "{desc}\n{icon}  {volume}%",
+        "on-click": "~/.bin/volume.sh toggle",
+        "on-click-right": "gnome-control-center sound",
+        "on-scroll-down": "~/.bin/volume.sh down",
+        "on-scroll-up": "~/.bin/volume.sh up"
+    },
+
+    "pulseaudio#source": {
+        "format": "{format_source} {source_volume}%",
+        "format-source": "󰍬",
+        "format-source-muted": "󰍭",
+        "tooltip-format": "{desc}\n  {source_volume}%",
+        "on-click": "~/.bin/volume.sh toggle --source",
+        "on-click-right": "gnome-control-center sound",
+        "on-scroll-down": "~/.bin/volume.sh down --source",
+        "on-scroll-up": "~/.bin/volume.sh up --source"
+    },
+
+    "tray": {
+        "spacing": 0
+    }
+}

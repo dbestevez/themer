@@ -18,42 +18,17 @@ export color16="#282a36" # background0
 export color17="#33364a" # background1
 export color18="#4c506c" # background2
 export color19="#6272a4" # background3
-export color20="#6272a4" # foreground012
-export color21="#ff79c6" # foreground3
-export color22="#ff79c6" # cursor
-export color23="#6272a4" # comments
-export color24="#ffb86c" # warning
-
-# Air theme
-export air_bg=$color16
-export air_danger=$color1
-export air_cursor=$color4
-export air_fg=$color4
-export air_hl=$color4
-export air_info=$color4
-export air_mt=$color4
-export air_separator=$color5
-export air_tmux_fg_hl="colour4"
-export air_warning=$color3
-
-# Future theme
-export future_hl_bg=$color8
-export future_hl_fg=$color4
-export future_mt_bg=$color16
-export future_mt_fg=$color8
-export future_nm_bg=$color16
-export future_nm_fg=$color7
-export future_kitty_cursor=$color4
-export future_tmux_hl_fg="colour4"
-
-# Square theme
-export square_nm_bg=$color16
-export square_nm_fg=$color7
-export square_hl_bg=$color8
-export square_kitty_cursor=$color4
-export square_rofi_hl_bg=$color0
-export square_rofi_hl_fg=$color4
-export square_rofi_nm_bg=$color16
-export square_rofi_nm_fg=$color7
-export square_tmux_nm_bg="colour0"
-export square_tmux_nm_fg="colour7"
+export color20="#6272a4" # foreground0
+export color21="#6272a4" # foreground1
+export color22="#6272a4" # foreground2
+export color23="#ff79c6" # foreground3
+export color24="#ff79c6" # cursor
+export color25="#ff79c6" # border
+export color26="#ff5555" # danger
+export color27="#6272a4" # info
+export color28="#f1fa8c" # warning
+export color29="#50fa7b" # success
+export color30="#ffb86c" # comment
+export hyprlandBorderA1="bd93f9"
+export hyprlandBorderA2="ff79c6"
+export hyprlandBorderI="282a36"
