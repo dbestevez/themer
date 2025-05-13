@@ -15,7 +15,7 @@ let g:colors_name = "flat"
 call Themer("Cursor",                       g:none,    g:color11, "NONE")
 call Themer("CursorLine",                   g:none,    g:color0,  "NONE")
 call Themer("CursorLineNR",                 g:color15, g:color0,  "NONE")
-call Themer("LineNr",                       g:color8,  g:none,    "NONE")
+call Themer("LineNr",                       g:color18, g:none,    "NONE")
 call Themer("multiple_cursors_cursor",      g:none,    g:color11, "NONE")
 call Themer("Normal",                       g:color15, g:none,    "NONE")
 

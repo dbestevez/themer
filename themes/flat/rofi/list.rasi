@@ -1,0 +1,142 @@
+configuration {
+  show-icons:                  false;
+  kb-remove-char-back:         "BackSpace";
+  kb-remove-to-eol:            "Control+Delete";
+  kb-accept-entry:             "Return";
+  kb-mode-complete:            "";
+  kb-mode-next:                "Shift+Right,Control+l";
+  kb-mode-previous:            "Shift+Left,Control+h";
+  kb-row-up:                   "Up,Control+k";
+}
+
+* {
+  active: ${color24};
+  background0: ${color16};
+  background1: ${color17};
+  background2: ${color18};
+  font: "JetBrains Mono Nerd Font 10";
+  foreground0: ${color20};
+  urgent: ${color26};
+}
+
+element {
+  background-color: transparent;
+  border-radius: 5px;
+  cursor: pointer;
+  enabled: true;
+  orientation: vertical;
+  padding: 10px 10px;
+  text-color: var(foreground0);
+}
+
+element-icon {
+  size: 2.5em;
+}
+
+element-text {
+  cursor: inherit;
+  size: 1em;
+  text-color: inherit;
+  vertical-align: 0.5;
+}
+
+element alternate.normal,
+element normal.normal {
+  background-color: var(background1);
+  text-color: var(foreground0);
+}
+
+element alternate.active,
+element normal.active {
+  background-color: var(background1);
+  text-color: var(active);
+}
+
+element alternate.urgent,
+element normal.urgent {
+  background-color: var(background1);
+  text-color: var(urgent);
+}
+
+element selected.normal {
+  background-color: var(background2);
+  text-color: var(foreground0);
+}
+
+element selected.active {
+  background-color: var(background2);
+  text-color: var(active);
+}
+
+element selected.urgent {
+  background-color: var(background2);
+  text-color: var(urgent);
+}
+
+entry {
+  background-color: var(background2);
+  border-color: var(background2);
+  border-radius: 0 0 10px 10px;
+  border: none;
+  cursor-width: 8px;
+  enabled: true;
+  hide-cursor-on-empty: true;
+  horizontal-align: 0.5;
+  margin: 0px;
+  padding: 15px;
+  placeholder: "";
+  text-color: var(active);
+}
+
+inputbar {
+  background-color: var(background2);
+  border-color: transparent;
+  border-radius: 0 0 10px 10px;
+  border: none;
+  children: [ "entry" ];
+  enabled: true;
+}
+
+listview {
+  background-color: var(background0);
+  border: none;
+  columns: 1;
+  cursor: "default";
+  cycle: true;
+  dynamic: true;
+  enabled: true;
+  fixed-columns: true;
+  fixed-height: true;
+  layout: vertical;
+  lines: 10;
+  margin: 0;
+  padding: 20px;
+  reverse: false;
+  scrollbar: false;
+  spacing: 20px;
+}
+
+mainbox {
+  border-radius: 10px;
+  border: none;
+  children: [ "listview", "inputbar" ];
+  enabled: true;
+  padding: 0;
+  spacing: 0;
+}
+
+window {
+  anchor: north east;
+  background-color: var(background0);
+  border: 3px solid;
+  border-color: var(background0);
+  border-radius: 10px;
+  cursor: "default";
+  fullscreen: false;
+  location: north east;
+  padding: 0;
+  transparency: "real";
+  width: 500px;
+  x-offset: -3;
+  y-offset: 3;
+}

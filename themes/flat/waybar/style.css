@@ -1,0 +1,167 @@
+@define-color background0 $color16;
+@define-color background1 $color18;
+@define-color background2 $color17;
+@define-color foreground0 $color20;
+@define-color foreground1 $color21;
+@define-color border      $color25;
+@define-color workspace1  $color12;
+@define-color workspace2  $color3;
+@define-color workspace3  $color11;
+@define-color workspace4  $color2;
+@define-color workspace5  $color10;
+@define-color audio       $color6;
+@define-color cpu         $color2;
+@define-color clock       $color11;
+@define-color memory      $color10;
+@define-color network     $color27;
+@define-color danger      $color26;
+@define-color warning     $color28;
+@define-color success     $color29;
+@define-color system      $color4;
+@define-color temperature $color14;
+
+* {
+  font-family: JetBrainsMono Nerd Font Mono, Roboto, Helvetica, Arial, sans-serif;
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  font-family: JetBrainsMono Nerd Font, Roboto, Helvetica, Arial, sans-serif;
+  font-weight: bold;
+}
+
+tooltip {
+  background-color: @background1;
+  border: 1.5px solid @border;
+  border-radius: 5px;
+  color: @foreground0;
+}
+
+tooltip label {
+  color: @foreground1;
+  text-shadow: none;
+}
+
+#battery.charging {
+  color: @warning;
+  animation-name: blink;
+  animation-duration: .5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+#battery.critical {
+  color: @danger;
+  animation-name: blink;
+  animation-duration: .75s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+#battery.full {
+  color: @success;
+}
+
+#clock {
+  color: @clock;
+}
+
+#cpu {
+  color: @cpu;
+}
+
+#custom-separator {
+  color: @foreground0;
+  font-weight: bold;
+  margin: 0 .8rem;
+}
+
+#custom-powermenu {
+  color: @system;
+  padding: 0 .8rem;
+}
+
+#memory {
+  color: @memory;
+  margin: 0 .8rem;
+}
+
+#network {
+  color: @network;
+  margin-right: .8rem;
+}
+
+#network.disconnected {
+  color: @danger;
+}
+
+#pulseaudio.source {
+  margin-right: .8rem;
+}
+
+#pulseaudio.sink,
+#pulseaudio.source {
+  color: @audio;
+}
+
+#pulseaudio.sink.muted,
+#pulseaudio.source.source-muted {
+  color: @danger;
+}
+#temperature {
+  color: @temperature;
+}
+
+#temperature.critical {
+  color: @danger;
+}
+
+#waybar {
+  background: @background0;
+  transition-duration: .5s;
+}
+
+#workspaces button:nth-child(1) {
+  color: @workspace1;
+}
+
+#workspaces button:nth-child(2) {
+  color: @workspace2;
+}
+
+#workspaces button:nth-child(3) {
+  color: @workspace3;
+}
+
+#workspaces button:nth-child(4) {
+  color: @workspace4;
+}
+
+#workspaces button:nth-child(5) {
+  color: @workspace5;
+}
+
+#workspaces button.active {
+  background: @background2;
+}
+
+#workspaces button:hover {
+  background: @background1;
+  border: none;
+  box-shadow: none;
+}
+
+#workspaces button.urgent {
+  color: @danger;
+}
+
+#tray > * > image {
+  margin-right: .8rem;
+}
+
+@keyframes blink {
+  to {
+    color: @warning;
+  }
+}
