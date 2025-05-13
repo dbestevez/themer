@@ -112,7 +112,7 @@ function main() {
     updateVim       $theme
     updateBspwm     $theme
     updateHyprland  $theme
-    updateWallpaper $colors
+    updateWallpaper $theme $colors
 }
 
 # ---
@@ -244,6 +244,8 @@ function updateHyprland() {
 
     mkdir -p $HOME/.config/hypr
     envsubst < $DIR/themes/$1/hypr/theme.conf > $HOME/.config/hypr/theme.conf
+
+    hyprctl reload > /dev/null
 
     echo -e "\E[1;32mDONE\033[0m"
 }
@@ -392,15 +394,13 @@ function updateRofi() {
 
     echo -en "  Changing rofi theme........................."
 
-    [ -f $HOME/.config/rofi/config.rasi ] && rm $HOME/.config/rofi/config.rasi
-
-    if [[ ! -f $DIR/themes/$1/rofi/config.rasi ]]; then
-        echo -e "\E[1;33mSKIP\033[0m"
-        return
-    fi
-
     mkdir -p $HOME/.config/rofi
-    envsubst < $DIR/themes/$1/rofi/config.rasi > $HOME/.config/rofi/config.rasi
+
+    for file in $(ls $DIR/themes/$1/rofi); do
+        [ -f $HOME/.config/rofi/$file ] && rm $HOME/.config/rofi/$file
+
+        envsubst < $DIR/themes/$1/rofi/$file > $HOME/.config/rofi/$file
+    done
 
     echo -e "\E[1;32mDONE\033[0m"
 }
@@ -485,33 +485,40 @@ function updateVim() {
 # Changes the current wallpaper.
 #
 # @param $1 The theme name.
+# @param $2 The color name
 # ---
 function updateWallpaper() {
-    if [[ ! -x `command -v feh` ]] || \
-            [[ ! -d $DIR/wallpapers/$1  ]] || \
-            [[ ! `ls $DIR/wallpapers/$1 | grep ".*\.\(png\|jpg\)"` ]]; then
-        return
-    fi
+    #if [[ ! -x `command -v feh` ]] || \
+            #[[ ! -d $DIR/wallpapers/$1  ]] || \
+            #[[ ! `ls $DIR/wallpapers/$1 | grep ".*\.\(png\|jpg\)"` ]]; then
+        #return
+    #fi
 
     echo -en "  Changing wallpaper.........................."
 
-    WALLPAPER=`ls $DIR/wallpapers/$1 | grep ".*\.\(png\|jpg\)"`
+    WALLPAPER=`ls $DIR/wallpapers/$2 | grep ".*\.\(png\|jpg\)"`
     ARGS=''
     LOCK=''
     i=0
 
     for w in $WALLPAPER; do
-        ARGS="$ARGS--bg-scale $DIR/wallpapers/$1/$w "
+        ARGS="$DIR/wallpapers/$2/$w"
 
         if [ $i -eq 0 ]; then
-            LOCK="$DIR/wallpapers/$1/$w"
+            LOCK="$DIR/wallpapers/$2/$w"
         fi
 
         i=$(($i+1))
     done
 
-    feh $ARGS > /dev/null 2>&1
-    betterlockscreen -u $LOCK --blur 3 > /dev/null 2>&1
+    export wallpaper="$ARGS"
+    envsubst < $DIR/themes/$1/hypr/hyprpaper.conf > $HOME/.config/hypr/hyprpaper.conf
+    #feh $ARGS > /dev/null 2>&1
+    #betterlockscreen -u $LOCK --blur 3 > /dev/null 2>&1
+
+    killall hyprpaper > /dev/null 2>&1
+
+    hyprpaper > /dev/null 2>&1 &
 
     echo -e "\E[1;32mDONE\033[0m"
 }
