@@ -12,7 +12,7 @@ endif
 let g:colors_name = "flat"
 
 " Editor
-call Themer("Cursor",                       g:none,    g:color11, "NONE")
+call Themer("Cursor",                       g:none,    g:color24, "NONE")
 call Themer("CursorLine",                   g:none,    g:color0,  "NONE")
 call Themer("CursorLineNR",                 g:color15, g:color0,  "NONE")
 call Themer("LineNr",                       g:color18, g:none,    "NONE")
@@ -26,16 +26,17 @@ call Themer("Folded",                       g:color6,  g:none,    "NONE")
 call Themer("SignColumn",                   g:color6,  g:none,    "NONE")
 
 " Delimiter
-call Themer("ColorColumn",                  g:none,    g:color0,  "NONE")
+call Themer("ColorColumn",                  g:none,    g:color17, "NONE")
 call Themer("VertSplit",                    g:color0,  g:color16, "NONE")
 call Themer("TabLine",                      g:none,    g:none,    "NONE")
 call Themer("TabLineFill",                  g:none,    g:none,    "NONE")
 call Themer("TabLineSel",                   g:none,    g:none,    "NONE")
 
 " File Navigation/Searching
-call Themer("Directory",                    g:color3,  g:none,    "NONE")
-call Themer("IncSearch",                    g:color20, g:color18, "NONE")
-call Themer("Search",                       g:color20, g:color18, "NONE")
+call Themer("CurSearch",                    g:color24, g:color18, "underline")
+call Themer("Directory",                    g:color11, g:none,    "NONE")
+call Themer("IncSearch",                    g:color24, g:color18, "NONE")
+call Themer("Search",                       g:color24, g:color18, "NONE")
 
 " Completion menu
 call Themer("Pmenu",                        g:none,    g:color0,  "NONE")
@@ -49,7 +50,7 @@ call Themer("Title",                        g:color9,  g:none,    "NONE")
 " Visual aid
 call Themer("MatchParen",                   g:color9,  g:none,    "NONE")
 call Themer("NonText",                      g:color4,  g:color16, "NONE")
-call Themer("Visual",                       g:color3,  g:color8,  "NONE")
+call Themer("Visual",                       g:color24, g:color18, "NONE")
 call Themer("Todo",                         g:color4,  g:none,    "NONE")
 call Themer("Underlined",                   g:none,    g:none,    "underline")
 call Themer("Error",                        g:none,    g:color9,  "NONE")
