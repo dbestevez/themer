@@ -1,7 +1,7 @@
 let g:indentLine_setColors  = 1
 let g:indentLine_color_term = 8
 
-set fillchars+=vert:\·
+set fillchars+=vert:\▎
 set background=dark
 highlight clear
 
@@ -31,6 +31,11 @@ call Themer("VertSplit",                    g:color0,  g:color16, "NONE")
 call Themer("TabLine",                      g:none,    g:none,    "NONE")
 call Themer("TabLineFill",                  g:none,    g:none,    "NONE")
 call Themer("TabLineSel",                   g:none,    g:none,    "NONE")
+
+" Fillchars
+call Themer("WinSeparator",                 g:color17, g:none,    "NONE")
+call Themer("Folded",                       g:color30, g:none,    "NONE")
+call Themer("EndOfBuffer",                  g:color18, g:none,    "NONE")
 
 " File Navigation/Searching
 call Themer("CurSearch",                    g:color24, g:color18, "underline")
@@ -75,7 +80,7 @@ call Themer("Number",                       g:color5,  g:none,    "NONE")
 call Themer("String",                       g:color3,  g:none,    "NONE")
 
 " Language constructs
-call Themer("Comment",                      g:color19, g:none,    "NONE")
+call Themer("Comment",                      g:color30, g:none,    "NONE")
 call Themer("Conditional",                  g:color12, g:none,    "NONE")
 call Themer("Debug",                        g:color4,  g:none,    "NONE")
 call Themer("Delimiter",                    g:color15, g:none,    "NONE")
