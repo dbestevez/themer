@@ -235,8 +235,6 @@ function updateHyprland() {
 
     echo -en "  Changing hyprland theme....................."
 
-    [ -f $HOME/.config/hypr/theme.conf ] && rm $HOME/.config/hypr/theme.conf
-
     if [[ ! -f $DIR/themes/$1/hypr/theme.conf ]]; then
         echo -e "\E[1;33mSKIP\033[0m"
         return
