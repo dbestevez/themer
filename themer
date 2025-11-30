@@ -450,7 +450,7 @@ function updateVim() {
     fi
 
     mkdir -p $HOME/.config/nvim
-    cat $DIR/src/vim/themer.vim > $HOME/.config/nvim/themer.vim
+    cat $DIR/templates/vim/themer.vim > $HOME/.config/nvim/themer.vim
 
     if [[ -f $DIR/themes/$1/vim/theme.vim ]]; then
         mkdir -p $HOME/.config/nvim/themes
