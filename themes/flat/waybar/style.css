@@ -4,6 +4,7 @@
 @define-color foreground0 $color20;
 @define-color foreground1 $color21;
 @define-color border      $color25;
+@define-color tooltip     $color23;
 @define-color workspace1  $color12;
 @define-color workspace2  $color3;
 @define-color workspace3  $color11;
@@ -32,11 +33,11 @@ tooltip {
   background-color: @background1;
   border: 1.5px solid @border;
   border-radius: 5px;
-  color: @foreground0;
+  color: @tooltip;
 }
 
 tooltip label {
-  color: @foreground1;
+  color: @tooltip;
   text-shadow: none;
 }
 
