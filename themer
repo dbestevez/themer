@@ -107,6 +107,7 @@ function main() {
     updatePolybar   $theme
     updateWaybar    $theme
     updateRofi      $theme
+    updateYazi      $theme
     updateZsh       $theme
     updateTmux      $theme
     updateVim       $theme
@@ -569,6 +570,29 @@ function updateZsh() {
 
     mkdir -p $HOME/.config/zsh/config/environments
     cp $DIR/themes/$1/zsh/theme.sh $HOME/.config/zsh/config/environments/theme.sh
+
+    echo -e "\E[1;32mDONE\033[0m"
+}
+
+# ---
+# Changes the yazi theme.
+#
+# @param $1 The theme name.
+# ---
+function updateYazi() {
+    command -v yazi > /dev/null 2>&1 || return
+
+    echo -en "  Changing yazi theme........................."
+
+    [ -f $HOME/.config/yazi ] && rm $HOME/.config/yazi
+
+    if [[ ! -d $DIR/themes/$1/yazi ]]; then
+        echo -e "\E[1;33mSKIP\033[0m"
+        return
+    fi
+
+    mkdir -p $HOME/.config/yazi
+    envsubst < $DIR/themes/$1/yazi/theme.toml > $HOME/.config/yazi/theme.toml
 
     echo -e "\E[1;32mDONE\033[0m"
 }
