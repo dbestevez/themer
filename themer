@@ -487,12 +487,6 @@ function updateVim() {
 # @param $2 The color name
 # ---
 function updateWallpaper() {
-    #if [[ ! -x `command -v feh` ]] || \
-            #[[ ! -d $DIR/wallpapers/$1  ]] || \
-            #[[ ! `ls $DIR/wallpapers/$1 | grep ".*\.\(png\|jpg\)"` ]]; then
-        #return
-    #fi
-
     echo -en "  Changing wallpaper.........................."
 
     WALLPAPER=`ls $DIR/wallpapers/$2 | grep ".*\.\(png\|jpg\)"`
@@ -512,8 +506,7 @@ function updateWallpaper() {
 
     export wallpaper="$ARGS"
     envsubst < $DIR/themes/$1/hypr/hyprpaper.conf > $HOME/.config/hypr/hyprpaper.conf
-    #feh $ARGS > /dev/null 2>&1
-    #betterlockscreen -u $LOCK --blur 3 > /dev/null 2>&1
+    envsubst < $DIR/themes/$1/rofi/grid.rasi > $HOME/.config/rofi/grid.rasi
 
     killall hyprpaper > /dev/null 2>&1
 
