@@ -48,8 +48,8 @@ function list() {
 # Changes the current theme.
 # ---
 function main() {
-    local colors=$(cat $DIR/last | grep colors | sed -e "s/colors:\s*//")
-    local theme=$(cat $DIR/last | grep theme | sed -e "s/theme:\s*//")
+    local colors=$(cat $HOME/.themer.conf | grep colors | sed -e "s/colors\s*=\s*//")
+    local theme=$(cat $HOME/.themer.conf | grep theme | sed -e "s/theme\s*=\s*//")
 
     while [[ $# -gt 0 ]]; do
         case "$1" in
@@ -92,8 +92,8 @@ function main() {
         help "Unknown color scheme \"$colors\""
     fi
 
-    echo "theme: $theme" > $DIR/last
-    echo "colors: $colors" >> $DIR/last
+    echo "theme = $theme" > $HOME/.themer.conf
+    echo "colors = $colors" >> $HOME/.themer.conf
 
     echo "Applying $theme theme with $colors colors..."
 
