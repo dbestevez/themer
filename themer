@@ -66,8 +66,8 @@ function main() {
                 ;;
 
             -r | --random )
-                theme=$(random_theme)
-                colors=$(random_colors)
+                theme=$(randomTheme)
+                colors=$(randomColors)
                 ;;
 
             -t | --theme )
@@ -100,18 +100,13 @@ function main() {
     source $DIR/colors/$colors.sh
 
     updateDunst     $theme
-    updateCava      $theme
     updateKitty     $theme
-    updateMutt      $theme
-    updatePicom     $theme
-    updatePolybar   $theme
     updateWaybar    $theme
     updateRofi      $theme
     updateYazi      $theme
     updateZsh       $theme
     updateTmux      $theme
-    updateVim       $theme
-    updateBspwm     $theme
+    updateVim       $colors
     updateHyprland  $theme
     updateWallpaper $theme $colors
 }
@@ -119,8 +114,8 @@ function main() {
 # ---
 # Returns a random color scheme.
 # ---
-function random_colors() {
-    colors=$(ls colors | sed -e "s/\.sh//g")
+function randomColors() {
+    colors=$(ls $DIR/colors | sed -e "s/\.sh//g")
     size=$(echo "$colors" | wc -w)
 
     i=0
@@ -138,8 +133,8 @@ function random_colors() {
 # ---
 # Returns a random theme.
 # ---
-function random_theme() {
-    themes=$(ls themes)
+function randomTheme() {
+    themes=$(ls $DIR/themes)
     size=$(echo "$themes" | wc -w)
 
     i=0
@@ -152,54 +147,6 @@ function random_theme() {
     theme=$(($RANDOM % $size))
 
     echo ${array[$theme]}
-}
-
-# ---
-# Updates the bspwm configuration.
-#
-# @param $1 The theme name.
-# ---
-function updateBspwm() {
-    command -v bspwm > /dev/null 2>&1 || return
-
-    echo -en "  Changing bspwm theme........................"
-
-    [ -f $HOME/.config/bspwm/theme ] && rm $HOME/.config/bspwm/theme
-
-    if  [[ ! -f $DIR/themes/$1/bspwm/config ]]; then
-        echo -e "\E[1;33mSKIP\033[0m"
-        return
-    fi
-
-    mkdir -p $HOME/.config/bspwm
-    envsubst < $DIR/themes/$1/bspwm/config > $HOME/.config/bspwm/theme
-    source $HOME/.config/bspwm/theme
-
-    echo -e "\E[1;32mDONE\033[0m"
-}
-
-# ---
-# Updates the dunst configuration.
-#
-# @param $1 The theme name.
-# ---
-function updateCava() {
-    command -v cava > /dev/null 2>&1 || return
-
-    echo -en "  Changing cava theme........................."
-
-    [ -f $HOME/.config/cava/config ] && rm $HOME/.config/cava/config
-
-    if  [[ ! -f $DIR/themes/$1/cava/config ]]; then
-        echo -e "\E[1;33mSKIP\033[0m"
-        return
-    fi
-
-    mkdir -p $HOME/.config/cava
-    envsubst < $DIR/themes/$1/cava/config > $HOME/.config/cava/config
-    killall dunst > /dev/null 2>&1
-
-    echo -e "\E[1;32mDONE\033[0m"
 }
 
 # ---
@@ -269,115 +216,8 @@ function updateKitty() {
     mkdir -p $HOME/.config/kitty
     envsubst < $DIR/themes/$1/kitty/kitty.conf > $HOME/.config/kitty/kitty.conf
 
-    if [[ -x `command -v xdotool` ]]; then
-        xdotool key 'ctrl+shift+F5'
-    fi
-
-    echo -e "\E[1;32mDONE\033[0m"
-}
-
-# ---
-# Updates the mutt theme.
-#
-# @param $1 The theme name.
-# ---
-function updateMutt() {
-    command -v neomutt > /dev/null 2>&1 || return
-
-    echo -en "  Changing mutt theme........................."
-
-    [ -f $HOME/.config/mutt/theme ] && rm $HOME/.config/mutt/theme
-
-    if [[ ! -f $DIR/themes/$1/mutt/config ]]; then
-        echo -e "\E[1;33mSKIP\033[0m"
-        return
-    fi
-
-    mkdir -p $HOME/.config/mutt
-    envsubst < $DIR/themes/$1/mutt/config > $HOME/.config/mutt/theme
-    sed -i -e "/^source.*theme$/d" $(readlink -f $HOME/.muttrc)
-    echo "source ~/.config/mutt/theme" >> $HOME/.muttrc
-
-    echo -e "\E[1;32mDONE\033[0m"
-}
-
-# ---
-# Updates the picom configuration.
-#
-# @param $1 The theme name.
-# ---
-function updatePicom() {
-    command -v picom > /dev/null 2>&1 || return
-
-    echo -en "  Changing picom config......................."
-
-    [ -f $HOME/.config/picom/picom.conf ] && rm $HOME/.config/picom/picom.conf
-    killall picom > /dev/null 2>&1
-
-    if  [[ ! -f $DIR/themes/$1/picom/picom.conf ]]; then
-        echo -e "\E[1;33mSKIP\033[0m"
-        return
-    fi
-
-    mkdir -p $HOME/.config/picom
-    cp $DIR/themes/$1/picom/picom.conf $HOME/.config/picom/picom.conf
-    picom > /dev/null 2>&1 &
-
-    echo -e "\E[1;32mDONE\033[0m"
-}
-
-# ---
-# Changes the polybar theme.
-#
-# @param $1 The theme name.
-# ---
-function updatePolybar() {
-    command -v polybar > /dev/null 2>&1 || return
-
-    echo -en "  Changing polybar theme......................"
-
-    [ -f $HOME/.config/polybar/config ] && rm $HOME/.config/polybar/config
-
-    if [[ ! -f $DIR/themes/$1/polybar/config ]]; then
-        echo -e "\E[1;33mSKIP\033[0m"
-        return
-    fi
-
-    mkdir -p $HOME/.config/polybar
-    envsubst < $DIR/themes/$1/polybar/config > $HOME/.config/polybar/config
-
-    bars=$(grep "\[bar/.*\]" $HOME/.config/polybar/config | \
-        sed -e "s/\[bar\/\(.*\)\]/\1/g")
-
-    killall polybar > /dev/null 2>&1
-
-    for bar in $bars; do
-        polybar $bar > /tmp/polybar-$bar.log 2>&1 &
-    done
-
-    for m in `mons | grep "enabled" | sed -e "s/\s\+/ /g" | cut -d ' ' -f2`; do
-        bspc config -m $m top_padding 0
-        bspc config -m $m bottom_padding 0
-    done
-
-    # Fix top padding for primary monitor
-    if [ $(grep "bar/top" ~/.config/polybar/config) ]; then
-        height=$(grep "bar/top" ~/.config/polybar/config -A 3 | \
-            grep "height" | sed -e "s/height\s*=\s*//g")
-        border=$(grep "bar/top" ~/.config/polybar/config -A 3 | \
-            grep "border-size" | sed -e "s/border-size\s*=\s*//g")
-
-        bspc config -m $PRIMARY top_padding $(($height + $border * 2))
-    fi
-
-    # Fix bottom padding for primary monitor
-    if [ $(grep "bar/bottom" ~/.config/polybar/config) ]; then
-        height=$(grep "bar/bottom" ~/.config/polybar/config -A 3 | \
-            grep "height" | sed -e "s/height\s*=\s*//g")
-        border=$(grep "bar/bottom" ~/.config/polybar/config -A 3 | \
-            grep "border-size" | sed -e "s/border-size\s*=\s*//g")
-
-        bspc config -m $PRIMARY bottom_padding $(($height + $border * 2))
+    if [[ -x `command -v wdotool` ]]; then
+        wdotool key 'ctrl+shift+F5' > /dev/null 2>&1
     fi
 
     echo -e "\E[1;32mDONE\033[0m"
@@ -434,7 +274,7 @@ function updateTmux() {
 # ---
 # Changes the vim colorschemes.
 #
-# @param $1 The theme name.
+# @param $1 The color name.
 # ---
 function updateVim() {
     if [[ ! -x `command -v vim` ]] && [[ ! -x `command -v nvim` ]]; then
@@ -443,39 +283,8 @@ function updateVim() {
 
     echo -en "  Changing vim theme.........................."
 
-    [ -f $HOME/.config/nvim/themer.vim ] && rm $HOME/.config/nvim/themer.vim
-
-    if [[ ! -f $DIR/themes/$1/vim/theme.vim ]]; then
-        echo -e "\E[1;33mSKIP\033[0m"
-        return
-    fi
-
-    mkdir -p $HOME/.config/nvim
-    cat $DIR/templates/vim/themer.vim > $HOME/.config/nvim/themer.vim
-
-    if [[ -f $DIR/themes/$1/vim/theme.vim ]]; then
-        mkdir -p $HOME/.config/nvim/themes
-        envsubst < $DIR/themes/$1/vim/theme.vim > $HOME/.config/nvim/themes/$1.vim
-        echo "source ~/.config/nvim/themes/$1.vim" >> $HOME/.config/nvim/themer.vim
-    fi
-
-    if [[ -f $DIR/themes/$1/vim/colorscheme.vim ]]; then
-        if [[ ! -d $HOME/.config/nvim/colors ]]; then
-            mkdir -p $HOME/.config/nvim/colors
-        fi
-
-        cp $DIR/themes/$1/vim/colorscheme.vim $HOME/.config/nvim/colors/$1.vim
-        echo "colorscheme $1" >> $HOME/.config/nvim/themer.vim
-    fi
-
-    if [[ -f $DIR/themes/$1/vim/lightline.vim ]]; then
-        if [[ ! -d $HOME/.config/nvim/autoload/lightline/colorscheme ]]; then
-            mkdir -p $HOME/.config/nvim/autoload/lightline/colorscheme
-        fi
-
-        cp $DIR/themes/$1/vim/lightline.vim $HOME/.config/nvim/autoload/lightline/colorscheme/$1.vim
-        echo "source ~/.config/nvim/autoload/lightline/colorscheme/$1.vim" >> $HOME/.config/nvim/themer.vim
-    fi
+    mkdir -p $HOME/.config/nvim/lua/colors
+    envsubst < $DIR/templates/vim/colors.lua > $HOME/.config/nvim/lua/colors/$1.lua
 
     echo -e "\E[1;32mDONE\033[0m"
 }
@@ -506,10 +315,7 @@ function updateWallpaper() {
 
     export wallpaper="$ARGS"
     envsubst < $DIR/themes/$1/hypr/hyprpaper.conf > $HOME/.config/hypr/hyprpaper.conf
-    envsubst < $DIR/themes/$1/rofi/grid.rasi > $HOME/.config/rofi/grid.rasi
-
     killall hyprpaper > /dev/null 2>&1
-
     hyprpaper > /dev/null 2>&1 &
 
     echo -e "\E[1;32mDONE\033[0m"

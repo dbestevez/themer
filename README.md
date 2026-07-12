@@ -1,16 +1,17 @@
 # Themer
 
-This script helps me to customize my current desktop environment. It is focused on customizing my [bspwm](https://github.com/baskerville/bspwm)+[polybar](https://github.com/jaagr/polybar) based desktop and some terminal applications.
+This script helps me to customize my current desktop environment. It is focused on customizing my [hyprland](https://github.com/hyprwm/hyprland)+[waybar](https://github.com/Alexays/Waybar) based desktop and some terminal applications.
 
 The list of applications I customize with themer (for now) are:
 
-  - [bspwm](https://github.com/baskerville/bspwm)
+  - [dunst](https://github.com/dunst-project/dunst)
+  - [hyprland](https://github.com/hyprwm/hyprland)
   - [kitty](https://github.com/kovidgoyal/kitty)
-  - mutt
-  - [polybar](https://github.com/jaagr/polybar)
+  - [nvim](https://github.com/neovim/neovim)
   - [rofi](https://github.com/DaveDavenport/rofi)
-  - tmux
-  - vim (colorscheme and lightline plugin)
+  - [tmux](https://github.com/tmux/tmux)
+  - [waybar](https://github.com/Alexays/Waybar)
+  - [yazi](https://github.com/sxyazi/yazi)
 
 ## Installation
 
@@ -32,26 +33,29 @@ To learn how to use themer execute:
 
 ```
 $ themer -h
-Usage: themer [OPTION] THEME
-Changes the wallpaper and current theme for bspwm, polybar and more.
+Usage: themer [OPTIONS]
+Changes the wallpaper and current theme for hyprland, waybar and more.
 
 Options:
+  -c, --colors  The colors to use.
   -h, --help    Display this help and exit
   -l, --list    Display the list of available themes
+  -r, --random  Applies random theme and colors
+  -t, --theme   The theme to configure
 ```
 
 To get the list of available themes execute:
 
 ```
 $ themer -l
-Available themes:
-    offline
+Themes
+   border flat
+Colors
+   dracula frappe latte macchiato mocha nightfall nord seti solarized
 ```
 
-To install a theme execute:
+To install a theme with a colors execute:
 
 ```
-$ themer <theme>
+$ themer -t <theme> -c macchiato
 ```
-
-> Themer will automatically reload configuration for bspwm, polybar, rofi, kitty and tmux, no restart required. Vim and mutt have to be restarted to use the installed theme.
