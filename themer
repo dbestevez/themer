@@ -95,6 +95,8 @@ function main() {
     echo "theme = $theme" > $HOME/.themer.conf
     echo "colors = $colors" >> $HOME/.themer.conf
 
+    selectWallpaper $colors
+
     echo "Applying $theme theme with $colors colors..."
 
     source $DIR/colors/$colors.sh
@@ -147,6 +149,30 @@ function randomTheme() {
     theme=$(($RANDOM % $size))
 
     echo ${array[$theme]}
+}
+
+# ---
+# Selects the wallpaper based on colors.
+#
+# @param $1 The colors.
+# ---
+function selectWallpaper() {
+    WALLPAPER=`ls $DIR/wallpapers/$1 | grep ".*\.\(png\|jpg\)"`
+    ARGS=''
+    LOCK=''
+    i=0
+
+    for w in $WALLPAPER; do
+        ARGS="$DIR/wallpapers/$1/$w"
+
+        if [ $i -eq 0 ]; then
+            LOCK="$DIR/wallpapers/$1/$w"
+        fi
+
+        i=$(($i+1))
+    done
+
+    export wallpaper="$ARGS"
 }
 
 # ---
@@ -296,22 +322,6 @@ function updateVim() {
 function updateWallpaper() {
     echo -en "  Changing wallpaper.........................."
 
-    WALLPAPER=`ls $DIR/wallpapers/$2 | grep ".*\.\(png\|jpg\)"`
-    ARGS=''
-    LOCK=''
-    i=0
-
-    for w in $WALLPAPER; do
-        ARGS="$DIR/wallpapers/$2/$w"
-
-        if [ $i -eq 0 ]; then
-            LOCK="$DIR/wallpapers/$2/$w"
-        fi
-
-        i=$(($i+1))
-    done
-
-    export wallpaper="$ARGS"
     envsubst < $DIR/themes/$1/hypr/hyprpaper.conf > $HOME/.config/hypr/hyprpaper.conf
     killall hyprpaper > /dev/null 2>&1
     hyprpaper > /dev/null 2>&1 &
