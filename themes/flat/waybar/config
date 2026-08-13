@@ -85,7 +85,7 @@
 
     "custom/powermenu": {
         "format": "",
-        "on-click": "powermenu.sh",
+        "on-click": "~/.local/bin/powermenu.sh",
         "tooltip": false,
     },
 
@@ -141,10 +141,10 @@
         "format-muted": " {volume}%",
         "format-icons": ["", "", ""],
         "tooltip-format": "{desc}\n{icon}  {volume}%",
-        "on-click": "~/.bin/volume.sh toggle",
+        "on-click": "~/.local/bin/volume.sh toggle",
         "on-click-right": "gnome-control-center sound",
-        "on-scroll-down": "~/.bin/volume.sh down",
-        "on-scroll-up": "~/.bin/volume.sh up"
+        "on-scroll-down": "~/.local/bin/volume.sh down",
+        "on-scroll-up": "~/.local/bin/volume.sh up"
     },
 
     "pulseaudio#source": {
@@ -152,10 +152,10 @@
         "format-source": "󰍬",
         "format-source-muted": "󰍭",
         "tooltip-format": "{desc}\n  {source_volume}%",
-        "on-click": "~/.bin/volume.sh toggle --source",
+        "on-click": "~/.local/bin/volume.sh toggle --source",
         "on-click-right": "gnome-control-center sound",
-        "on-scroll-down": "~/.bin/volume.sh down --source",
-        "on-scroll-up": "~/.bin/volume.sh up --source"
+        "on-scroll-down": "~/.local/bin/volume.sh down --source",
+        "on-scroll-up": "~/.local/bin/volume.sh up --source"
     },
 
     "tray": {
